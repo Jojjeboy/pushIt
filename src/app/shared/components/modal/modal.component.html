@@ -1,0 +1,10 @@
+<clr-modal [(clrModalOpen)]="modalData.open">
+    <h3 class="modal-title">{{ modalData.header }}</h3>
+    <div class="modal-body">
+        <p>{{ modalData.body }}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="modalData.open = false">Ångra</button>
+        <button type="button" class="btn btn-primary" (click)="callBackConfirmed()">Ok</button>
+    </div>
+</clr-modal>

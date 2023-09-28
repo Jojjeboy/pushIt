@@ -1,0 +1,37 @@
+.card {
+    form {
+        margin-bottom: 0;
+        padding-top: 0;
+        .radio.btn {
+            width: 100%;
+        }
+
+        input[type="phone"],
+        input[type="text"] {
+            width: 100%;
+        }
+
+        .reset {
+            margin: 1rem 0;
+            span {
+                font-size: 0.65rem;
+                line-height: 0.9rem;
+                font-weight: 600;
+                padding-bottom: 8px;
+                display: block;
+            }
+        }
+
+        .history {
+            margin-bottom: 30px;
+        }
+    }
+    .clr-row {
+        margin-bottom: 20px;
+    }
+
+    .card-footer {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+}

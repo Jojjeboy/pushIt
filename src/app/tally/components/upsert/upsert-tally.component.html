@@ -1,0 +1,147 @@
+<div class="clr-row" *ngIf="editMode">
+    <div class="clr-col-12">
+        <a routerLink="/tally/{{ tally.getUuid() }}">
+            <clr-icon shape="undo"></clr-icon> &nbsp; <small>Tillbaka</small>
+        </a>
+    </div>
+</div>
+<h1>{{ editMode ? 'Redigera' : 'Skapa ny' }}</h1>
+
+
+<div class="card">
+    <form [formGroup]="tallyForm" clrForm (ngSubmit)="onSubmit()">
+        <div class="card-block">
+            <div class="card-text">
+                <div class="clr-row">
+                    <div class="clr-col-12">
+                        <clr-input-container>
+                            <label for="title">Titel</label>
+                            <input clrInput type="text" id="title" formControlName="title" required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                </div>
+                <div class="clr-row">
+                    <div class="clr-col-6">
+                        <clr-input-container>
+                            <label for="increaseBy">Öka</label>
+                            <input clrInput min="1" step="1" type="number" placeholder="10" formControlName="increseBy"
+                                id="increseBy" required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                    <div class="clr-col-6">
+                        <clr-input-container>
+                            <label for="decreseBy">Minska</label>
+                            <input clrInput min="1" step="1" type="number" placeholder="10" formControlName="decreseBy"
+                                id="decreseBy" required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                </div>
+                <div class="clr-row">
+                    <div class="clr-col-6">
+                        <clr-input-container>
+                            <label for="value">Värde</label>
+                            <input clrInput min="0" type="number" placeholder="0" formControlName="value" id="value"
+                                required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                    <div class="clr-col-6">
+                        <clr-input-container>
+                            <label for="goal">Mål</label>
+                            <input clrInput min="0" type="number" placeholder="0" formControlName="goal" id="goal"
+                                required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                </div>
+                <div class="clr-row">
+                    <div class="clr-col-6">
+                        <clr-input-container>
+                            <label for="topScore">Högsta värdet</label>
+                            <input clrInput min="0" type="number" placeholder="0" formControlName="topScore"
+                                id="topScore" required />
+                            <clr-control-error>Här måste det finnas ett värde</clr-control-error>
+                        </clr-input-container>
+                    </div>
+                    <div class="clr-col-6"></div>
+                </div>
+
+
+                <div class="clr-row">
+                    <div class="clr-col-6 reset">
+                        <span>Nollställ räknare</span>
+                        <div class="radio btn">
+                            <input type="radio" formControlName="reset" value="true" id="btn-demo-radio-1"
+                                [value]="true">
+                            <label for="btn-demo-radio-1">Ja</label>
+                        </div>
+                    </div>
+                    <div class="clr-col-6 reset">
+                        <span>&nbsp;</span>
+                        <div class="radio btn">
+                            <input type="radio" formControlName="reset" value="false" id="btn-demo-radio-4"
+                                [value]="false">
+                            <label for="btn-demo-radio-4">Nej</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clr-row" [class.disabled]="!tallyForm.value.reset">
+                    <div class="clr-col-4 reset">
+                        <span>Nollställningsintervall</span>
+                        <div class="radio btn">
+                            <input type="radio" formControlName="resetInterval" value="daily" id="reset-btn-daily">
+                            <label for="reset-btn-daily">Dag</label>
+                        </div>
+                    </div>
+                    <div class="clr-col-4 reset">
+                        <span>&nbsp;</span>
+                        <div class="radio btn">
+                            <input type="radio" formControlName="resetInterval" value="weekly" id="reset-btn-weekly">
+                            <label for="reset-btn-weekly">Vecka</label>
+                        </div>
+                    </div>
+                    <div class="clr-col-4 reset">
+                        <span>&nbsp;</span>
+                        <div class="radio btn">
+                            <input type="radio" formControlName="resetInterval" value="monthly" id="reset-btn-monthly">
+                            <label for="reset-btn-monthly">Månad</label> 
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="clr-row">
+                    <div class="clr-col-12">
+                        <app-history-summary [tally]="tally"></app-history-summary>
+                    </div>
+                </div>
+                <div class="clr-row">
+                    <label>Räknaren är {{ tallyForm.value.active  ? 'aktiv' : 'inaktiv' }}</label>
+                    <div class="clr-col-12">
+                        <input type="checkbox" value="tally.getActive()" formControlName="active" clrToggle />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="clr-row">
+                <div class="clr-col-6">
+                    <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline block">Ångra</a>
+                </div>
+                <div class="clr-col-6">
+                    <button [disabled]="!tallyForm.valid" class="btn btn-success-outline block" type="submit">{{
+                        editMode ?
+                        'Uppdatera' : 'Spara' }}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<app-modal [modalData]="cleanHistoryModalData" (parentEvent)="cleanHistoryConfirmed()"></app-modal>
+
+<!--pre>{{tallyForm.value | json }}</pre-->

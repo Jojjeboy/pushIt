@@ -1,0 +1,15 @@
+<h1>Lägg till exempel</h1>
+<div>
+    <small>Lägg till exempel räknare</small>
+</div>
+<hr />
+
+<div class="clr-container">
+    <div class="clr-row" *ngFor="let tally of talliesFromJson">
+        <div class="clr-col-12">
+            <button class="btn btn-success-outline block" [disabled]="tallyAdded(tally.getUuid())"
+                (click)="addExampleTally(tally.getUuid())">{{ tally.getTitle() }}</button>
+            <hr />
+        </div>
+    </div>
+</div>

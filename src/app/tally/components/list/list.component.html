@@ -1,0 +1,115 @@
+<div class="clr-row clear-spinner" *ngIf="!tallyFetched">
+    <div class="clr-col-12">
+        <span class="spinner">
+            Loading...
+        </span>
+    </div>
+</div>
+<div class="clr-row" *ngFor="let tally of tallies" [class.inactive]="!tally.getActive()"
+    [class.hideInactive]="!showAll && !tally.getActive()">
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="header-main-text">
+                        <a routerLink="/tally/{{ tally.getUuid() }}" class="block">{{ tally.getTitle() }}</a>
+                        <span class="pull-right" *ngIf="tally.getCanReset()">
+                            <clr-icon shape="crosshairs" *ngIf="tally.getHistory().length > 2"></clr-icon> &nbsp;
+                            <clr-icon shape="recycle"></clr-icon>
+                        </span>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="clr-row">
+                        <div class="clr-col-7">
+                            <div class="card-title">
+                                <span *ngIf="tally.getCanReset()">
+                                    <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span i18n> {{ this.translation[tally.getResetInterval()] }} </span> historik</span>
+                                    <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
+                                </span>
+                                <span *ngIf="!tally.getCanReset()">
+                                    <span>Räknaren nollställs inte</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="clr-col-5">
+                            <div class="card-title pull-right">
+                                <clr-icon shape="hard-disk" badge="success"></clr-icon> &nbsp; {{ tally.getLastTouched() | date: 'HH:mm - dd MMM'}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div aria-hidden="true" class="clr-row progress-status-text">
+                            <div class="clr-col-6">Avklarat: {{ calculatePercentage(tally) }}% </div>
+                            <div class="clr-col-6">
+                                <span class="pull-right">
+                                    {{ tally.getValue() }} av {{ tally.getGoal() }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="clr-row dynamic-goal" *ngIf="showDynamicGoal(tally)">
+                            <div class="clr-col-6">Dynamiskt mål idag: {{ getDynamicTallyGoal(tally.getHistory()) }}
+                            </div>
+                            <div class="clr-col-6"></div>
+                        </div>
+                        <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
+                            <div class="progress-meter"
+                                [attr.data-value]="calculatePercentage(tally) < 100 ? calculatePercentage(tally) : 100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="clr-row">
+                        <div class="clr-col-6">
+                            <button class="btn btn-danger-outline block pull-right decrese"
+                                [disabled]="!tally.getActive()" (click)="decrease(tally)">Minska</button>
+                        </div>
+                        <div class="clr-col-6">
+                            <button class="btn btn-success-outline block pull-left increase"
+                                [disabled]="!tally.getActive()" (click)="increase(tally)">Öka</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clr-row">
+    <div class="clr-col-12">
+
+    </div>
+</div>
+
+<div class="clr-row" *ngIf="tallies.length === 0 && tallyFetched">
+    <div class="clr-col-12">
+        <h1>PushIt</h1>
+        <small>Det verkar inte som du har några räknare</small>
+        <hr />
+        <a routerLink="/example" class="btn btn-success-outline block">Lägg till exempel</a>
+    </div>
+</div>
+
+
+<div class="clr-row add-row">
+    <div class="clr-col-12">
+        <a routerLink="/add" class="btn btn-success block">Skapa ny</a>
+    </div>
+</div>
+
+<div class="clr-row" *ngIf="inactiveTallysExist()">
+    <div class="clr-col-12">
+        <div class="clr-form-control" *ngIf="tallies.length">
+            <div class="clr-control-container">
+                <div class="clr-toggle-wrapper">
+                    <input type="checkbox" id="toggle1" name="toggle-basic" [(ngModel)]="showAll"
+                        (change)="toggleShowInactive($event)" class="clr-toggle" />
+                    <label for="toggle1">Visa inaktiva</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

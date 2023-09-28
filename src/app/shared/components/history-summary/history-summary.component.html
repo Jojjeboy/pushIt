@@ -1,0 +1,43 @@
+<div>
+    <h4>Historik</h4>
+    <small *ngIf="tally.getCanReset()">Målet är uppsatt 
+        <span>{{ resetIntervalText }}</span>
+    </small>
+
+    <small *ngIf="tally.getHistory().length < 1">Det finns ingen historik för denna räknare, <a routerLink="/history/edit/{{ tally.getUuid() }}">lägg till historik.</a></small>
+    <table class="table" *ngIf="tally.getHistory().length > 0">
+        <thead>
+            <tr>
+                <th *ngIf="tally.getResetInterval() == 'daily'">Datum</th>
+                <th *ngIf="tally.getResetInterval() == 'weekly'">Vecka</th>
+                <th *ngIf="tally.getResetInterval() == 'monthly'">Månad</th>
+                <th>Värde</th>
+                <th>Mål uppnått</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let history of tally.getHistory()" [ngClass]="{ 'goal-reached':history.value >= tally.getGoal(), 'goal-not-reached':history.value < tally.getGoal() }">
+                <td *ngIf="tally.getResetInterval() == 'daily'">{{ history.date | date: 'yyyy-MM-dd'}}</td>
+                <td *ngIf="tally.getResetInterval() == 'weekly'">Vecka {{ history.date | date: 'w'}}</td>
+                <td *ngIf="tally.getResetInterval() == 'monthly'">{{ history.date | date: 'LLLL' | titlecase }}</td>
+                <td>{{ history.value }} / {{ tally.getGoal() }}</td>
+                <td>
+                    <clr-icon class="warning" shape="times" *ngIf="history.value < tally.getGoal()">
+                    </clr-icon>
+                    <clr-icon class="success" shape="check" *ngIf="history.value >= tally.getGoal()">
+                    </clr-icon> {{
+                    history.value >= tally.getGoal() ? ' Ja' : 'Nej' }}
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <small *ngIf="tally.getHistory().length > 0">
+                        <a routerLink="/history/edit/{{tally.getUuid() }}">Hantera historik</a>
+                    </small>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

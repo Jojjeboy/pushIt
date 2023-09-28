@@ -1,0 +1,66 @@
+@import '../../../../assets/styles/variables'; 
+
+.clr-row {
+    &.clear-spinner {
+        text-align: center;
+    }
+    &.inactive {
+        opacity: 0.3;
+    }
+    &.hideInactive {
+        display: none;
+    }
+
+    &.dynamic-goal {
+        bottom: 13px;
+        position: relative;
+        font-size: 0.75em;
+    }
+}
+
+.card-header {
+    > div {
+        display: inline;
+    }
+
+    .header-meta-text {
+        font-size: 0.8em;
+
+        button {
+            padding-right: 0;
+        }
+    }
+}
+
+.card-title {
+    font-size: 0.8em;
+}
+
+.warning-text {
+    color: $dangerColor;
+}
+
+.card-block {
+    .progress-status-text {
+        margin-bottom: 20px;
+    }
+    .progress-bar {
+        width: 100%;
+    }
+}
+
+.card-footer {
+    .timeago {
+        text-align: center;
+        display: inline-block;
+    }
+
+    button.decrese,
+    button.update {
+        margin-right: 0;
+    }
+}
+
+.add-row {
+    margin-top: 15px;
+}

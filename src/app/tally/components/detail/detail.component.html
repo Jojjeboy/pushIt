@@ -1,0 +1,102 @@
+<div class="clr-row">
+    <div class="clr-col-12">
+        <a routerLink="/">
+            <clr-icon shape="undo"></clr-icon> &nbsp; <small>Tillbaka</small>
+        </a>
+    </div>
+</div>
+
+<h1>{{ tally.getTitle() }}</h1>
+<div *ngIf="tally.getLastTouched()">
+    <small>{{ tally.getLastTouched() | timeago }}</small>
+</div>
+
+<small class="status">{{ tally.getActive() ? 'Aktiv' : 'Inaktiv' }}</small>
+<hr [class.active]="tally.getActive()" />
+
+<div class="clr-container" [class.inactive]="!tally.getActive()">
+
+    <div class="clr-row tally-meta">
+        <div [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
+            <h4>Värde: {{ tally.getValue() }}</h4>
+        </div>
+        <div [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
+            <h4>Mål: {{ tally.getGoal() }}</h4>
+        </div>
+        <div *ngIf="showDynamicGoal(tally)" [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
+            <h4>
+                <span *ngIf="showDynamicGoal(tally)" class="fadecolor">D M: {{ tally.getGoal() }}</span>
+            </h4>
+        </div>
+    </div>
+
+
+    <div class="clr-row tally-meta">
+        <div class="clr-col-6">
+            <h4>Öka: {{ tally.getIncreseBy() }}</h4>
+        </div>
+        <div class="clr-col-6">
+            <h4>Minska: {{ tally.getDecreseBy() }}</h4>
+        </div>
+    </div>
+
+    <div class="clr-row tally-meta tally-progress">
+        <div class="clr-col-12">
+            <h4>Avklarat: {{ percentage }}% </h4>
+            <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
+                <div class="progress-meter" [attr.data-value]="percentage < 100 ? percentage : 100"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="clr-row tally-meta">
+        <div class="clr-col-6">
+            <h4>Nollställs: {{ tally.getCanReset() === true ? 'Ja' : 'Nej' }}</h4>
+        </div>
+        <div class="clr-col-6">
+            <h4>Topscore: {{ tally.getTopScore() }}</h4>
+        </div>
+    </div>
+
+
+    <div class="clr-row tally-meta">
+        <div class="clr-col-6">
+            <button class="btn btn-danger-outline block decrese" [disabled]="!tally.getActive()"
+                (click)="decrease(tally)">Minska</button>
+        </div>
+        <div class="clr-col-6">
+            <button class="btn btn-success-outline block increse" [disabled]="!tally.getActive()"
+                (click)="increase(tally)">Öka</button>
+        </div>
+    </div>
+</div>
+
+
+<app-history-summary [tally]="tally"></app-history-summary>
+
+
+
+
+
+<div class="clr-row status">
+    <div class="clr-col-12">
+        <span class="success status-badge block" *ngIf="tally.getActive()" (click)="toggleActive()">Aktiv</span>
+        <span class="danger status-badge block" *ngIf="!tally.getActive()" (click)="toggleActive()">Inaktiv</span>
+    </div>
+</div>
+
+<div class="clr-row status">
+    <div class="clr-col-12">
+        <a routerLink="/edit/{{ tally.getUuid() }}" class="btn btn-primary block">Redigera</a>
+    </div>
+</div>
+
+<div class="clr-row status">
+    <div class="clr-col-12">
+        <button class="btn btn-danger block" (click)="delete()">Radera</button>
+    </div>
+</div>
+
+<app-modal [modalData]="cleanHistoryModalData" (parentEvent)="cleanHistoryConfirmed()"></app-modal>
+<app-modal [modalData]="deleteModalData" (parentEvent)="deleteConfirmed()"></app-modal>

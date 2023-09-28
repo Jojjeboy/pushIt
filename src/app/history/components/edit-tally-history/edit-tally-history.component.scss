@@ -1,0 +1,45 @@
+@import "./../../../../assets/styles/variables";
+.clr-row {
+    margin-bottom: 20px;
+    .clr-col-1 {
+        position: relative;
+        .action-history {
+            position: absolute;
+            right: 0px;
+            top: 20px;
+            .close {
+                color: $dangerColor;
+            }
+        }
+    }
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 0.05rem solid #0072a3;
+    min-height: 27px;
+    &:focus {
+        outline: none;
+    }
+}
+input[type="date"] {
+    font-weight: 100;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+.btn.add-new-history {
+    margin-right: 0;
+    margin-top: 0;
+}
