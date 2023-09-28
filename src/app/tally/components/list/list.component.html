@@ -63,12 +63,12 @@
                 </div>
                 <div class="card-footer">
                     <div class="clr-row">
-                        <div class="clr-col-6">
-                            <button class="btn btn-danger-outline block pull-right decrese"
+                        <div class="clr-col">
+                            <button class="btn btn-danger-outline block decrese"
                                 [disabled]="!tally.getActive()" (click)="decrease(tally)">Minska</button>
                         </div>
-                        <div class="clr-col-6">
-                            <button class="btn btn-success-outline block pull-left increase"
+                        <div class="clr-col">
+                            <button class="btn btn-success-outline block  increase"
                                 [disabled]="!tally.getActive()" (click)="increase(tally)">Öka</button>
                         </div>
                     </div>

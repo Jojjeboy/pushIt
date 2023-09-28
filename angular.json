@@ -33,7 +33,7 @@
             "styles": [
               "src/styles.scss",
               "src/assets/styles/_variables.scss",
-              "node_modules/@clr/ui/clr-ui.min.css"
+              "node_modules/@clr/ui/clr-ui-dark.min.css"
             ],
             "scripts": [],
             "serviceWorker": true,
