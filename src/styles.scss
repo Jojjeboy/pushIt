@@ -1,1 +1,178 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/variables";
+
+@media screen and (max-width: 767px) {
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+h1 {
+    margin-top: 5px;
+}
+
+hr {
+    border-top: 1px solid #e8e8e8;
+    margin: 20px 0;
+}
+
+span.status-badge {
+    padding: 8px 15px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin: 15px 0;
+    display: inline-block;
+
+    &.block {
+        display: block;
+        text-align: center;
+    }
+
+    &.success {
+        border: 1px solid $successColor;
+        color: $successColor;
+    }
+
+    &.danger {
+        border: 1px solid $dangerColor;
+        color: $dangerColor;
+    }
+}
+
+.btn.block {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+a,
+.link-color,
+a:visited,
+a:hover,
+a:active {
+    color: #00364d;
+    text-decoration: none;
+}
+
+.warning {
+    color: $dangerColor;
+}
+
+.success {
+    color: $successColor;
+}
+
+.disabled{
+    opacity: 0.3;
+}
+
+.clr-col-12.clear-history {
+    padding-top: 15px;
+    text-align: center;
+    button {
+        color: $dangerColor;
+    }
+}
+
+header.header-6 {
+    background-image: linear-gradient(to right, #00364d, #006d9c);
+}
+
+.clr-row input {
+    padding-left: 0;
+}
+
+.required::after {
+    content: " *";
+    color: $dangerColor;
+}
+.form-control.ng-invalid {
+    border-bottom: 0.05rem solid $dangerColor;
+    color: $dangerColor;
+}
+
+.fadecolor {
+    color: #000;
+    -webkit-animation-name: animate1; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: 55;
+    animation-name: animate1;
+    animation-duration: 2s;
+    animation-iteration-count: 55;
+}
+
+/* Chrome, Safari, Opera */
+
+@-webkit-keyframes animate1 {
+    0% {
+        color: #000000;
+        opacity: 0.12;
+    }
+    18% {
+        color: #000;
+        opacity: 0.25;
+    }
+    38% {
+        color: #000;
+        opacity: 0.75;
+    }
+    52% {
+        color: #000;
+        opacity: 1;
+    }
+    72% {
+        color: #000;
+        opacity: 0.75;
+    }
+    84% {
+        color: #000;
+        opacity: 0.35;
+    }
+    100% {
+        color: #000;
+        opacity: 0.12;
+    }
+}
+
+/* Standard syntax */
+@keyframes animate1 {
+    0% {
+        color: #000000;
+        opacity: 0.12;
+    }
+    18% {
+        color: #000;
+        opacity: 0.25;
+    }
+    38% {
+        color: #000;
+        opacity: 0.75;
+    }
+    52% {
+        color: #000;
+        opacity: 1;
+    }
+    72% {
+        color: #000;
+        opacity: 0.75;
+    }
+    84% {
+        color: #000;
+        opacity: 0.35;
+    }
+    100% {
+        color: #000;
+        opacity: 0.12;
+    }
+}
