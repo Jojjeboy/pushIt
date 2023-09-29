@@ -44,7 +44,7 @@ if [[ $(git diff --stat) != '' ]]; then
     npm run postinstall &&
     ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
     git add . &&
-    git commit --amend --no-edit &&
+    git commit --amend --no-edit && git pull && 
     git push
 else
   ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
