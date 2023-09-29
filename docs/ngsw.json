@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1695992213388,
+  "timestamp": 1695995478392,
   "index": "https://jojjeboy.github.io/pushIt/index.html",
   "assetGroups": [
     {
@@ -17,7 +17,7 @@
         "https://jojjeboy.github.io/pushIt/manifest.webmanifest",
         "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js",
         "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js",
-        "https://jojjeboy.github.io/pushIt/styles.7d3fd1de9217cab7.css"
+        "https://jojjeboy.github.io/pushIt/styles.bd888cb1a4b8ba91.css"
       ],
       "patterns": []
     },
@@ -80,12 +80,12 @@
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/site.webmanifest": "d7a785ae0e5d55366243d7447fffc974c136c799",
     "https://jojjeboy.github.io/pushIt/assets/styles/_variables.scss": "04782b41cb5d6775b7f863fa82e5c9f23d221c9a",
     "https://jojjeboy.github.io/pushIt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://jojjeboy.github.io/pushIt/index.html": "777e9ae5f9f865ebbcd2009fd5613d1c9d3d6831",
+    "https://jojjeboy.github.io/pushIt/index.html": "daaab083caa75681329d9a6a12a3d0c818969251",
     "https://jojjeboy.github.io/pushIt/main.beeab75f78d73a8e.js": "cc4cfe2cb2672bbbfd6d900d9f20db992dd7fc9b",
     "https://jojjeboy.github.io/pushIt/manifest.webmanifest": "27c99db044fd06a4b9f860426876a419177c9b82",
     "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js": "fa03ae90c4d01b5ec17c1cd316ac41db51d7360e",
     "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js": "fc71c6d4a18a84db12489277e99a1940723ffa23",
-    "https://jojjeboy.github.io/pushIt/styles.7d3fd1de9217cab7.css": "46ec673696a91e5daa01fd4b8c1eb7e440c36409"
+    "https://jojjeboy.github.io/pushIt/styles.bd888cb1a4b8ba91.css": "c80e735a3f35e435e6bc945d83641543c333a118"
   },
   "navigationUrls": [
     {
