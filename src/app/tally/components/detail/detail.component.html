@@ -18,31 +18,31 @@
 
     <div class="clr-row tally-meta">
         <div [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
-            <h4>Värde: {{ tally.getValue() }}</h4>
+            <h5>Värde: {{ tally.getValue() }}</h5>
         </div>
         <div [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
-            <h4>Mål: {{ tally.getGoal() }}</h4>
+            <h5>Mål: {{ tally.getGoal() }}</h5>
         </div>
         <div *ngIf="showDynamicGoal(tally)" [ngClass]="showDynamicGoal(tally) ? 'clr-col-4' : 'clr-col-6'">
-            <h4>
-                <span *ngIf="showDynamicGoal(tally)" class="fadecolor">D M: {{ tally.getGoal() }}</span>
-            </h4>
+            <h5>
+                <span *ngIf="showDynamicGoal(tally)">D M: {{ tally.getGoal() }}</span>
+            </h5>
         </div>
     </div>
 
 
     <div class="clr-row tally-meta">
         <div class="clr-col-6">
-            <h4>Öka: {{ tally.getIncreseBy() }}</h4>
+            <h5>Öka: {{ tally.getIncreseBy() }}</h5>
         </div>
         <div class="clr-col-6">
-            <h4>Minska: {{ tally.getDecreseBy() }}</h4>
+            <h5>Minska: {{ tally.getDecreseBy() }}</h5>
         </div>
     </div>
 
     <div class="clr-row tally-meta tally-progress">
         <div class="clr-col-12">
-            <h4>Avklarat: {{ percentage }}% </h4>
+            <h5>Avklarat: {{ percentage }}% </h5>
             <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                 <div class="progress-meter" [attr.data-value]="percentage < 100 ? percentage : 100"></div>
             </div>
@@ -52,10 +52,10 @@
 
     <div class="clr-row tally-meta">
         <div class="clr-col-6">
-            <h4>Nollställs: {{ tally.getCanReset() === true ? 'Ja' : 'Nej' }}</h4>
+            <h5>Nollställs: {{ tally.getCanReset() === true ? 'Ja' : 'Nej' }}</h5>
         </div>
         <div class="clr-col-6">
-            <h4>Topscore: {{ tally.getTopScore() }}</h4>
+            <h5>Högsta: {{ tally.getTopScore() }}</h5>
         </div>
     </div>
 
