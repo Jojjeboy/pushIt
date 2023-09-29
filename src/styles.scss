@@ -85,7 +85,9 @@ a:active {
 }
 
 header.header-6 {
-    background-image: linear-gradient(to right, #051937, #001944, #001750, #00145a, #000e64);
+    background: linear-gradient(90deg, rgba(27,42,50,1) 0%, #06314a 35%);
+    border: 0 solid #0b485d; 
+    border-bottom-width: 1px;
 }
 
 .clr-row input {
