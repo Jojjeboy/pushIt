@@ -23,6 +23,10 @@
         display: inline;
     }
 
+    div.header-main-text a, div.header-main-text a:visited{
+        color: $successColor;
+    }
+
     .header-meta-text {
         font-size: 0.8em;
 

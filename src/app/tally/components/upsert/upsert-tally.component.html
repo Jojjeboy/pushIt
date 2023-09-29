@@ -129,10 +129,10 @@
         </div>
         <div class="card-footer">
             <div class="clr-row">
-                <div class="clr-col-6">
+                <div class="clr-col">
                     <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline block">Ångra</a>
                 </div>
-                <div class="clr-col-6">
+                <div class="clr-col">
                     <button [disabled]="!tallyForm.valid" class="btn btn-success-outline block" type="submit">{{
                         editMode ?
                         'Uppdatera' : 'Spara' }}</button>
