@@ -5,6 +5,9 @@
   "projects": {
     "pushIt": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "sv-SE"
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
