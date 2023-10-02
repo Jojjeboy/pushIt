@@ -23,8 +23,13 @@
         display: inline;
     }
 
-    div.header-main-text a, div.header-main-text a:visited{
-        color: $successColor;
+    div.header-main-text{
+        .tally-icons{
+            color: #919191;
+        }
+        a,a:visited{
+            color: $successColor;
+        }
     }
 
     .header-meta-text {
