@@ -2,7 +2,10 @@
 
 
 ## Push new function
-sh. pubblish.sh "<Commit message>"
+sh. publish.sh "<Commit message>"
 
 ## https://jojjeboy.github.io/pushIt/
 
+
+
+## https://fonts.google.com/icons?icon.platform=web

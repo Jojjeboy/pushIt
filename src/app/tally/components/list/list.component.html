@@ -36,7 +36,7 @@
                         </div>
                         <div class="clr-col-6">
                             <div class="card-title pull-right">
-                                Sparad {{ tally.getLastTouched() | date: 'HH:mm, dd MMM'}}
+                                Sparad {{ tally.getLastTouched() | date: 'HH:mm, d MMM'}}
                             </div>
                         </div>
                     </div>
@@ -75,6 +75,7 @@
                 </div>
             </div>
         </div>
+        <app-modal [modalData]="archiveTallyModalData" (parentEvent)="archiveTallyConfirmed(tally)"></app-modal>
     </div>
 </div>
 

@@ -97,7 +97,7 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
       c++;
     }
 
-    // check if date alleady exist
+    // check if date already exist
     if (!chosenDateValid) {
 
       this.dateAlreadyExistModalData = {

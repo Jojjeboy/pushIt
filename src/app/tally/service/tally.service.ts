@@ -180,6 +180,12 @@ export class TallyService extends BaseTally {
     this.localStorageService.removeItem(deleteTally.getUuid());
   }
 
+  archive(tally: Tally): void {
+    tally.setActive(false);
+    this.touch(tally);
+    this.update(tally);
+  }
+
 
   toggleShowAll(): void {
     let config = this.localStorageService.getConfig();
