@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-block">
                     <div class="clr-row">
-                        <div class="clr-col-7">
+                        <div class="clr-col-6">
                             <div class="card-title">
                                 <span *ngIf="tally.getCanReset()">
                                     <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span i18n> {{ this.translation[tally.getResetInterval()] }} </span> historik</span>
@@ -34,9 +34,9 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="clr-col-5">
+                        <div class="clr-col-6">
                             <div class="card-title pull-right">
-                                <clr-icon shape="hard-disk" badge="success"></clr-icon> &nbsp; {{ tally.getLastTouched() | date: 'HH:mm - dd MMM'}}
+                                Sparad {{ tally.getLastTouched() | date: 'HH:mm, dd MMM'}}
                             </div>
                         </div>
                     </div>

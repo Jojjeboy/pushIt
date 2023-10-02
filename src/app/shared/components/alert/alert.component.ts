@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   <div class="alert-items">
     <div class="alert-item static">
       <div class="alert-icon-wrapper">
-        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        <span class="material-symbols-outlined">warning</span>
       </div>
       <div class="alert-text">
         {{ text }}

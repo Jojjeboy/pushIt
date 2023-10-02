@@ -16,17 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let history of tally.getHistory()" [ngClass]="{ 'goal-reached':history.value >= tally.getGoal(), 'goal-not-reached':history.value < tally.getGoal() }">
+            <tr *ngFor="let history of tally.getHistory()" [ngClass]="{ 'goal-reached':history.value >= tally.getGoal()}">
                 <td *ngIf="tally.getResetInterval() == 'daily'">{{ history.date | date: 'yyyy-MM-dd'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'weekly'">Vecka {{ history.date | date: 'w'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'monthly'">{{ history.date | date: 'LLLL' | titlecase }}</td>
                 <td>{{ history.value }} / {{ tally.getGoal() }}</td>
                 <td>
-                    <clr-icon class="warning" shape="times" *ngIf="history.value < tally.getGoal()">
-                    </clr-icon>
-                    <clr-icon class="success" shape="check" *ngIf="history.value >= tally.getGoal()">
-                    </clr-icon> {{
-                    history.value >= tally.getGoal() ? ' Ja' : 'Nej' }}
+                    <span class="material-symbols-outlined" *ngIf="history.value < tally.getGoal()">close</span>
+                    <span class="material-symbols-outlined" *ngIf="history.value >= tally.getGoal()">done</span>
                 </td>
             </tr>
         </tbody>
