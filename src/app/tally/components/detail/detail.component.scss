@@ -4,15 +4,17 @@
     &.inactive {
         opacity: 0.3;
     }
+
     .clr-row.tally-meta {
         margin-bottom: 20px;
+
         >div {
             background: #273841;
             padding: 15px;
             border: 1px solid $darkBorderColor;
             border-right: none;
 
-            
+
 
             &:last-child {
                 border-radius: 3px;
@@ -34,15 +36,34 @@
 
 hr {
     margin-top: 0;
+
     &.active {
         border-bottom: 1px solid $successColor;
     }
 }
 
-.status {
-    display: block;
-    text-align: right;
-    text-transform: uppercase;
+.tally-action {
+    margin-top: 1.5em;
+
+    .status {
+        display: block;
+        text-align: right;
+        text-transform: uppercase;
+        margin-top: 0.5em;
+
+        button.btn-deactivate {
+            background: #999;
+            border-color: #777;
+            color: #fff;
+        }
+
+        a.btn-edit {
+            background: orange;
+            border-color: darkorange;
+            color: #fff;
+        }
+    }
+
 }
 
 h3.modal-title::first-letter {

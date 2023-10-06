@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from './shared/service/local-storage/local-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { applicationversion } from '../environments/applicationversion';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { filter, map } from 'rxjs/operators';
 
 export interface Appversion {
   version: string
@@ -29,31 +30,35 @@ export class AppComponent implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private route: ActivatedRoute, 
-    private router: Router, 
-    private updates: SwUpdate) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private swUpdate: SwUpdate) {
     this.localStorageService.init(this.title);
-    this.updates.available.subscribe(event => {
-      console.log('current version is', event.current);
-      console.log('available version is', event.available);
+    
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.versionUpdates.pipe(
+        filter(
+          (evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'
+        ),
+        map((evt: any) => {
+          console.info(
+            `currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`
+          );
+          
+          this.promptUserToUpdateApp(evt.currentVersion, evt.latestVersion);
+        })
+      );
+    }
 
-      this.promptUserToUpdateApp();
-      
-    });
-
-    this.updates.activated.subscribe(event => {
-      console.log('updated');
-    });
   }
 
 
-
-  promptUserToUpdateApp(){
+  promptUserToUpdateApp(currentVersion: any, newVersion: any) {
     this.showAlert = true;
-    this.alertText = 'Ny version av applikationen finns, ladda om sidan för att uppdatera';
+    this.alertText = `Ny version av applikationen finns, Du har ${currentVersion} | och ${newVersion} finns`;
     this.alertType = 'danger';
   }
-  
+
 
   ngOnInit() {
     this.sub = this.route
@@ -77,7 +82,7 @@ export class AppComponent implements OnInit {
             this.showAlert = false;
             this.alertText = '';
 
-            
+
 
           }, 2500);
         }
@@ -96,11 +101,15 @@ export class AppComponent implements OnInit {
     }
   }
 
-  toStartPage(){
-    if(window.location.hostname === 'localhost'){
+  saveCacheToFile() {
+    
+  }
+
+  toStartPage() {
+    if (window.location.hostname === 'localhost') {
       window.location.href = window.location.origin;
     }
-    else if(window.location.hostname === 'jojjeboy.github.io'){
+    else if (window.location.hostname === 'jojjeboy.github.io') {
       window.location.href = window.location.origin + '/' + window.location.pathname.split('/')[1];
     }
   }

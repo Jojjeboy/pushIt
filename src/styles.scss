@@ -57,10 +57,10 @@ span.status-badge {
 
 a,
 .link-color,
-a:visited,
+body a:visited,
 a:hover,
 a:active {
-    color: #00364d;
+    color: $successColor;
     text-decoration: none;
 }
 

@@ -43,6 +43,8 @@ export class LocalStorageService {
     return lSData['data'];
   }
 
+  
+
   public add(obj: Object): void {
     const lsItems = this.getAll();
     lsItems.push(obj);
@@ -59,6 +61,11 @@ export class LocalStorageService {
 
   public writeLS(array: Array<Object>): void {
     localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array }));
+  }
+
+  public getLS() {
+    const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
+    return lSData;
   }
 
   public updateItem(key: String, propertyName: any, obj: Object) {

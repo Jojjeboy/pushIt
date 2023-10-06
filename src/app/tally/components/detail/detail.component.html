@@ -62,11 +62,11 @@
 
     <div class="clr-row tally-meta">
         <div class="clr-col-6">
-            <button class="btn btn-danger-outline block decrese" [disabled]="!tally.getActive()"
+            <button class="btn btn-danger block decrese" [disabled]="!tally.getActive()"
                 (click)="decrease(tally)">Minska</button>
         </div>
         <div class="clr-col-6">
-            <button class="btn btn-success-outline block increse" [disabled]="!tally.getActive()"
+            <button class="btn btn-success block increse" [disabled]="!tally.getActive()"
                 (click)="increase(tally)">Öka</button>
         </div>
     </div>
@@ -78,23 +78,24 @@
 
 
 
-
-<div class="clr-row status">
-    <div class="clr-col-12">
-        <span class="success status-badge block" *ngIf="tally.getActive()" (click)="toggleActive()">Aktiv</span>
-        <span class="danger status-badge block" *ngIf="!tally.getActive()" (click)="toggleActive()">Inaktiv</span>
+<div class="tally-action">
+    <div class="clr-row status">
+        <div class="clr-col-12">
+            <button class="btn block btn-deactivate" *ngIf="tally.getActive()" (click)="toggleActive()">Inaktivera</button>
+            <button class="btn btn-success block"  *ngIf="!tally.getActive()" (click)="toggleActive()">Aktivera</button>
+        </div>
     </div>
-</div>
 
-<div class="clr-row status">
-    <div class="clr-col-12">
-        <a routerLink="/edit/{{ tally.getUuid() }}" class="btn btn-primary block">Redigera</a>
+    <div class="clr-row status">
+        <div class="clr-col-12">
+            <a routerLink="/edit/{{ tally.getUuid() }}" class="btn btn-edit block">Redigera</a>
+        </div>
     </div>
-</div>
 
-<div class="clr-row status">
-    <div class="clr-col-12">
-        <button class="btn btn-danger block" (click)="delete()">Radera</button>
+    <div class="clr-row status">
+        <div class="clr-col-12">
+            <button class="btn btn-danger block" (click)="delete()">Radera</button>
+        </div>
     </div>
 </div>
 

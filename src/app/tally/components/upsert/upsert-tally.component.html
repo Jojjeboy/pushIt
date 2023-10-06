@@ -108,7 +108,7 @@
                         <span>&nbsp;</span>
                         <div class="radio btn">
                             <input type="radio" formControlName="resetInterval" value="monthly" id="reset-btn-monthly">
-                            <label for="reset-btn-monthly">Månad</label> 
+                            <label for="reset-btn-monthly">Månad</label>
                         </div>
                     </div>
                 </div>
@@ -120,17 +120,19 @@
                     </div>
                 </div>
                 <div class="clr-row">
-                    <label>Räknaren är {{ tallyForm.value.active  ? 'aktiv' : 'inaktiv' }}</label>
-                    <div class="clr-col-12">
-                        <input type="checkbox" value="tally.getActive()" formControlName="active" clrToggle />
+                    <div class="clr-col-10">
+                        <label>Räknaren är {{ tallyForm.value.active ? 'aktiv' : 'inaktiv' }}</label>
+                    </div>
+                    <div class="clr-col-2">
+                        <input type="checkbox" class="float-right" value="tally.getActive()" formControlName="active"
+                            clrToggle />
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
+            
             <div class="clr-row">
                 <div class="clr-col">
-                    <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline block">Ångra</a>
+                    <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline" style="width: 100%;">Ångra</a>
                 </div>
                 <div class="clr-col">
                     <button [disabled]="!tallyForm.valid" class="btn btn-success-outline block" type="submit">{{
