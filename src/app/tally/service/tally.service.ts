@@ -29,7 +29,7 @@ export class TallyService extends BaseTally {
     //this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
 
 
-    
+
     this.updateAppVersion();
   }
 
@@ -103,9 +103,20 @@ export class TallyService extends BaseTally {
     return now.getDate() !== tally.getLastTouched().getDate();
   }
 
+  restoreTalliesFromServer(restoreTalliesFromServer: Array<Tally>): void {
+    this.clearAllTallies();
+    this.tallies = <Array<Tally>>this.convertLSToTallies(restoreTalliesFromServer);
+    
+    restoreTalliesFromServer.forEach(tally => {
+      this.save(tally);
+    });
+    this.resetOldTallys();
+    this.sortByActive();
+  }
+
   increase(tally: Tally): void {
-    let tallyValue:number = tally.getValue();
-    const tallyIncreseBy:number = tally.getIncreseBy();
+    let tallyValue: number = tally.getValue();
+    const tallyIncreseBy: number = tally.getIncreseBy();
     tallyValue += tallyIncreseBy;
     tally.setValue(tallyValue);
     if (tallyValue > tally.getTopScore()) {
@@ -137,7 +148,7 @@ export class TallyService extends BaseTally {
     const returnArr = new Array<Tally>();
     for (const obj of lsTallies) {
       let tally = new Tally(obj);
-      
+
       let historyArr: History[] = [];
       for (const hist of tally.getHistory()) {
         let history = new History(hist);
@@ -151,6 +162,13 @@ export class TallyService extends BaseTally {
       returnArr.push(tally);
     }
     return returnArr;
+  }
+
+
+  clearAllTallies(): void{
+    this.tallies.forEach(tally => {
+      this.delete(tally);
+    });
   }
 
 
