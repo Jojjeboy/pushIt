@@ -5,11 +5,13 @@ import { SharedModule } from './shared/modules/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { BackupRestoreComponent } from './backup-restore/backup-restore.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BackupRestoreComponent
   ],
   imports: [
     BrowserModule,
