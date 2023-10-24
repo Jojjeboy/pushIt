@@ -1,0 +1,84 @@
+<div class="clr-row clear-spinner" *ngIf="lastBackupFetched">
+    <div class="clr-col-12">
+        <span class="spinner">
+            Loading...
+        </span>
+    </div>
+</div>
+<div class="clr-row">
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="header-main-text">
+                        Säkerhetskopiera
+                        <span class="pull-right tally-icons">
+                            <span class="material-symbols-outlined">device_reset</span>
+                        </span>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="clr-row">
+                        <div class="clr-col-6">
+                            <div class="card-title">
+                                test
+                            </div>
+                        </div>
+                        <div class="clr-col-6">
+                            <div class="card-title pull-right">Senast säkerhetskopierad
+                                <!--{{ new Date() | date: 'HH:mm, d MMM'}}--></div>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div class="clr-col-12">
+                            <button class="btn btn-success-outline block" (click)="backup()">Säkerhetskopiera</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-modal [modalData]="backupTalliesModalData" (parentEvent)="backupTalliesConfirmed()"></app-modal>
+    </div>
+</div>
+
+
+<div class="clr-row">
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="header-main-text">
+                        Återställ
+                        <span class="pull-right tally-icons">
+                            <span class="material-symbols-outlined">device_reset</span>
+                        </span>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="clr-row">
+                        <div class="clr-col-6">
+                            <div class="card-title">
+                                test
+                            </div>
+                        </div>
+                        <div class="clr-col-6">
+                            <div class="card-title pull-right">Senast säkerhetskopierad
+                                <!--{{ new Date() | date: 'HH:mm, d MMM'}}--></div>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div class="clr-col-12">
+                            <button class="btn btn-success-outline block" (click)="restore()">Återställ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-modal [modalData]="backupTalliesModalData" (parentEvent)="backupTalliesConfirmed()"></app-modal>
+        <app-modal [modalData]="restoreTalliesModalData" (parentEvent)="restoreTalliesConfirmed()"></app-modal>
+    </div>
+</div>

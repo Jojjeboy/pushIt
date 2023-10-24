@@ -17,6 +17,7 @@ import { HistorySummaryComponent } from './shared/components/history-summary/his
 import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.component';import { HistoryService } from './history/service/history.service';
 import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
+import { BackupRestoreComponent } from './backup-restore/backup-restore.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: 'add',
     component: UpsertTallyComponent,
     data: { title: 'Add Tally' }
+  },
+  {
+    path: 'backup-restore',
+    component: BackupRestoreComponent,
+    data: { title: 'Backup & Restore' }
   },
   {
     path: 'edit/:id',
