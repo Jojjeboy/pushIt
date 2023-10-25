@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 
 import { TallyService } from '../tally/service/tally.service';
+import { LocalStorageService } from '../shared/service/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-backup',
@@ -27,6 +28,7 @@ export class BackupRestoreComponent implements OnInit, OnDestroy {
   constructor(
     private httpClient: HttpClient,
     private tallyService: TallyService,
+    private localStorageService: LocalStorageService,
     private router: Router) {
 
   }
@@ -64,7 +66,11 @@ export class BackupRestoreComponent implements OnInit, OnDestroy {
 
     this.backupTalliesModalData = { open: false };
     console.log('make http PUT request');
+    let resp: any;
+    const lsData: string = this.localStorageService.getLS();
+    this.httpClient.post(this.API_URL, lsData).subscribe((data: any) => resp =  data );
 
+    console.log(resp);
   }
 
 
