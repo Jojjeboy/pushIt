@@ -101,10 +101,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  saveCacheToFile() {
-    
-  }
-
   toStartPage() {
     if (window.location.hostname === 'localhost') {
       window.location.href = window.location.origin;
