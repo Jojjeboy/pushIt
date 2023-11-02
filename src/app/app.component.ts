@@ -45,6 +45,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    /**
+     * Service worker examples
+     * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29
+     * 
+     */
     if (this.swUpdate.isEnabled) {
       
       this.swUpdate.available.subscribe(() => {
