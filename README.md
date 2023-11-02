@@ -11,7 +11,10 @@ sh. publish.sh "commit message"
 
 
 ## Att göra 
-- `sh publish.sh` med minor version
+
 - Upptäck och uppdatera när ny version finns
 - Mål för den specifika dagen
-- Mål för den specifika dagen
+
+
+## Klart
+- ~~`sh publish.sh` med minor version~~
