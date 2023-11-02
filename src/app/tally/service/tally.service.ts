@@ -29,7 +29,7 @@ export class TallyService extends BaseTally {
     //this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
 
 
-
+    
     this.updateAppVersion();
   }
 
@@ -37,10 +37,25 @@ export class TallyService extends BaseTally {
     return new Observable<Tally[]>(observer => {
       this.lsTallies = this.localStorageService.getAll();
       this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
+
+      
+      this.addGoalIfItNotexist(); 
+
       this.resetOldTallys();
       this.reloadDataFromLS();
       this.sortByActive();
       observer.next(this.tallies);
+    });
+  }
+
+
+  addGoalIfItNotexist(){
+    console.log(this.tallies.length);
+    this.tallies.forEach(tally => {
+      
+      tally.getHistory().forEach(history =>{
+        console.log(history.getGoal());
+      })  
     });
   }
 
@@ -77,7 +92,7 @@ export class TallyService extends BaseTally {
   resetOldTallys(): void {
     for (let tally of this.tallies) {
       if (this.shouldAddToHistory(tally)) {
-        let histories = this.historyService.addToHistory(tally.getValue(), tally.getLastTouched(), tally.getHistory());
+        let histories = this.historyService.addToHistory(tally.getValue(), tally.getGoal(), tally.getLastTouched(), tally.getHistory());
         tally.setHistory(histories);
         tally.setValue(0);
         this.touch(tally);

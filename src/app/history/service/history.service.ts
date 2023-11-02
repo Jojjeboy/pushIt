@@ -27,15 +27,14 @@ export class HistoryService extends BaseTally {
     return dateExist;
   }
 
-  addToHistory(value: number, lastTouched: Date, histories: History[]): Array<History> {
+  addToHistory(value: number, goal: number, lastTouched: Date, histories: History[]): Array<History> {
     const newHistoryEntry = new History({
       value: value,
+      goal: goal,
       date: lastTouched
     });
     histories.push(newHistoryEntry);
-    
 
-    
     return histories;
   }
 
