@@ -4,10 +4,6 @@
 ## Push new function
 sh. publish.sh "commit message"
 
-## Länkar 
-- https://fonts.google.com/icons?icon.platform=web
-
-
 
 ## Länkar 
 - https://fonts.google.com/icons?icon.platform=web
