@@ -49,19 +49,30 @@ export class AppComponent implements OnInit {
      * Service worker examples
      * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29
      * 
-     */
+     *//*
     if (this.swUpdate.isEnabled) {
       
       this.swUpdate.available.subscribe(() => {
 
         this.promptUserToUpdateApp();
         console.log('App update is available, please reload');
-        /*
+        
         if(confirm("New version available. Load New Version?")) {
             window.location.reload();
         }
-        */
-    });
+        
+    });*/
+
+    if (this.swUpdate.isEnabled) {
+
+      this.swUpdate.available.subscribe(() => {
+
+          if(confirm("New version available. Load New Version?")) {
+
+              window.location.reload();
+          }
+      });
+  }      
 
     /*
       this.swUpdate.versionUpdates.pipe(
