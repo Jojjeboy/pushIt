@@ -53,20 +53,4 @@ export class HistoryService extends BaseTally {
     tally.setHistory(tallyHistory);
     return tallyHistory;
   }
-
-  /*
-  removeDuplicatesInHistory(tallies: Tally[]): void {
-    tallies.forEach(tally => {
-      let arr = tally.getHistory();
-      arr = arr.filter((history: any, index: any, self: any) =>
-        index === self.findIndex((t: any) => (
-          t.date === history.date && t.value === history.value
-        ))
-      );
-      tally.setHistory(arr);
-      this.touch(tally);
-      this.update(tally);
-    });
-  }
-  */
 }
