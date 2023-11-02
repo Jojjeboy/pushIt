@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
       this.swUpdate.available.subscribe(() => {
 
         this.promptUserToUpdateApp();
+        console.log('App update is available, please reload');
         /*
         if(confirm("New version available. Load New Version?")) {
             window.location.reload();
