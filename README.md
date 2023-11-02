@@ -2,7 +2,7 @@
 
 
 ## Push new function
-sh. publish.sh "commit message"
+`sh publish.sh "commit message" patch/minor/major`
 
 
 ## Länkar 
