@@ -14,6 +14,3 @@ sh. publish.sh "commit message"
 - `sh publish.sh` med minor version
 - Upptäck och uppdatera när ny version finns
 - Mål för den specifika dagen
-
-
-
