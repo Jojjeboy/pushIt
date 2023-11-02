@@ -6,7 +6,7 @@
     "start": "ng serve --port=8888",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "prebuild": "npm version --commit-hooks false $npm_config_uplevel",
+    "prebuild": "npm version --commit-hooks false ${npm_config_uplevel}",
     "postinstall": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" git.version.ts",
     "test": "ng test"
   },
