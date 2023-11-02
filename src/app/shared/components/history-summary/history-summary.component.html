@@ -11,7 +11,7 @@
                 <th *ngIf="tally.getResetInterval() == 'daily'">Datum</th>
                 <th *ngIf="tally.getResetInterval() == 'weekly'">Vecka</th>
                 <th *ngIf="tally.getResetInterval() == 'monthly'">Månad</th>
-                <th>Värde</th>
+                <th>Mål</th>
                 <th>Mål uppnått</th>
             </tr>
         </thead>
@@ -20,10 +20,10 @@
                 <td *ngIf="tally.getResetInterval() == 'daily'">{{ history.date | date: 'yyyy-MM-dd'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'weekly'">Vecka {{ history.date | date: 'w'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'monthly'">{{ history.date | date: 'LLLL' | titlecase }}</td>
-                <td>{{ history.value }} / {{ tally.getGoal() }}</td>
+                <td>{{ history.value }} / {{ history.getGoal() }}</td>
                 <td>
-                    <span class="material-symbols-outlined" *ngIf="history.value < tally.getGoal()">close</span>
-                    <span class="material-symbols-outlined" *ngIf="history.value >= tally.getGoal()">done</span>
+                    <span class="material-symbols-outlined" *ngIf="history.value < history.getGoal()">close</span>
+                    <span class="material-symbols-outlined" *ngIf="history.value >= history.getGoal()">done</span>
                 </td>
             </tr>
         </tbody>

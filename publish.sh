@@ -53,6 +53,3 @@ else
   git push
 fi
 
-npm -s run env echo '$npm_package_version'
-
-

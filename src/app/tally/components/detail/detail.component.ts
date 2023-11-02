@@ -24,7 +24,6 @@ export class DetailComponent extends BaseTallyComponent implements OnInit, OnDes
 
   @Output() tallyDelete = new EventEmitter<Tally>();
 
-
   constructor(
     protected override tallyService: TallyService,
     private route: ActivatedRoute,

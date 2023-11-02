@@ -37,25 +37,10 @@ export class TallyService extends BaseTally {
     return new Observable<Tally[]>(observer => {
       this.lsTallies = this.localStorageService.getAll();
       this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
-
-      
-      this.addGoalIfItNotexist(); 
-
       this.resetOldTallys();
       this.reloadDataFromLS();
       this.sortByActive();
       observer.next(this.tallies);
-    });
-  }
-
-
-  addGoalIfItNotexist(){
-    console.log(this.tallies.length);
-    this.tallies.forEach(tally => {
-      
-      tally.getHistory().forEach(history =>{
-        console.log(history.getGoal());
-      })  
     });
   }
 

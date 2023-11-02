@@ -17,7 +17,7 @@ export interface Appversion {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'clearResults';
+  title = 'pushIt';
   sub: any;
   showAlert: boolean = false;
   alertText!: string;
