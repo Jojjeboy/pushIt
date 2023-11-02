@@ -22,7 +22,7 @@ export class WebServiceWorkerService implements OnDestroy {
       this.serviceSubscriptions.push(
         this.swUpdate.versionUpdates.subscribe(evt => {
           console.log(evt);
-          if(evt.type === 'VERSION_READY'){
+          if(evt.type === 'VERSION_READY' || evt.type === 'VERSION_INSTALLATION_FAILED'){
             this.$isAnyNewUpdateAvailable.next(true);
           }
         }),
