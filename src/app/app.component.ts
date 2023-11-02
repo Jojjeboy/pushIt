@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from './shared/service/local-storage/local-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { applicationversion } from '../environments/applicationversion';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { filter, map } from 'rxjs/operators';
 import { WebServiceWorkerService } from './web-service-worker.service';
 import { Subscription } from 'rxjs';
 
@@ -52,12 +50,9 @@ export class AppComponent implements OnInit {
      * Service worker examples
      * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29
      * 
-     *//*
- */
+     */
 
-     this.checkIfAppIsUpdated();
-
-
+    this.checkIfAppIsUpdated();
 
     this.sub = this.route
       .queryParams
@@ -79,9 +74,6 @@ export class AppComponent implements OnInit {
           setTimeout(() => {
             this.showAlert = false;
             this.alertText = '';
-
-
-
           }, 205000);
         }
       });
@@ -93,7 +85,7 @@ export class AppComponent implements OnInit {
 
       this.showAlert = this.isNewAppVersionAvailable;
       this.alertText = 'Ny version av appen finns, ladda om';
-      if(this.isNewAppVersionAvailable){
+      if (this.isNewAppVersionAvailable) {
         console.log(this.alertText);
       }
       else {
@@ -102,7 +94,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  refreshApp(){
+  refreshApp() {
     window.location.reload();
   }
 
