@@ -21,9 +21,10 @@ export class WebServiceWorkerService implements OnDestroy {
       this.serviceSubscriptions.push(interval(15* 1000).subscribe(() => this.swUpdate.checkForUpdate()));
       this.serviceSubscriptions.push(
         this.swUpdate.versionUpdates.subscribe(evt => {
-          console.log(evt);
-          if(evt.type != 'NO_NEW_VERSION_DETECTED'){
+          //console.log(evt);
+          if(evt.type !== 'NO_NEW_VERSION_DETECTED'){
             this.$isAnyNewUpdateAvailable.next(true);
+
           }
         }),
       )
