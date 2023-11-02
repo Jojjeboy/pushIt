@@ -29,18 +29,18 @@ fi
 
 if [[ $(git diff --stat) != '' ]]; then
 
-  # upLevel="minor"
-  # if [ $# -eq 2 ]; then
-  #   if [ "$2" = "patch" ]; then
-  #     upLevel="patch"
-  #   elif [ "$2" = "major" ]; then
-  #     upLevel="major"
-  #   fi
-  # fi
+  upLevel="minor"
+  if [ $# -eq 2 ]; then
+    if [ "$2" = "patch" ]; then
+      upLevel="patch"
+    elif [ "$2" = "major" ]; then
+      upLevel="major"
+    fi
+  fi
 
     git add . &&
     git commit -m"$1" &&
-    npm run prebuild &&
+    npm run prebuild $upLevel &&
     npm run postinstall &&
     ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
     git add . &&
