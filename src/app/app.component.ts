@@ -61,7 +61,9 @@ export class AppComponent implements OnInit {
             window.location.reload();
         }
         
-    });*/
+    });
+    }
+    */
 
     if (this.swUpdate.isEnabled) {
 
@@ -72,7 +74,7 @@ export class AppComponent implements OnInit {
               window.location.reload();
           }
       });
-  }      
+        
 
     /*
       this.swUpdate.versionUpdates.pipe(
