@@ -52,3 +52,7 @@ else
   git commit --amend --no-edit &&
   git push
 fi
+
+echo "npm -s run env echo '$npm_package_version'"
+
+
