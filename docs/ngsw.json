@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1698951893913,
+  "timestamp": 1698952074819,
   "index": "https://jojjeboy.github.io/pushIt/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://jojjeboy.github.io/pushIt/favicon.ico",
         "https://jojjeboy.github.io/pushIt/index.html",
-        "https://jojjeboy.github.io/pushIt/main.ff66485e0903760f.js",
+        "https://jojjeboy.github.io/pushIt/main.d8d21bea3f747beb.js",
         "https://jojjeboy.github.io/pushIt/manifest.webmanifest",
         "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js",
         "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js",
@@ -79,11 +79,11 @@
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon.ico": "a1850b071ab2ab9133ac3c292c1105523c9ba037",
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/mstile-150x150.png": "adeb8167be44e14633a56233e66eee24bfbbf2d3",
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/safari-pinned-tab.svg": "2f8914951c84103123a1d7272e20050cf97318cc",
-    "https://jojjeboy.github.io/pushIt/assets/images/favicon/site.webmanifest": "590c4d2aedb20707268b376d5478431b9fc37b74",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/site.webmanifest": "9eeb1b785e29d38f4a10f8fd1919fe64f2e8e0cf",
     "https://jojjeboy.github.io/pushIt/assets/styles/_variables.scss": "dbf51f651d8c2094a36d420c6e35baddb90d4e3b",
     "https://jojjeboy.github.io/pushIt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://jojjeboy.github.io/pushIt/index.html": "781397ecc99874d34eaef8f16397b05af3a537e5",
-    "https://jojjeboy.github.io/pushIt/main.ff66485e0903760f.js": "e0ee72df9a3f388d117451dc2a81028fd9e25821",
+    "https://jojjeboy.github.io/pushIt/index.html": "cfb478863543e16402e320c8df9b407853387df2",
+    "https://jojjeboy.github.io/pushIt/main.d8d21bea3f747beb.js": "9947d3242cb650a943b80ad79b2afc7f15a7ccfb",
     "https://jojjeboy.github.io/pushIt/manifest.webmanifest": "27c99db044fd06a4b9f860426876a419177c9b82",
     "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js": "fa03ae90c4d01b5ec17c1cd316ac41db51d7360e",
     "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js": "fc71c6d4a18a84db12489277e99a1940723ffa23",
