@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
       this.alertText = 'Ny version av appen finns, ladda om';
       this.alertType = 'danger'
       if (this.isNewAppVersionAvailable) {
-        console.log(this.alertText);
+        console.log(this.alertText, this.appVersion);
       }
       else {
         console.log('Ingen ny version av appen finns, håll tillgodo');
