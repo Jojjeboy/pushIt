@@ -28,7 +28,6 @@ export class AppComponent implements OnInit {
   isNewAppVersionAvailable: boolean = false;
   newAppUpdateAvailableSubscription?: Subscription;
 
-
   constructor(
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
@@ -37,7 +36,6 @@ export class AppComponent implements OnInit {
     this.localStorageService.init(this.title);
   }
 
-
   promptUserToUpdateApp() {
     this.showAlert = true;
     this.alertText = `Ny version av applikationen finns`;
@@ -45,7 +43,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
     /** 
      * Service worker examples
      * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29

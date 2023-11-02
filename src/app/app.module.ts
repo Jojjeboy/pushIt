@@ -1,4 +1,4 @@
-import { NgModule, isDevMode, LOCALE_ID } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/modules/shared.module';
