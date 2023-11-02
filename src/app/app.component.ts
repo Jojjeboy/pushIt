@@ -34,8 +34,30 @@ export class AppComponent implements OnInit {
     private router: Router,
     private swUpdate: SwUpdate) {
     this.localStorageService.init(this.title);
-    
+  }
+
+
+  promptUserToUpdateApp() {
+    this.showAlert = true;
+    this.alertText = `Ny version av applikationen finns`;
+    this.alertType = 'danger';
+  }
+
+  ngOnInit() {
+
     if (this.swUpdate.isEnabled) {
+      
+      this.swUpdate.available.subscribe(() => {
+
+        this.promptUserToUpdateApp();
+        /*
+        if(confirm("New version available. Load New Version?")) {
+            window.location.reload();
+        }
+        */
+    });
+
+    /*
       this.swUpdate.versionUpdates.pipe(
         filter(
           (evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'
@@ -45,22 +67,12 @@ export class AppComponent implements OnInit {
             `currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`
           );
           
-          this.promptUserToUpdateApp(evt.currentVersion, evt.latestVersion);
+          
         })
       );
+        */
     }
 
-  }
-
-
-  promptUserToUpdateApp(currentVersion: any, newVersion: any) {
-    this.showAlert = true;
-    this.alertText = `Ny version av applikationen finns, Du har ${currentVersion} | och ${newVersion} finns`;
-    this.alertType = 'danger';
-  }
-
-
-  ngOnInit() {
     this.sub = this.route
       .queryParams
       .subscribe(params => {
