@@ -37,7 +37,6 @@ export class WebServiceWorkerService implements OnDestroy {
     }
   }
 
-
   ngOnDestroy(): void {
     this.serviceSubscriptions?.forEach(x => x?.unsubscribe());
   }
