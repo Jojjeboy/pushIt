@@ -15,3 +15,6 @@ sh. publish.sh "commit message"
 - Upptäck och uppdatera när ny version finns
 - Mål för den specifika dagen
 
+
+
+
