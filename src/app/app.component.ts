@@ -41,12 +41,12 @@ export class AppComponent implements OnInit {
   promptUserToUpdateApp() {
     this.showAlert = true;
     this.alertText = `Ny version av applikationen finns`;
-    this.alertType = 'danger';
+    this.alertType = 'danger'; 
   }
 
   ngOnInit() {
 
-    /**
+    /** 
      * Service worker examples
      * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29
      * 
