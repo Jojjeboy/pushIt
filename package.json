@@ -1,6 +1,6 @@
 {
   "name": "push-it",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=8888",
