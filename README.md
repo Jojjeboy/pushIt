@@ -15,5 +15,5 @@ sh. publish.sh "commit message"
 
 
 ## Att göra 
-- Uppdatera när 
-- https://www.markdownguide.org/cheat-sheet/
+- Upptäck och uppdatera när ny version finns
+- Mål för den specifika dagen
