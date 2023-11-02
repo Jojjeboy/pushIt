@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { applicationversion } from '../environments/applicationversion';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, map } from 'rxjs/operators';
+import { WebServiceWorkerService } from './web-service-worker.service';
+import { Subscription } from 'rxjs';
 
 export interface Appversion {
   version: string
@@ -24,15 +26,16 @@ export class AppComponent implements OnInit {
   alertType: string = 'error';
   appVersion: Appversion = applicationversion;
   showAppVersion: boolean = false;
-
   clearCacheModal: Object = {};
+  isNewAppVersionAvailable: boolean = false;
+  newAppUpdateAvailableSubscription?: Subscription;
 
 
   constructor(
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
     private router: Router,
-    private swUpdate: SwUpdate) {
+    private webServiceWorkerService: WebServiceWorkerService) {
     this.localStorageService.init(this.title);
   }
 
@@ -50,46 +53,11 @@ export class AppComponent implements OnInit {
      * https://medium.com/@zeeshankhan8838/mastering-web-service-workers-in-angular-a-comprehensive-guide-8a6ebad4ac29
      * 
      *//*
-    if (this.swUpdate.isEnabled) {
-      
-      this.swUpdate.available.subscribe(() => {
+ */
 
-        this.promptUserToUpdateApp();
-        console.log('App update is available, please reload');
-        
-        if(confirm("New version available. Load New Version?")) {
-            window.location.reload();
-        }
-        
-    });
-    }
-    */
+     this.checkIfAppIsUpdated();
 
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        console.log('asdasd');
 
-          if(confirm("New version available. Load New Version?")) {
-              window.location.reload();
-          }
-      });
-        
-
-    /*
-      this.swUpdate.versionUpdates.pipe(
-        filter(
-          (evt: any): evt is VersionReadyEvent => evt.type === 'VERSION_READY'
-        ),
-        map((evt: any) => {
-          console.info(
-            `currentVersion=[${evt.currentVersion} | latestVersion=[${evt.latestVersion}]`
-          );
-          
-          
-        })
-      );
-        */
-    }
 
     this.sub = this.route
       .queryParams
@@ -117,6 +85,19 @@ export class AppComponent implements OnInit {
           }, 205000);
         }
       });
+  }
+
+  checkIfAppIsUpdated() {
+    this.newAppUpdateAvailableSubscription = this.webServiceWorkerService.$isAnyNewUpdateAvailable.subscribe((versionAvailableFlag: boolean) => {
+      this.isNewAppVersionAvailable = versionAvailableFlag;
+
+      this.showAlert = this.isNewAppVersionAvailable;
+      this.alertText = 'Ny version av appen finns, ladda om';
+    })
+  }
+
+  refreshApp(){
+    window.location.reload();
   }
 
   toggleShowAppVersion() {
