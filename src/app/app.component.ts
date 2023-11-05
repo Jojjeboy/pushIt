@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
           setTimeout(() => {
             this.showAlert = false;
             this.alertText = '';
-          }, 205000);
+          }, 3000);
         }
       });
   }

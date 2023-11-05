@@ -58,6 +58,7 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
           fgArr.push(
             this.fb.group({
               date: aFormControl,
+              goal: hist.getGoal(),
               originalDate: hist.getDate().toISOString().substring(0, 10),
               value: hist.getValue()
             })
@@ -116,6 +117,7 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
   newHistory(): FormGroup {
     return this.fb.group({
       date: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      goal: new FormControl('', [Validators.required, Validators.minLength(1)]),
       originalDate: '',
       value: 0,
     })
