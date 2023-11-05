@@ -33,6 +33,20 @@
     }
     .clr-row {
         margin-bottom: 20px;
+
+        .color-box{
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 2px;
+            display: inline-block;
+
+            &.selected{
+                outline: 2px solid #fff;
+                width: 30px;
+                height: 30px;
+            }
+        }
     }
 
     .card-footer {

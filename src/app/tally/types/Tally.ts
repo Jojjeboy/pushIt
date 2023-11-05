@@ -1,4 +1,5 @@
 import { History } from '../../history/types/History';
+import { PosibleColorsEnum } from './PosibleColorsEnum';
 
 export class Tally {
     title: string;
@@ -13,6 +14,7 @@ export class Tally {
     goal: number;
     topScore: number;
     active: boolean;
+    color: string;
 
     constructor(obj: any) {
 
@@ -28,6 +30,7 @@ export class Tally {
         this.goal = obj.goal;
         this.topScore = obj.topScore;
         this.active = obj.active;
+        this.color = obj.color? obj.color : PosibleColorsEnum.Blue;
     }
 
     public getTitle(): string {
@@ -146,6 +149,14 @@ export class Tally {
 
     public setActive(active: boolean): void {
         this.active = active;
+    }
+
+    public getColor(): string {
+        return this.color;
+    }
+
+    public setColor(color: string): void {
+        this.color = color != null ? color : PosibleColorsEnum.Blue;
     }
 
 }

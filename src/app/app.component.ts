@@ -5,6 +5,7 @@ import { applicationversion } from '../environments/applicationversion';
 import { WebServiceWorkerService } from './web-service-worker.service';
 import { Subscription } from 'rxjs';
 
+
 export interface Appversion {
   version: string
   revision: string

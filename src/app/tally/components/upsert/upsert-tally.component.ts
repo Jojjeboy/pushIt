@@ -5,9 +5,10 @@ import { Tally } from '../../types/Tally';
 import { TallyService } from '../../service/tally.service';
 import { UUIDService } from '../../../shared/service/uuid/uuid.service';
 import { Subscription } from 'rxjs';
-
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HistoryService } from '../../../history/service/history.service';
+import { PosibleColorsEnum } from '../../types/PosibleColorsEnum';
+
 
 @Component({
   selector: 'app-upsert-tally',
@@ -25,7 +26,8 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
   tally!: Tally;
   tallyObservable!: Subscription;
   tallyForm!: FormGroup;
-
+  posibleColors = PosibleColorsEnum;
+  selectedColor?: string;
 
   constructor(
     private location: Location,
@@ -77,6 +79,8 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
       topScore: new FormControl(tally.getTopScore(), [Validators.required])
     });
 
+    this.selectedColor = tally.getColor();
+
     if(!tally.getResetInterval()){
       this.tallyForm.controls['resetInterval'].disable();
     }
@@ -100,6 +104,11 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+
+  selectColor(value: string): void{
+    this.selectedColor = value;
+    this.tally.setColor(value);
   }
 
   onSubmit() {
