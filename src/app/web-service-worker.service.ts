@@ -25,7 +25,6 @@ export class WebServiceWorkerService implements OnDestroy {
           
           if(evt.type === 'VERSION_READY'){
             this.$isAnyNewUpdateAvailable.next(true);
-
           }
         }),
       )

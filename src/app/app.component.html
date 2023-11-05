@@ -4,10 +4,9 @@
   <!-- Header -->
   <header class="header-6">
     <div class="branding">
-      <a (click)="toStartPage()" class="nav-link">
-        <span class="title">PushIt<small class="appversion">
-          v{{ appVersion.version }} | {{ appVersion.date | date: 'd, MMMM HH:mm' }}</small></span>
-      </a> 
+      <a  routerLink="/" class="nav-link">
+        <span class="title">PushIt</span>
+      </a>
     </div>
 
     <div class="header-actions">
@@ -15,20 +14,24 @@
         <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
           <span class="material-symbols-outlined">
             menu
-            </span>
+          </span>
         </button>
         <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <a routerLink="/start" clrDropdownItem>Start</a>
+          <a routerLink="/" clrDropdownItem>Start</a>
           <a routerLink="/add" clrDropdownItem>Lägg till ny räknare</a>
           <a routerLink="/example" clrDropdownItem>Lägg till exempel</a>
           <a (click)="clearCache()" clrDropdownItem>Rensa Local Storage</a>
+          <a clrDropdownItem>
+            <span class="label label-info"> Version <span class="badge badge-info">v{{ appVersion.version }} - {{
+                appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
+          </a>
 
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
-  </header> 
+  </header>
 
-  
+
   <!-- Main content -->
   <div class="content-container">
     <div class="content-area">
