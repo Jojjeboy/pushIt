@@ -28,7 +28,8 @@
             ],
             "goal": 100,
             "topScore": 100,
-            "active": true
+            "active": true,
+            "color": "#2E86C1"
         },
         {
             "title": "Plankan (30sek)",
@@ -42,7 +43,8 @@
             "history": [],
             "goal": 3,
             "topScore": 2,
-            "active": true
+            "active": true,
+            "color": "#229954"
         },
         {
             "title": "Ab-rolls",
@@ -56,20 +58,24 @@
             "history": [
                 {
                     "value": 30,
+                    "goal": 30,
                     "date": "2021-01-02T12:05:48.662Z"
                 },
                 {
                     "value": 20,
+                    "goal": 20,
                     "date": "2021-01-03T12:16:28.406Z"
                 },
                 {
                     "value": 0,
+                    "goal": 30,
                     "date": "2021-01-04T12:16:28.406Z"
                 }
             ],
             "goal": 30,
             "topScore": 20,
-            "active": true
+            "active": true,
+            "color": "#D4AC0D"
         },
         {
             "title": "Squats",
@@ -83,16 +89,19 @@
             "history": [
                 {
                     "value": 30,
+                    "goal": 30,
                     "date": "2021-01-02T12:05:48.662Z"
                 },
                 {
                     "value": 0,
+                    "goal": 30,
                     "date": "2021-01-04T12:16:28.406Z"
                 }
             ],
             "goal": 30,
             "topScore": 20,
-            "active": true
+            "active": true,
+            "color": "#A93226"
         },
         {
             "title": "Träningsdagar",
@@ -106,7 +115,8 @@
             "history": [],
             "goal": 10,
             "topScore": 5,
-            "active": true
+            "active": true,
+            "color": "#FDFEFE"
         },
         {
             "title": "Gummiband armar",
@@ -120,7 +130,8 @@
             "history": [],
             "goal": 4,
             "topScore": 20,
-            "active": false
+            "active": false,
+            "color": "#FF33E0"
         },
         {
             "title": "Cykla till jobbet",
@@ -134,7 +145,8 @@
             "history": [],
             "goal": 3,
             "topScore": 10,
-            "active": true
+            "active": true,
+            "color": "#FF5733"
         }
     ]
 }
