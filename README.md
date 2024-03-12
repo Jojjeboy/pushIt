@@ -1,5 +1,5 @@
 # [PushIt](https://jojjeboy.github.io/pushIt/)
-
+[https://jojjeboy.github.io/pushIt/](https://jojjeboy.github.io/pushIt/)
 
 ## Push new function
 `sh publish.sh "commit message" patch/minor/major`
