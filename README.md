@@ -12,9 +12,3 @@
 
 ## Att göra 
 - Upptäck och uppdatera när ny version finns
-
-
-
-## Klart
-- ~~`sh publish.sh` med valfri major/minor/patch version~~
-- ~~Mål för den specifika dagen~~
