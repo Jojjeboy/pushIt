@@ -38,9 +38,9 @@ if [[ $(git diff --stat) != '' ]]; then
     fi
   fi
 
-    git add . &&
-    git commit -m"$1" &&
-    npm run prebuild:$upLevel &&
+    git add .;
+    git commit -m"$1";
+    npm run prebuild:$upLevel;
     npm run postinstall &&
     ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
     git add . &&
