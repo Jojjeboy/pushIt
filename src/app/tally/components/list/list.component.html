@@ -49,8 +49,8 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="clr-row dynamic-goal" *ngIf="showDynamicGoal(tally)">
-                            <div class="clr-col-6">Dynamiskt mål idag: {{ getDynamicTallyGoal(tally.getHistory()) }}
+                        <div class="clr-row streak">
+                            <div class="clr-col-6">Antal dagar klarat mål: {{ getBestStreak(tally.getHistory()) }}
                             </div>
                             <div class="clr-col-6"></div>
                         </div>

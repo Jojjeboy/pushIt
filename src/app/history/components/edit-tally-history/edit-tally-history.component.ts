@@ -108,6 +108,8 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
         footer: ''
       }
     }
+
+    this.historyService.sortHistoryByDate(this.tally);
   }
 
   histories(): FormArray {
@@ -125,7 +127,10 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
 
   addHistory() {
     this.histories().insert(0, this.newHistory());
+    this.historyService.sortHistoryByDate(this.tally);
   }
+
+  
 
   removeHistory(i: number) {
     this.histories().removeAt(i);

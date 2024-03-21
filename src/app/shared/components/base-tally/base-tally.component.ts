@@ -20,28 +20,54 @@ export class BaseTallyComponent {
     "monthly": "månads"
   }
 
-  getDynamicTallyGoal(histories: History[]): number {
-    let total:number = 0;
-    let dynamicGoal:number = 0;
+  getGoalReached(histories: History[]): number {    
+    let streakLength = 0;
 
     histories.forEach((history: History) => {
-      total =+ history.getValue();
+      if(history.getValue() >= history.getGoal()){
+        streakLength++;
+      }
     });
 
-    dynamicGoal = total * 1.1 / histories.length;
-
-    if(!isNaN(dynamicGoal)){
-
-    }
-    return Math.round(dynamicGoal);
+    return streakLength;
   }
 
-  showDynamicGoal(tally: Tally): boolean {
-    if(tally.getCanReset() && tally.getHistory().length > 2){
-      return true;
-    }
-    return false;
+  getBestStreak(histories: History[]): number {    
+    let streakLength = 0;
+    let highestStreak = 0;
+
+    histories.forEach((history: History) => {
+      if(history.getValue() >= history.getGoal()){
+        highestStreak++;
+        streakLength = JSON.parse(JSON.stringify(highestStreak));
+      }
+      else {
+        highestStreak = 0;
+        streakLength = 0;
+      }
+    });
+
+    return streakLength;
   }
+
+  getCurrentStreak(histories: History[]): number {    
+    let streakLength = 0;
+    let highestStreak = 0;
+    let breakLoop = false;
+
+    histories.forEach((history: History) => {
+      if(history.getValue() >= history.getGoal() && !breakLoop){
+        highestStreak++;
+        streakLength = JSON.parse(JSON.stringify(highestStreak));
+      }
+      else {
+        breakLoop = true;
+      }
+    });
+
+    return streakLength;
+  }
+
 
   recalculatePercentage(tally: Tally) {
     this.percentage = this.tallyService.recalculatePercentage(tally.getGoal(), tally.getValue());

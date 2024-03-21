@@ -37,6 +37,7 @@ export class DetailComponent extends BaseTallyComponent implements OnInit, OnDes
     this.route.params.subscribe(params => {
       this.tallyObservable = this.tallyService.getTallyById(params['id']).subscribe(tally => {
         this.tally = tally;
+        this.historyService.sortHistoryByDate(this.tally);
       });
     });
 
