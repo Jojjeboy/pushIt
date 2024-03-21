@@ -12,3 +12,4 @@
 
 ## Att göra 
 - Upptäck och uppdatera när ny version finns
+- ...
