@@ -1,0 +1,111 @@
+{
+  "configVersion": 1,
+  "timestamp": 1711142027444,
+  "index": "https://jojjeboy.github.io/pushIt/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://jojjeboy.github.io/pushIt/favicon.ico",
+        "https://jojjeboy.github.io/pushIt/index.html",
+        "https://jojjeboy.github.io/pushIt/main.e51e62b4177d3eab.js",
+        "https://jojjeboy.github.io/pushIt/manifest.webmanifest",
+        "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js",
+        "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js",
+        "https://jojjeboy.github.io/pushIt/styles.93ea3088c7845c2e.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://jojjeboy.github.io/pushIt/assets/data.json",
+        "https://jojjeboy.github.io/pushIt/assets/example.config-data.json",
+        "https://jojjeboy.github.io/pushIt/assets/example.data.json",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-128x128.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-144x144.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-152x152.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-192x192.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-384x384.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-512x512.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-72x72.png",
+        "https://jojjeboy.github.io/pushIt/assets/icons/icon-96x96.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/cr.jpg",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-192x192.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-512x512.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/apple-touch-icon.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/browserconfig.xml",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon-16x16.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon-32x32.png",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon.ico",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/safari-pinned-tab.svg",
+        "https://jojjeboy.github.io/pushIt/assets/images/favicon/site.webmanifest",
+        "https://jojjeboy.github.io/pushIt/assets/images/original_icon.png",
+        "https://jojjeboy.github.io/pushIt/assets/styles/_variables.scss"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://jojjeboy.github.io/pushIt/assets/data.json": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "https://jojjeboy.github.io/pushIt/assets/example.config-data.json": "53907baa6464a5638b6256e84b1257636871aba4",
+    "https://jojjeboy.github.io/pushIt/assets/example.data.json": "ce1f8aa666b253365deeec88d661d73abeb95cfa",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-192x192.png": "e4211163bf0911688fbfb80278d8ff4d2f77691d",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
+    "https://jojjeboy.github.io/pushIt/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "https://jojjeboy.github.io/pushIt/assets/images/cr.jpg": "5c041325b40e8c396a650c3a9e6abd175d950458",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-192x192.png": "e99966cf5b44f42577594ea9171eee9561313f80",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-512x512.png": "d322fd16106d8e04dc406f3d943c16615979f817",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/apple-touch-icon.png": "a0bd08665d8ab3ff0b203cbb40ff83a54a6c16bf",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/browserconfig.xml": "4e104bfc1559f3088f25edc3409e9677415226ca",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon-16x16.png": "77c43f57736fd57a5dd87161112768ea59e4db00",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon-32x32.png": "23c098ea55df643a20a5268b7bb8ca0e220a8d6b",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/favicon.ico": "edd9b24a7bff444c7b203114d76d7a064b506f5f",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/safari-pinned-tab.svg": "2f8914951c84103123a1d7272e20050cf97318cc",
+    "https://jojjeboy.github.io/pushIt/assets/images/favicon/site.webmanifest": "bf31baf91bdd2fcde24a45e3f2a1be33733c6f69",
+    "https://jojjeboy.github.io/pushIt/assets/images/original_icon.png": "2430badf2be25b9589428ace9f9d55ebfd296486",
+    "https://jojjeboy.github.io/pushIt/assets/styles/_variables.scss": "d447f2f3bfabe59ce15d00d841af735e45bec389",
+    "https://jojjeboy.github.io/pushIt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://jojjeboy.github.io/pushIt/index.html": "c5a3ebf8a7ac77d161bcba61fa792dde1dee52f4",
+    "https://jojjeboy.github.io/pushIt/main.e51e62b4177d3eab.js": "7d75078a0c2648907a2f60785ce1b2f9a1a28e63",
+    "https://jojjeboy.github.io/pushIt/manifest.webmanifest": "27c99db044fd06a4b9f860426876a419177c9b82",
+    "https://jojjeboy.github.io/pushIt/polyfills.1409be0309eecaa7.js": "fa03ae90c4d01b5ec17c1cd316ac41db51d7360e",
+    "https://jojjeboy.github.io/pushIt/runtime.53e6cc07d57f7441.js": "fc71c6d4a18a84db12489277e99a1940723ffa23",
+    "https://jojjeboy.github.io/pushIt/styles.93ea3088c7845c2e.css": "ee703af74480cad82f4ec58fb91484f88b7c011d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
