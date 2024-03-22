@@ -12,7 +12,7 @@
             <div class="card-info">
                 <div class="card-header">
                     <div class="header-main-text">
-                        <a routerLink="/tally/{{ tally.getUuid() }}" class="block"  style="color: {{ tally.getColor() + ';' }}">{{ tally.getTitle() }}</a>
+                        <a [routerLink]="['/tally', tally.getUuid()]" class="block" [ngStyle]="{'color': tally.getColor()}">{{ tally.getTitle() }}</a>
                         <span class="pull-right tally-icons" *ngIf="tally.getCanReset()">
                             <span class="material-symbols-outlined" *ngIf="tally.getHistory().length > 2">timeline</span> &nbsp;
                             <span class="material-symbols-outlined" *ngIf="tally.getCanReset()">device_reset</span>

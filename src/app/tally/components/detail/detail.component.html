@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<h1 style="color: {{ tally.getColor() }}">{{ tally.getTitle() }}</h1>
+<h1 [ngStyle]="{'color': tally.getColor()}">{{ tally.getTitle() }}</h1>
 <div *ngIf="tally.getLastTouched()">
     <small>{{ tally.getLastTouched() | timeago }}</small>
 </div>
