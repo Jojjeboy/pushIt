@@ -1,10 +1,11 @@
 <div>
     <h4>Historik</h4>
-    <small *ngIf="tally.getCanReset()">Målet är uppsatt 
+    <small *ngIf="tally.getCanReset()">Målet är uppsatt
         <span>{{ resetIntervalText }}</span>
     </small>
 
-    <small *ngIf="tally.getHistory().length < 1">Det finns ingen historik för denna räknare, <a routerLink="/history/edit/{{ tally.getUuid() }}">lägg till historik.</a></small>
+    <small *ngIf="tally.getHistory().length < 1">Det finns ingen historik för denna räknare, <a
+            routerLink="/history/edit/{{ tally.getUuid() }}">lägg till historik.</a></small>
     <table class="table" *ngIf="tally.getHistory().length > 0">
         <thead>
             <tr>
@@ -16,7 +17,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let history of tally.getHistory()" [ngClass]="{ 'goal-reached':history.value >= tally.getGoal()}">
+            <tr *ngFor="let history of tally.getHistory()"
+                [ngClass]="{ 'goal-reached':history.value >= tally.getGoal()}">
                 <td *ngIf="tally.getResetInterval() == 'daily'">{{ history.date | date: 'yyyy-MM-dd'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'weekly'">Vecka {{ history.date | date: 'w'}}</td>
                 <td *ngIf="tally.getResetInterval() == 'monthly'">{{ history.date | date: 'LLLL' | titlecase }}</td>
