@@ -42,12 +42,12 @@ if [[ $(git diff --stat) != '' ]]; then
     git commit -m"$1";
     npm run prebuild:$upLevel;
     npm run postinstall &&
-    ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
+    npm run build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
     git add . &&
     git commit --amend --no-edit && git pull && 
     git push
 else
-  ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
+  npm run build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
   git add . &&
   git commit --amend --no-edit &&
   git push
