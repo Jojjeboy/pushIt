@@ -33,21 +33,27 @@ export class BaseTallyComponent {
   }
 
   getBestStreak(histories: History[]): number {    
-    let streakLength = 0;
     let highestStreak = 0;
+    let loopStreak = 0;
+
 
     histories.forEach((history: History) => {
       if(history.getValue() >= history.getGoal()){
-        highestStreak++;
-        streakLength = JSON.parse(JSON.stringify(highestStreak));
+        loopStreak++;
       }
       else {
-        highestStreak = 0;
-        streakLength = 0;
+        if(loopStreak > highestStreak){
+          highestStreak = JSON.parse(JSON.stringify(loopStreak));
+        }
+        loopStreak = 0;
       }
     });
 
-    return streakLength;
+    if(loopStreak > highestStreak){
+      highestStreak = JSON.parse(JSON.stringify(loopStreak));
+    }
+
+    return highestStreak;
   }
 
   getCurrentStreak(histories: History[]): number {    
