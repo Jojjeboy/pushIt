@@ -1,12 +1,14 @@
-@import '../../../../assets/styles/variables'; 
+@import '../../../../assets/styles/variables';
 
 .clr-row {
     &.clear-spinner {
         text-align: center;
     }
+
     &.inactive {
         opacity: 0.3;
     }
+
     &.hideInactive {
         display: none;
     }
@@ -19,15 +21,17 @@
 }
 
 .card-header {
-    > div {
+    >div {
         display: inline;
     }
 
-    div.header-main-text{
-        .tally-icons{
+    div.header-main-text {
+        .tally-icons {
             color: #919191;
         }
-        a,a:visited{
+
+        a,
+        a:visited {
             color: $successColor;
         }
     }
@@ -53,6 +57,7 @@
     .progress-status-text {
         margin-bottom: 20px;
     }
+
     .progress-bar {
         width: 100%;
     }
@@ -60,6 +65,7 @@
 
 .card-footer {
     display: block;
+
     .timeago {
         text-align: center;
         display: inline-block;
