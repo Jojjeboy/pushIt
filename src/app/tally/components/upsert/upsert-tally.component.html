@@ -74,11 +74,12 @@
                         <span>Välj färg</span>
                     </div>
                     <div class="clr-col-12">
-                        <div class="color-box selected-{{ tally.getColor() }} enumValue-{{enum.value}}" 
-                            *ngFor="let enum of posibleColors | keyvalue" 
-                            [ngClass]="tally.getColor() === enum.value ? 'selected' : ''"
-                            style="background-color: {{ enum.value | lowercase }}" 
-                            (click)="selectColor(enum.value)"></div> 
+                        <div class="color-box selected-{{ tally.getColor() }} enumValue-{{enum.value}}"
+                            *ngFor="let enum of posibleColors | keyvalue"
+                            [ngClass]="tally.getColor() === enum.value ? 'selected' : ''" 
+                            [ngStyle]="{'background-color': enum.value | lowercase}"
+                            (click)="selectColor(enum.value)">
+                        </div>
                     </div>
                 </div>
 
@@ -142,10 +143,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="clr-row">
                 <div class="clr-col">
-                    <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline" style="width: 100%;">Ångra</a>
+                    <a routerLink="/tally/{{ tally.getUuid() }}" class="btn btn-danger-outline"
+                        style="width: 100%;">Ångra</a>
                 </div>
                 <div class="clr-col">
                     <button [disabled]="!tallyForm.valid" class="btn btn-success-outline block" type="submit">{{
