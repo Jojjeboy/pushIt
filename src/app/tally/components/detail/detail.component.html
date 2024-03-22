@@ -26,10 +26,13 @@
     </div>
 
     <div class="clr-row tally-meta">
-        <div class="clr-col-6"><h5>Nuvarande streak: {{ getCurrentStreak(tally.getHistory()) }}</h5> </div>
-        <div class="clr-col-6"><h5>Bästa streak: {{ getBestStreak(tally.getHistory()) }}</h5> </div>
+        <div class="clr-col-6">
+            <h5>Nuvarande streak: {{ getCurrentStreak(tally.getHistory()) }}</h5>
+        </div>
+        <div class="clr-col-6">
+            <h5>Bästa streak: {{ getBestStreak(tally.getHistory()) }}</h5>
+        </div>
     </div>
-
 
     <div class="clr-row tally-meta">
         <div class="clr-col-6">
@@ -81,8 +84,9 @@
 <div class="tally-action">
     <div class="clr-row status">
         <div class="clr-col-12">
-            <button class="btn block btn-deactivate" *ngIf="tally.getActive()" (click)="toggleActive()">Inaktivera</button>
-            <button class="btn btn-success block"  *ngIf="!tally.getActive()" (click)="toggleActive()">Aktivera</button>
+            <button class="btn block btn-deactivate" *ngIf="tally.getActive()"
+                (click)="toggleActive()">Inaktivera</button>
+            <button class="btn btn-success block" *ngIf="!tally.getActive()" (click)="toggleActive()">Aktivera</button>
         </div>
     </div>
 
