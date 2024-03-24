@@ -1,0 +1,102 @@
+<clr-accordion>
+    <clr-accordion-panel [clrAccordionPanelOpen]="editMode">
+        <clr-accordion-title>Lägg till att göra post</clr-accordion-title>
+        <clr-accordion-content>
+            <form [formGroup]="todoForm" clrForm (ngSubmit)="onSubmit()">
+                <div class="card-block">
+                    <div class="card-text">
+                        <div class="clr-row">
+                            <div class="clr-col-12">
+                                <clr-input-container>
+                                    <label for="tittle">Titel:</label>
+                                    <input clrInput type="text" id="title" formControlName="title">
+                                </clr-input-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col-12">
+                                <clr-textarea-container>
+                                    <label for="email">Beskrivning:</label>
+                                    <textarea clrTextarea [rows]="10" [cols]="45" required name="description"
+                                        formControlName="description"></textarea>
+                                </clr-textarea-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col-12">
+                                <clr-toggle-container>
+                                    <clr-toggle-wrapper>
+                                        <input type="checkbox" clrToggle formControlName="done"
+                                            [checked]="todoForm.value.done" value="true" name="done" />
+                                        <label>Klar</label>
+                                    </clr-toggle-wrapper>
+                                </clr-toggle-container>
+                            </div>
+                        </div>
+                        <div class="clr-row">
+                            <div class="clr-col-12">
+                                <button type="submit" [disabled]="todoForm.invalid">{{
+                                    editMode ?
+                                    'Uppdatera' : 'Spara' }}</button>
+                            </div>
+                        </div>
+
+                        <div class="clr-row delete-todo" *ngIf="editMode">
+                            <div class="clr-col-12">
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteTodo()">Ta
+                                    bort</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </clr-accordion-content>
+    </clr-accordion-panel>
+</clr-accordion>
+
+<div *ngIf="todosFetched">
+    <div class="clr-row" *ngFor="let todo of todos">
+        <div class="clr-col">
+            <div class="card">
+                <div class="card-info">
+                    <div class="card-header">
+                        <div class="header-main-text">
+                            <a [routerLink]="['/todo/', todo.getUuid()]" [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a><span class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
+                        </div>
+                        <div class="pull-right header-meta-text"></div>
+                    </div>
+                    <div class="card-block">
+                        <div class="clr-row">
+                            <div class="clr-col-6">
+                            </div>
+                            <div class="clr-col-6">
+                                <div class="card-title pull-right">
+                                    {{ todo.getCreated() | timeago }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-text">
+                                <p>{{ todo.getDescription() }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="clr-row">
+                            <div class="clr-col">
+                            </div>
+                            <div class="clr-col">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clr-row" *ngIf="todos.length === 0">
+        <p>Inga att göra poster finns för närvarande</p>
+    </div>
+</div>
+
+<app-modal [modalData]="removeTodoModalData" (parentEvent)="deleteTodoConfirmed()"></app-modal>

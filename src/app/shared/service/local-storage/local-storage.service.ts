@@ -28,6 +28,7 @@ export class LocalStorageService {
     } else {
       // Check if config is already set
       const lsConfig: any = this.getConfig();
+      this.makeSureTodoExist();
       if (typeof lsConfig === 'object') {
         this.config = lsConfig;
       }
@@ -43,12 +44,23 @@ export class LocalStorageService {
     return lSData['data'];
   }
 
-  
+  public getAllTodos(): Array<Object> {
+    const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
+    return lSData['todos'];
+  }
+
+
 
   public add(obj: Object): void {
     const lsItems = this.getAll();
     lsItems.push(obj);
     this.writeLS(lsItems);
+  }
+
+  public addTodo(obj: Object): void {
+    const lsItems = this.getAllTodos();
+    lsItems.push(obj);
+    this.writeLSWithTodos(lsItems);
   }
 
   public addMultiple(array: Array<Object>): void {
@@ -60,7 +72,14 @@ export class LocalStorageService {
   }
 
   public writeLS(array: Array<Object>): void {
-    localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array }));
+    if (!this.config) {
+      this.init(this.key);
+    }
+    localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array, todos: this.getAllTodos() }));
+  }
+
+  public writeLSWithTodos(todos: Array<Object>): void {
+    localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: this.getAll(), todos: todos }));
   }
 
   public getLS() {
@@ -98,6 +117,23 @@ export class LocalStorageService {
     return foundItem;
   }
 
+  public removeTodo(key: String): boolean {
+    const lsItems: any = this.getAllTodos(),
+      newData = [];
+    let foundItem = false,
+      iter = 0;
+    while (iter < lsItems.length) {
+      if (key !== lsItems[iter]['uuid']) {
+        newData.push(lsItems[iter]);
+      } else {
+        foundItem = true;
+      }
+      iter++;
+    }
+    this.writeLSWithTodos(newData);
+    return foundItem;
+  }
+
   public update(obj: any): boolean {
     const lsItems: any = this.getAll(),
       newData = [];
@@ -112,8 +148,33 @@ export class LocalStorageService {
     return updated;
   }
 
+  public updateTodo(obj: any): boolean {
+    const lsItems: any = this.getAllTodos(),
+      newData = [];
+    let updated = false;
+    for (let i = 0; i < lsItems.length; i++) {
+      if (lsItems[i]['uuid'] === obj['uuid']) {
+        lsItems[i] = obj;
+        updated = true;
+      }
+    }
+    this.writeLSWithTodos(lsItems);
+    return updated;
+  }
+
   public getItem(id: String): Array<object> {
     const lsItems: any = this.getAll();
+    let returnArr = [];
+    for (let i = 0; i < lsItems.length; i++) {
+      if (lsItems[i]['uuid'] === id) {
+        returnArr.push(lsItems[i]);
+      }
+    }
+    return returnArr;
+  }
+
+  public getTodo(id: String): Array<object> {
+    const lsItems: any = this.getAllTodos();
     let returnArr = [];
     for (let i = 0; i < lsItems.length; i++) {
       if (lsItems[i]['uuid'] === id) {
@@ -138,7 +199,8 @@ export class LocalStorageService {
               hash: applicationversion.revision
             }
           ]
-        }, data: []
+        }, data: [],
+        todos: []
       }
 
     ));
@@ -165,9 +227,21 @@ export class LocalStorageService {
     return lSData['config'];
   }
 
+  makeSureTodoExist(): void {
+    const lsData: any = JSON.parse(this.localStorage.getItem(this.key));
+    if (!lsData['todos']) {
+      localStorage.setItem(this.key, JSON.stringify(
+        {
+          config: this.getConfig(), 
+          data: this.getAll(), 
+          todos: []
+        }));
+    }
+  }
+
   public saveConfig(config: Object): void {
     const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
-    localStorage.setItem(this.key, JSON.stringify({ config: config, data: lSData['data'] }));
+    localStorage.setItem(this.key, JSON.stringify({ config: config, data: lSData['data'], todos: this.getAllTodos() }));
   }
 
   public uppdatePropertyOnAll(propertyName: string, newValue: any): void {
