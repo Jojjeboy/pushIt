@@ -16,6 +16,7 @@ import { HistorySummaryComponent } from './shared/components/history-summary/his
 import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.component';import { HistoryService } from './history/service/history.service';
 import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
+import { TodoComponent } from './todo/component/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,16 @@ const routes: Routes = [
     canActivate: [HistoryGuardService],
     data: { title: 'Edit tally history' }
   },
-
+  {
+    path: 'todo',
+    component: TodoComponent,
+    data: { title: 'Todo' }
+  },
+  {
+    path: 'todo/:id',
+    component: TodoComponent,
+    data: { title: 'Edit Todo' }
+  },
   { path: '**', component: ListComponent }
 ];
 
@@ -69,7 +79,8 @@ const routes: Routes = [
     EditTallyHistoryComponent,
     HistorySummaryComponent,
     UpsertTallyComponent,
-    BaseTallyComponent
+    BaseTallyComponent,
+    TodoComponent
   ],
     
   exports: [RouterModule]

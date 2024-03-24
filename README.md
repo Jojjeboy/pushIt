@@ -8,6 +8,7 @@
 ## Länkar 
 - https://fonts.google.com/icons?icon.platform=web
 - https://www.markdownguide.org/cheat-sheet/
+- https://clarity.design/
 
 
 ## Att göra 
