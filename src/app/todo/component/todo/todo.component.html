@@ -62,17 +62,16 @@
                     <div class="card-header">
                         <div class="header-main-text">
                             <a [routerLink]="['/todo/', todo.getUuid()]" [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a><span class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
+                            <div class="card-title pull-right">
+                                {{ todo.getCreated() | timeago }}
+                            </div>
                         </div>
                         <div class="pull-right header-meta-text"></div>
                     </div>
                     <div class="card-block">
                         <div class="clr-row">
                             <div class="clr-col-6">
-                            </div>
-                            <div class="clr-col-6">
-                                <div class="card-title pull-right">
-                                    {{ todo.getCreated() | timeago }}
-                                </div>
+
                             </div>
                         </div>
                         <div class="card-text">
