@@ -54,9 +54,8 @@
                             </div>
                         </div>
                         <div class="clr-row streak">
-                            <div class="clr-col-6">Antal dagar klarat mål: {{ getBestStreak(tally.getHistory()) }}
+                            <div class="clr-col-12">{{ getBestStreak(tally.getHistory()) }} dagars streak / {{ getTotalNumberOfReps(tally.getHistory()) +' av '+ getTotalHistoryReps(tally.getHistory()) }} gjorda reps
                             </div>
-                            <div class="clr-col-6"></div>
                         </div>
                         <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                             <div class="progress-meter"
