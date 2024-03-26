@@ -6,7 +6,7 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BaseTally {
+export class BaseTallyService {
 
   constructor(protected localStorageService: LocalStorageService, protected dateHelperService: DateHelperService) {}
 
