@@ -89,8 +89,32 @@ export class ListComponent extends BaseTallyComponent implements OnInit, OnDestr
       }
     }
     return resetIntervalText;
-
   }
+
+
+  getTotalHistoryGoal(tally: Tally): number{
+    let c = 0;
+    tally.getHistory().forEach((hist: History) => {
+      c += hist.getGoal();
+    });
+
+    c += tally.getGoal();
+
+    return c;
+  }
+
+
+  getTotalNumberOfDoneReps(tally: Tally): number{
+    let c = 0;
+    tally.getHistory().forEach((hist: History) => {
+      c += hist.getValue();
+    });
+
+    c += tally.getValue();
+
+    return c;
+  }
+
 
   ngOnDestroy() {
     this.tallyListObservable.unsubscribe();
