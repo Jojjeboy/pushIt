@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="clr-row streak">
-                            <div class="clr-col-12">{{ getBestStreak(tally.getHistory()) }} dagars streak / {{ getTotalNumberOfReps(tally.getHistory()) +' av '+ getTotalHistoryReps(tally.getHistory()) }} gjorda reps
+                            <div class="clr-col-12">{{ getBestStreak(tally.getHistory()) }} dagars streak 
                             </div>
                         </div>
                         <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
