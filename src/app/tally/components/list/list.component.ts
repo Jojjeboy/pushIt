@@ -96,4 +96,24 @@ export class ListComponent extends BaseTallyComponent implements OnInit, OnDestr
     this.tallyListObservable.unsubscribe();
   }
 
+
+  getTotalHistoryReps(history: History[]): number{
+    let c = 0;
+    history.forEach((hist: History) => {
+      c += hist.getGoal();
+    });
+
+    return c;
+  }
+
+
+  getTotalNumberOfReps(history: History[]): number{
+    let c = 0;
+    history.forEach((hist: History) => {
+      c += hist.getValue();
+    });
+
+    return c;
+  }
+
 }
