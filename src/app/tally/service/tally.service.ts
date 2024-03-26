@@ -5,13 +5,13 @@ import { LocalStorageService } from '../../shared/service/local-storage/local-st
 import { HistoryService } from '../../history/service/history.service';
 import { applicationversion } from '../../../environments/applicationversion';
 import { Observable } from 'rxjs';
-import { BaseTally } from '../../shared/service/baseTally/baseTally.service';
+import { BaseTallyService } from '../../shared/service/baseTally/baseTally.service';
 import { DateHelperService } from '../../shared/service/Date/date-helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TallyService extends BaseTally {
+export class TallyService extends BaseTallyService {
 
   lsTallies = Array<Object>();
   tallies: Array<Tally> = [];
@@ -24,11 +24,6 @@ export class TallyService extends BaseTally {
     localStorageService: LocalStorageService,
     dateHelperService: DateHelperService) {
     super(localStorageService, dateHelperService);
-
-    //this.lsTallies = localStorageService.getAll();
-    //this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
-
-
     
     this.updateAppVersion();
   }
@@ -80,7 +75,7 @@ export class TallyService extends BaseTally {
         let histories = this.historyService.addToHistory(tally.getValue(), tally.getGoal(), tally.getLastTouched(), tally.getHistory());
         tally.setHistory(histories);
         tally.setValue(0);
-        this.touch(tally);
+        //this.touch(tally);
         this.update(tally);
       }
     }

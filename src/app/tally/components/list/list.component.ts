@@ -4,8 +4,9 @@ import { Tally } from '../../types/Tally';
 import { History } from '../../../history/types/History';
 import { LocalStorageService } from '../../../shared/service/local-storage/local-storage.service';
 import { TallyService } from '../../service/tally.service';
-import { BaseTally } from 'src/app/shared/service/baseTally/baseTally.service';
 import { BaseTallyComponent } from 'src/app/shared/components/base-tally/base-tally.component';
+import { strings as englishStrings } from "ngx-timeago/language-strings/en";
+
 
 @Component({
   selector: 'list',
