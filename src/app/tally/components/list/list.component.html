@@ -11,14 +11,23 @@
         <div class="card">
             <div class="card-info">
                 <div class="card-header">
-                    <div class="header-main-text">
-                        <a [routerLink]="['/tally', tally.getUuid()]" class="block"
-                            [ngStyle]="{'color': tally.getColor()}">{{ tally.getTitle() }}</a>
-                        <span class="pull-right tally-icons" *ngIf="tally.getCanReset()">
-                            <span class="material-symbols-outlined"
-                                *ngIf="tally.getHistory().length > 2">timeline</span> &nbsp;
-                            <span class="material-symbols-outlined" *ngIf="tally.getCanReset()">device_reset</span>
-                        </span>
+                    <div class="clr-row header-main-text">
+                        <div class="clr-row ">
+                            <div class="clr-col-8">
+                                <a [routerLink]="['/tally', tally.getUuid()]" class="block"
+                                    [ngStyle]="{'color': tally.getColor()}">{{ tally.getTitle() }}</a><br />
+                                <span class="stats">{{ tally.getLastTouched() | timeago }}</span>
+                            </div>
+                            <div class="clr-col-4">
+                                <span class="pull-right tally-icons" *ngIf="tally.getCanReset()">
+                                    <span class="material-symbols-outlined"
+                                        *ngIf="tally.getHistory().length > 2">timeline</span> &nbsp;
+                                    <span class="material-symbols-outlined"
+                                        *ngIf="tally.getCanReset()">device_reset</span>
+                                </span>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="pull-right header-meta-text">
                     </div>
@@ -27,16 +36,13 @@
                     <div class="clr-row">
                         <div class="clr-col">
                             <div class="card-title">
-                                
                                 <span *ngIf="!tally.getCanReset()">
                                     <span>Räknaren nollställs inte</span>
                                 </span>
                             </div>
                         </div>
                         <div class="clr-col">
-                            <div class="card-title pull-right">
-                             {{ tally.getLastTouched() | timeago }}
-                            </div>
+
                         </div>
                     </div>
                     <div class="card-text">
@@ -44,11 +50,13 @@
                             <div class="clr-col-12">
                                 <span *ngIf="tally.getCanReset()">
                                     <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span
-                                            i18n> {{ this.translation[tally.getResetInterval()] }} </span>
+                                            i18n>{{ this.translation[tally.getResetInterval()] }} </span>
                                         historik</span>
                                     <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
-                                </span> / 
-                                {{ getBestStreak(tally.getHistory()) }} dagars streak / {{ getTotalNumberOfDoneReps(tally) +' gjorda reps av '+ getTotalHistoryGoal(tally) }} totalt mål 
+                                </span> /
+                                {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}
+                                streak / {{ getTotalNumberOfDoneReps(tally) +' reps av '+ getTotalHistoryGoal(tally) }}
+                                totalt mål
                             </div>
                         </div>
                         <div aria-hidden="true" class="clr-row progress-status-text">
@@ -59,7 +67,7 @@
                                 </span>
                             </div>
                         </div>
-                        
+
                         <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                             <div class="progress-meter"
                                 [attr.data-value]="calculatePercentage(tally) < 100 ? calculatePercentage(tally) : 100">
