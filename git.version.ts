@@ -11,7 +11,8 @@ async function createVersionsFile(filename: string) {
   const branch = (await exec('git rev-parse --abbrev-ref HEAD')).stdout.toString().trim();
   const date = (await exec('git log -1 --format=%cd')).stdout.toString().trim();
   const lastMessage = (await exec('git log -n 1 --skip 1 --pretty=format:"%s"')).stdout.toString().trim();
-  const lastMessages = (await exec('git log -n 100 --skip 1 --pretty=format:"%s"')).stdout.toString().trim();
+  //const lastMessages = (await exec('git log -n 100 --skip 1 --pretty=format:"%s"')).stdout.toString().trim();
+  const lastMessages = (await exec('git log --pretty="format:%h;%s;%cD"')).stdout.toString().trim();
  
   console.log(`Application Version: '${packageJSON.version}', revision: '${revision}', branch: '${branch}'`);
 

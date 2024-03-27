@@ -4,16 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { applicationversion } from '../environments/applicationversion';
 import { WebServiceWorkerService } from './web-service-worker.service';
 import { Subscription } from 'rxjs';
+import { Appversion } from './shared/interface/appversion';
 
 
-export interface Appversion {
-  version: string
-  revision: string
-  branch: string
-  date: string
-  message: string
-  gitlog: string
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
