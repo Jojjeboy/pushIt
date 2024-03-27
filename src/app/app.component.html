@@ -7,7 +7,12 @@
       <a routerLink="/" class="nav-link">
         <span class="title">PushIt</span>
       </a>
+      <div class="version-in-header"><span class="">v{{ appVersion.version }} - {{
+          appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
+        </span>
+      </div>
     </div>
+
 
     <div class="header-actions">
       <clr-dropdown>
