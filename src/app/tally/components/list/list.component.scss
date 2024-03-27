@@ -21,12 +21,9 @@
     }
 }
 
-.card{
-    border: 1px solid $borderColor;
-}
+
 
 .card-header {
-    border-bottom: 1px solid $borderColor;
     padding-top: 0;
     padding-bottom: 0;
     >div {
@@ -69,7 +66,6 @@
 }
 
 .card-block {
-    border-bottom: 1px solid $borderColor;
     .progress-status-text {
         margin-bottom: 20px;
     }

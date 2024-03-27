@@ -83,12 +83,16 @@ a:active {
     opacity: 0.3;
 }
 
-.alert {
-
-    .alert-app-level .alert-items{
-        align-items: normal;
-    }
+.card{
+    border: 1px solid $borderColor;
 }
+
+.card-header, 
+.card-block{
+    border-bottom: 1px solid $borderColor;
+}
+
+
 .alert-icon-wrapper .material-symbols-outlined{
     color: #fff;
     margin-top: -3px;
