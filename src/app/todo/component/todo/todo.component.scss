@@ -11,13 +11,16 @@ form, form .card-block{
 }
 
 .card-header {
+    a{
+        font-size: 0.88em;
+    }
     >div {
         display: inline;
     }
 }
 
 .card-title {
-    font-size: 0.6em;
+    font-size: 0.48em;
 }
 
 
