@@ -21,14 +21,11 @@ export class TodoService  {
     return new Observable<Todo[]>(observer => {
       this.lsTodos = this.localStorageService.getAllTodos();
       this.todos = <Array<Todo>>this.convertLSToTodos(this.lsTodos);
+      this.sortByActive();
       observer.next(this.todos);
     });
   }
 
-
-  addTodo(){
-
-  }
 
   getTodoById(id: String): Observable<Todo> {
     return new Observable<Todo>(observer => {
@@ -70,6 +67,21 @@ export class TodoService  {
       returnArr.push(todo);
     }
     return returnArr;
+  }
+
+  sortByActive(): Array<Todo> {
+    let sortedArray: Todo[] = this.todos.sort((obj1, obj2) => {
+      if (obj2.getIsDone() < obj1.getIsDone()) {
+        return 1;
+      }
+
+      if (obj2.getIsDone() > obj1.getIsDone()) {
+        return -1;
+      }
+
+      return 0;
+    });
+    return sortedArray;
   }
 
   touch(todo: Todo): void {

@@ -63,15 +63,14 @@
     </form>
 </div>
 <div *ngIf="todosFetched">
-    <div class="clr-row" *ngFor="let todo of todos">
+    <div class="clr-row" *ngFor="let todo of todos"[ngClass]="{'status-done': todo.getIsDone()}">
         <div class="clr-col">
             <div class="card">
                 <div class="card-info">
                     <div class="card-header">
                         <div class="header-main-text">
                             <a [routerLink]="['/todo/', todo.getUuid()]"
-                                [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a><span
-                                class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
+                                [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a>
                             <div class="card-title pull-right">
                                 Skapades: {{ todo.getCreated() | date: 'HH:mm ddMMM' }}
                             </div>
@@ -93,7 +92,8 @@
                     <div class="card-footer">
                         <div class="clr-row">
                             <div class="clr-col">
-                                Skriv nåt bra här
+                                <span class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
+                                <span class="done pull-right" *ngIf="!todo.getIsDone()"> Ej Klart</span>
                             </div>
                         </div>
                     </div>
