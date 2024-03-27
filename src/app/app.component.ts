@@ -11,6 +11,7 @@ export interface Appversion {
   revision: string
   branch: string
   date: string
+  message: string
 }
 @Component({
   selector: 'app-root',
