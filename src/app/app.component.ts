@@ -12,6 +12,7 @@ export interface Appversion {
   branch: string
   date: string
   message: string
+  gitlog: string
 }
 @Component({
   selector: 'app-root',
