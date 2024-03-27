@@ -1,0 +1,16 @@
+<!--p *ngFor="let gitlog of gitlogs">{{ gitlog }} </p-->
+
+<ul class="clr-timeline clr-timeline-vertical">
+    <li class="clr-timeline-step" *ngFor="let gitlog of gitObjs let i = index">
+      <div class="clr-timeline-step-header">{{ gitlog.date | date : 'ddMMM HH:mm' }}</div>
+
+      <cds-icon role="img" *ngIf="i === 0" shape="dot-circle" aria-label="Current"></cds-icon>
+      <cds-icon role="img" *ngIf="i > 0" shape="success-standard" aria-label="Completed"></cds-icon>
+      
+      <div class="clr-timeline-step-body">
+        <span class="clr-timeline-step-title">{{ gitlog.date | timeago }} <a [href]="'https://github.com/Jojjeboy/pushIt/commit/' + gitlog.hash +''" target="_blank">{{ gitlog.hash }}</a></span>
+        <span class="clr-timeline-step-description">{{ gitlog.description }}
+        </span>
+      </div>
+    </li>
+  </ul>

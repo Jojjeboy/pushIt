@@ -35,7 +35,7 @@
           <a routerLink="/example" clrDropdownItem>Lägg till exempel</a>
           <a routerLink="/todo" clrDropdownItem>Att göra</a>
           <a (click)="clearCache()" clrDropdownItem>Rensa Local Storage</a>
-          <a clrDropdownItem>
+          <a routerLink="/gitlog" clrDropdownItem>
             <span class="label label-info"> Version <span class="badge badge-info">v{{ appVersion.version }} - {{
                 appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
           </a>

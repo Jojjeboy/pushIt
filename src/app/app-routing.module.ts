@@ -17,6 +17,7 @@ import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.com
 import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
 import { TodoComponent } from './todo/component/todo/todo.component';
+import { GitlogComponent } from './gitlog/components/gitlog.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,12 @@ const routes: Routes = [
     component: TodoComponent,
     data: { title: 'Edit Todo' }
   },
+  {
+    path: 'gitlog',
+    component: GitlogComponent,
+    data: { title: 'Git log' }
+  },
+  
   { path: '**', component: ListComponent }
 ];
 
@@ -80,7 +87,8 @@ const routes: Routes = [
     HistorySummaryComponent,
     UpsertTallyComponent,
     BaseTallyComponent,
-    TodoComponent
+    TodoComponent,
+    GitlogComponent
   ],
     
   exports: [RouterModule]
