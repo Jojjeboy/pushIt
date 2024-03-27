@@ -10,11 +10,11 @@
       <div class="version-in-header">
         
         <clr-tooltip>
-          <span class="tooltip tooltip-sm tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
+          <span class="tooltip tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
             appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
           </span>
-          <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'sm'">
-            {{ appVersion.message | json }}
+          <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'md'">
+            {{ appVersion.message }}
           </clr-tooltip-content>
         </clr-tooltip>
 
