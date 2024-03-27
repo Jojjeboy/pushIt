@@ -25,7 +25,7 @@
                     <div class="clr-col-12">
                         <clr-input-container>
                             <label for="tittle">Titel:</label>
-                            <input clrInput type="text" id="title" formControlName="title">
+                            <input clrInput maxlength="24" type="text" id="title" formControlName="title">
                         </clr-input-container>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                                 [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a><span
                                 class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
                             <div class="card-title pull-right">
-                                Skapades: {{ todo.getCreated() | timeago }}
+                                Skapades: {{ todo.getCreated() | date: 'HH:mm ddMMM' }}
                             </div>
                         </div>
                         <div class="pull-right header-meta-text"></div>
@@ -93,7 +93,7 @@
                     <div class="card-footer">
                         <div class="clr-row">
                             <div class="clr-col">
-                                asdasd
+                                Skriv nåt bra här
                             </div>
                         </div>
                     </div>
