@@ -25,26 +25,32 @@
                 </div>
                 <div class="card-block">
                     <div class="clr-row">
-                        <div class="clr-col-6">
+                        <div class="clr-col">
                             <div class="card-title">
-                                <span *ngIf="tally.getCanReset()">
-                                    <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span
-                                            i18n> {{ this.translation[tally.getResetInterval()] }} </span>
-                                        historik</span>
-                                    <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
-                                </span>
+                                
                                 <span *ngIf="!tally.getCanReset()">
                                     <span>Räknaren nollställs inte</span>
                                 </span>
                             </div>
                         </div>
-                        <div class="clr-col-6">
+                        <div class="clr-col">
                             <div class="card-title pull-right">
                              {{ tally.getLastTouched() | timeago }}
                             </div>
                         </div>
                     </div>
                     <div class="card-text">
+                        <div class="clr-row stats">
+                            <div class="clr-col-12">
+                                <span *ngIf="tally.getCanReset()">
+                                    <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span
+                                            i18n> {{ this.translation[tally.getResetInterval()] }} </span>
+                                        historik</span>
+                                    <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
+                                </span> / 
+                                {{ getBestStreak(tally.getHistory()) }} dagars streak / {{ getTotalNumberOfDoneReps(tally) +' gjorda reps av '+ getTotalHistoryGoal(tally) }} totalt mål 
+                            </div>
+                        </div>
                         <div aria-hidden="true" class="clr-row progress-status-text">
                             <div class="clr-col-6">Avklarat: {{ calculatePercentage(tally) }}% </div>
                             <div class="clr-col-6">
@@ -53,10 +59,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="clr-row streak">
-                            <div class="clr-col-12">{{ getBestStreak(tally.getHistory()) }} dagars streak / {{ getTotalNumberOfDoneReps(tally) +' av '+ getTotalHistoryGoal(tally) }} gjorda reps
-                            </div>
-                        </div>
+                        
                         <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                             <div class="progress-meter"
                                 [attr.data-value]="calculatePercentage(tally) < 100 ? calculatePercentage(tally) : 100">
@@ -100,7 +103,7 @@
 
 <div class="clr-row add-row">
     <div class="clr-col-12">
-        <a routerLink="/add" class="btn btn-success block">Skapa ny</a>
+        <a routerLink="/add" class="btn btn-small btn-block btn-success ">Skapa ny</a>
     </div>
 </div>
 
