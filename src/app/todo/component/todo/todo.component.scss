@@ -1,3 +1,15 @@
+#todo-form-wrapper{
+    margin-bottom: 100px;
+    .toggle-status{ 
+        margin-bottom: 15px;
+    }
+}
+
+
+form, form .card-block{
+    padding: 0;
+}
+
 .card-header {
     >div {
         display: inline;
