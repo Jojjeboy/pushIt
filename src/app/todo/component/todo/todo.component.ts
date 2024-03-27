@@ -27,7 +27,7 @@ export class TodoComponent implements OnInit {
   protected todo: Todo = new Todo({});
   protected editMode: boolean = false;
   protected editId!: string;
-  ;
+  protected showTodoForm: boolean = false;
 
   constructor(
     protected localStorageService: LocalStorageService,
@@ -54,6 +54,7 @@ export class TodoComponent implements OnInit {
   setupMode(): void {
     if (this.location.path().split('/').length === 3) {
       this.editMode = true;
+      this.showTodoForm = true;
       this.editId = this.location.path().split('/')[2];
 
       try {
@@ -118,6 +119,20 @@ export class TodoComponent implements OnInit {
       header: 'Radera Att göra post',
       body: 'Är du säker på att du vill radera att göra posten?',
       footer: ''
+    }
+  }
+
+
+  handleForm(): void{
+    // Ångra, stäg förmuläret
+    if(this.editMode || (this.editMode === false && this.showTodoForm === true)){
+      
+      this.router.navigate(['/todo/']);
+      this.showTodoForm = false;
+    }
+    // Visa formulärt
+    else {
+      this.showTodoForm = true;
     }
   }
   
