@@ -103,6 +103,7 @@ export class TodoComponent implements OnInit {
     this.ngOnInit();
     this.todoForm.reset();
     this.editMode = false;
+    this.showTodoForm = false;
     this.router.navigate(['/todo'], { queryParams: { type: 'success', message: 'Att göra post ' + action } });
   }
 

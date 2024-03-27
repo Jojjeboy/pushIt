@@ -83,13 +83,18 @@ a:active {
     opacity: 0.3;
 }
 
+.alert {
 
+    .alert-app-level .alert-items{
+        align-items: normal;
+    }
+}
 .alert-icon-wrapper .material-symbols-outlined{
     color: #fff;
     margin-top: -3px;
 }
-
-.alert-text .text{
+.alert .alert-item .alert-text {
+    max-width: none;
     padding-left: 10px;
     color: #fff;
 }
@@ -195,11 +200,3 @@ header.header-6 {
         opacity: 0.12;
     }
 }
-
-
-// Delete me
-.testclass {
-    color: #0b485d;
-    background-color: #f00;
-}
-
