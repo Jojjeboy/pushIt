@@ -7,9 +7,17 @@
       <a routerLink="/" class="nav-link">
         <span class="title">PushIt</span>
       </a>
-      <div class="version-in-header"><span class="">v{{ appVersion.version }} - {{
-          appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
-        </span>
+      <div class="version-in-header">
+        
+        <clr-tooltip>
+          <span class="tooltip tooltip-sm tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
+            appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
+          </span>
+          <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'sm'">
+            {{ appVersion.message | json }}
+          </clr-tooltip-content>
+        </clr-tooltip>
+
       </div>
     </div>
 

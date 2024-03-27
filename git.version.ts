@@ -10,6 +10,7 @@ async function createVersionsFile(filename: string) {
   const revision = (await exec('git rev-parse --short HEAD')).stdout.toString().trim();
   const branch = (await exec('git rev-parse --abbrev-ref HEAD')).stdout.toString().trim();
   const date = (await exec('git log -1 --format=%cd')).stdout.toString().trim();
+  const lastMessage = (await exec('git log -n 1 --skip 1 --pretty=format:"%s"')).stdout.toString().trim();
  
   console.log(`Application Version: '${packageJSON.version}', revision: '${revision}', branch: '${branch}'`);
 
@@ -19,7 +20,8 @@ async function createVersionsFile(filename: string) {
         version: '${packageJSON.version}',
         revision: '${revision}',
         branch: '${branch}',
-        date: '${date}'
+        date: '${date}',
+        message: '${lastMessage}'
       };`;
 
   writeFileSync(filename, content, {encoding: 'utf8'});
