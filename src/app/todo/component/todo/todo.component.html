@@ -63,7 +63,7 @@
                         <div class="header-main-text">
                             <a [routerLink]="['/todo/', todo.getUuid()]" [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a><span class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
                             <div class="card-title pull-right">
-                                {{ todo.getCreated() | timeago }}
+                                Skapades: {{ todo.getCreated() | timeago }}
                             </div>
                         </div>
                         <div class="pull-right header-meta-text"></div>
@@ -83,9 +83,7 @@
                     <div class="card-footer">
                         <div class="clr-row">
                             <div class="clr-col">
-                            </div>
-                            <div class="clr-col">
-
+                                asdasd
                             </div>
                         </div>
                     </div>
