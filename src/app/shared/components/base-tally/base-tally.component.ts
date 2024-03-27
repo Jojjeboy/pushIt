@@ -15,7 +15,7 @@ export class BaseTallyComponent {
   archiveTallyModalData: Object = {};
 
   public translation: any = {
-    "daily": "dagars",
+    "daily": "d",
     "weekly": "veckas",
     "monthly": "månads"
   }
