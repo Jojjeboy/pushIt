@@ -13,19 +13,26 @@
         display: none;
     }
 
-    &.streak {
+    &.stats {
         bottom: 13px;
         position: relative;
         font-size: 0.75em;
+        color: #acbac3;
     }
 }
 
+.card{
+    border: 1px solid $borderColor;
+}
+
 .card-header {
+    border-bottom: 1px solid $borderColor;
     >div {
         display: inline;
     }
 
     div.header-main-text {
+        
         .tally-icons {
             color: #919191;
         }
@@ -33,6 +40,7 @@
         a,
         a:visited {
             color: $successColor;
+            font-size: 0.9em;
         }
     }
 
@@ -54,6 +62,7 @@
 }
 
 .card-block {
+    border-bottom: 1px solid $borderColor;
     .progress-status-text {
         margin-bottom: 20px;
     }
