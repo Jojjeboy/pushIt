@@ -30,7 +30,7 @@ export class TallyService extends BaseTallyService {
 
   getTallies(): Observable<Tally[]> {
     return new Observable<Tally[]>(observer => {
-      this.lsTallies = this.localStorageService.getAll();
+      this.lsTallies = this.localStorageService.getAll('data');
       this.tallies = <Array<Tally>>this.convertLSToTallies(this.lsTallies);
       this.resetOldTallys();
       this.reloadDataFromLS();
@@ -62,7 +62,7 @@ export class TallyService extends BaseTallyService {
         }
       });
       if (!found) {
-        let objArr: Array<object> = this.localStorageService.getItem(id);
+        let objArr: Array<object> = this.localStorageService.getItem(id, 'data');
         tally = this.convertLSToTallies(objArr)[0];
       }
       observer.next(tally);
@@ -76,7 +76,7 @@ export class TallyService extends BaseTallyService {
         tally.setHistory(histories);
         tally.setValue(0);
         //this.touch(tally);
-        this.update(tally);
+        this.update(tally, 'data');
       }
     }
   }
@@ -103,7 +103,7 @@ export class TallyService extends BaseTallyService {
     this.tallies = <Array<Tally>>this.convertLSToTallies(restoreTalliesFromServer);
     
     restoreTalliesFromServer.forEach(tally => {
-      this.save(tally);
+      this.save(tally, 'data');
     });
     this.resetOldTallys();
     this.sortByActive();
@@ -118,7 +118,7 @@ export class TallyService extends BaseTallyService {
       tally.setTopScore(tally.getValue());
     }
     this.touch(tally);
-    this.update(tally);
+    this.update(tally, 'data');
   }
 
   decrease(tally: Tally): void {
@@ -128,14 +128,14 @@ export class TallyService extends BaseTallyService {
       tallyValue -= tallyIncreseBy;
       tally.setValue(tallyValue);
       this.touch(tally);
-      this.update(tally);
+      this.update(tally, 'data');
     }
   }
 
   cleanHistory(tally: Tally): void {
     tally = this.historyService.cleanHistory(tally);
     this.touch(tally);
-    this.update(tally);
+    this.update(tally, 'data');
   }
 
 
@@ -190,13 +190,13 @@ export class TallyService extends BaseTallyService {
     if (index > -1) {
       this.tallies.splice(index, 1);
     }
-    this.localStorageService.removeItem(deleteTally.getUuid());
+    this.localStorageService.removeItem(deleteTally.getUuid(), 'data'); 
   }
 
   archive(tally: Tally): void {
     tally.setActive(false);
     this.touch(tally);
-    this.update(tally);
+    this.update(tally, 'data');
   }
 
 
@@ -264,7 +264,7 @@ export class TallyService extends BaseTallyService {
   }
 
   reloadDataFromLS() {
-    this.lsTallies = this.localStorageService.getAll();
+    this.lsTallies = this.localStorageService.getAll('data');
     this.tallies = this.convertLSToTallies(this.lsTallies);
   }
 }

@@ -126,11 +126,11 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
 
     let action: string = 'skapad';
     if (this.editMode) {
-      this.tallyService.update(this.tally);
+      this.tallyService.update(this.tally, 'data');
       action = 'uppdaterad';
     }
     else {
-      this.tallyService.save(this.tally);
+      this.tallyService.save(this.tally, 'data');
     }
     this.router.navigate(['/tally/' + this.tally.getUuid()], { queryParams: { type: 'success', message: 'Räknare ' + action } });
   }

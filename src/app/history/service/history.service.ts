@@ -41,7 +41,7 @@ export class HistoryService extends BaseTallyService {
   cleanHistory(tally: Tally): Tally {
     tally.setHistory([]);
     this.touch(tally);
-    this.update(tally);
+    this.update(tally, 'data');
     return tally;
   }
 

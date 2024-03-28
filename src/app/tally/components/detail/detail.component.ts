@@ -73,7 +73,7 @@ export class DetailComponent extends BaseTallyComponent implements OnInit, OnDes
 
   toggleActive(): void {
     this.tally.setActive(!this.tally.getActive());
-    this.tallyService.update(this.tally);
+    this.tallyService.update(this.tally, 'data');
   }
 
   ngOnDestroy() {

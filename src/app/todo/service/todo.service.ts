@@ -19,7 +19,7 @@ export class TodoService  {
 
   getTodos(): Observable<Todo[]> {
     return new Observable<Todo[]>(observer => {
-      this.lsTodos = this.localStorageService.getAllTodos();
+      this.lsTodos = this.localStorageService.getAll('todos');
       this.todos = <Array<Todo>>this.convertLSToTodos(this.lsTodos);
       this.sortByActive();
       observer.next(this.todos);
@@ -39,7 +39,7 @@ export class TodoService  {
       });
 
       if (!found) {
-        let objArr: Array<object> = this.localStorageService.getTodo(id);
+        let objArr: Array<object> = this.localStorageService.getItem(id, 'todos');
         todo = this.convertLSToTodos(objArr)[0];
       }
       observer.next(todo);
@@ -88,16 +88,16 @@ export class TodoService  {
     todo.setLastTouched(new Date());
   }
 
-  save(todo: Todo): void {
-    this.localStorageService.addTodo(this.convertToLsTodo(todo));
+  save(todo: Todo, key: string): void {
+    this.localStorageService.add(this.convertToLsTodo(todo), key);
   }
 
   update(todo: Todo): void {
-    this.localStorageService.updateTodo(this.convertToLsTodo(todo));
+    this.localStorageService.update(this.convertToLsTodo(todo), 'todos');
   }
 
   delete(id: string): void {
-    this.localStorageService.removeTodo(id);
+    this.localStorageService.removeItem(id, 'todos');
   }
 
   convertToLsTodo(todo: Todo): Object {

@@ -98,7 +98,7 @@ export class TodoComponent implements OnInit {
     }
     else {
       this.todo.setCreated(new Date());
-      this.todoService.save(this.todo);
+      this.todoService.save(this.todo, 'todos');
     }
     this.ngOnInit();
     this.todoForm.reset();

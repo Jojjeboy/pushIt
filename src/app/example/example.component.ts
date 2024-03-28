@@ -59,7 +59,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
     this.talliesFromJson.forEach((tally: Tally) => {
       if (uuid === tally.getUuid()) {
         this.rewriteHistory(tally);
-        this.tallyService.save(tally);
+        this.tallyService.save(tally, 'data');
         this.talliesAdded.push(uuid);
       }
     });

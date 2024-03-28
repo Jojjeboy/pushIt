@@ -14,16 +14,16 @@ export class BaseTallyService {
     tally.setLastTouched(new Date());
   }
 
-  save(tally: Tally): void {
-    this.localStorageService.add(this.convertToLsTally(tally));
+  save(obj: Object, key: string): void {
+    this.localStorageService.add(this.convertToLsToObject(obj), key);
   }
 
-  update(tally: Tally): void {
-    this.localStorageService.update(this.convertToLsTally(tally));
+  update(obj: Object, key: string): void {
+    this.localStorageService.update(this.convertToLsToObject(obj), key);
   }
 
-  convertToLsTally(tally: Tally): Object {
-    const plainObject: Object = Object.assign({}, tally);
+  convertToLsToObject(obj: Object): Object {
+    const plainObject: Object = Object.assign({}, obj);
     return plainObject;
   }
 }

@@ -39,47 +39,28 @@ export class LocalStorageService {
     this.key = key;
   }
 
-  public getAll(): Array<Object> {
+  public getAll(key: string): Array<Object> {
     const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
-    return lSData['data'];
+    return lSData[key];
   }
 
-  public getAllTodos(): Array<Object> {
-    const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
-    return lSData['todos'];
-  }
-
-
-
-  public add(obj: Object): void {
-    const lsItems = this.getAll();
+  public add(obj: Object, key: string): void {
+    const lsItems = this.getAll(key);
     lsItems.push(obj);
-    this.writeLS(lsItems);
+    this.writeLS(lsItems, key);
   }
 
-  public addTodo(obj: Object): void {
-    const lsItems = this.getAllTodos();
-    lsItems.push(obj);
-    this.writeLSWithTodos(lsItems);
-  }
-
-  public addMultiple(array: Array<Object>): void {
-    const lsItems = this.getAll();
-    for (let i = 0; i < array.length; i++) {
-      lsItems.push(array[i]);
-    }
-    this.writeLS(lsItems);
-  }
-
-  public writeLS(array: Array<Object>): void {
+  public writeLS(array: Array<Object>, key: string): void {
     if (!this.config) {
       this.init(this.key);
     }
-    localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array, todos: this.getAllTodos() }));
-  }
+    if(key === 'data'){
+      localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array, todos: this.getAll('todos') }));
 
-  public writeLSWithTodos(todos: Array<Object>): void {
-    localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: this.getAll(), todos: todos }));
+    }
+    else if(key === 'todos'){
+      localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: this.getAll('data'), todos: array }));
+    }
   }
 
   public getLS() {
@@ -88,54 +69,37 @@ export class LocalStorageService {
   }
 
   public updateItem(key: String, propertyName: any, obj: Object) {
-    const lsItems = this.getAll();
+    const lsItems = this.getAll('data');
     for (let i = 0; i < lsItems.length; i++) {
       const item: any = lsItems[i];
       if (item[propertyName] === key) {
         lsItems[i] = obj;
-        this.writeLS(lsItems);
+        this.writeLS(lsItems, 'data');
         break;
       }
     }
 
   }
 
-  public removeItem(key: String): boolean {
-    const lsItems: any = this.getAll(),
+  public removeItem(uuid: String, key: string): boolean {
+    const lsItems: any = this.getAll(key),
       newData = [];
     let foundItem = false,
       iter = 0;
     while (iter < lsItems.length) {
-      if (key !== lsItems[iter]['uuid']) {
+      if (uuid !== lsItems[iter]['uuid']) {
         newData.push(lsItems[iter]);
       } else {
         foundItem = true;
       }
       iter++;
     }
-    this.writeLS(newData);
+    this.writeLS(newData, 'data');
     return foundItem;
   }
 
-  public removeTodo(key: String): boolean {
-    const lsItems: any = this.getAllTodos(),
-      newData = [];
-    let foundItem = false,
-      iter = 0;
-    while (iter < lsItems.length) {
-      if (key !== lsItems[iter]['uuid']) {
-        newData.push(lsItems[iter]);
-      } else {
-        foundItem = true;
-      }
-      iter++;
-    }
-    this.writeLSWithTodos(newData);
-    return foundItem;
-  }
-
-  public update(obj: any): boolean {
-    const lsItems: any = this.getAll(),
+  public update(obj: any, key: string): boolean {
+    const lsItems: any = this.getAll(key),
       newData = [];
     let updated = false;
     for (let i = 0; i < lsItems.length; i++) {
@@ -144,37 +108,12 @@ export class LocalStorageService {
         updated = true;
       }
     }
-    this.writeLS(lsItems);
+    this.writeLS(lsItems, key);
     return updated;
   }
 
-  public updateTodo(obj: any): boolean {
-    const lsItems: any = this.getAllTodos(),
-      newData = [];
-    let updated = false;
-    for (let i = 0; i < lsItems.length; i++) {
-      if (lsItems[i]['uuid'] === obj['uuid']) {
-        lsItems[i] = obj;
-        updated = true;
-      }
-    }
-    this.writeLSWithTodos(lsItems);
-    return updated;
-  }
-
-  public getItem(id: String): Array<object> {
-    const lsItems: any = this.getAll();
-    let returnArr = [];
-    for (let i = 0; i < lsItems.length; i++) {
-      if (lsItems[i]['uuid'] === id) {
-        returnArr.push(lsItems[i]);
-      }
-    }
-    return returnArr;
-  }
-
-  public getTodo(id: String): Array<object> {
-    const lsItems: any = this.getAllTodos();
+  public getItem(id: String, key: string): Array<object> {
+    const lsItems: any = this.getAll(key);
     let returnArr = [];
     for (let i = 0; i < lsItems.length; i++) {
       if (lsItems[i]['uuid'] === id) {
@@ -185,7 +124,7 @@ export class LocalStorageService {
   }
 
   public getNrOfItems(): number {
-    return this.getAll().length;
+    return this.getAll('data').length;
   }
 
   public emptyItemsInKey(): void {
@@ -233,7 +172,7 @@ export class LocalStorageService {
       localStorage.setItem(this.key, JSON.stringify(
         {
           config: this.getConfig(), 
-          data: this.getAll(), 
+          data: this.getAll('data'), 
           todos: []
         }));
     }
@@ -241,11 +180,11 @@ export class LocalStorageService {
 
   public saveConfig(config: Object): void {
     const lSData: any = JSON.parse(this.localStorage.getItem(this.key));
-    localStorage.setItem(this.key, JSON.stringify({ config: config, data: lSData['data'], todos: this.getAllTodos() }));
+    localStorage.setItem(this.key, JSON.stringify({ config: config, data: lSData['data'], todos: this.getAll('todos') }));
   }
 
   public uppdatePropertyOnAll(propertyName: string, newValue: any): void {
-    const lsData: Array<any> = this.getAll();
+    const lsData: Array<any> = this.getAll('data');
     let touched = false;
     for (let i = 0; i < lsData.length; i++) {
       if (lsData[i].hasOwnProperty(propertyName)) {
@@ -254,7 +193,7 @@ export class LocalStorageService {
       }
     }
     if (touched) {
-      this.writeLS(lsData);
+      this.writeLS(lsData, 'data');
     }
   }
 }

@@ -154,7 +154,7 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
     });
 
     this.tally.setHistory(historyArr);
-    this.tallyService.update(this.tally);
+    this.tallyService.update(this.tally, 'data');
     this.router.navigate(['/tally/' + this.tally.getUuid()], { queryParams: { type: 'success', message: 'Historiken uppdaterad' } });
   }
 
