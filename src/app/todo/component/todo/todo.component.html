@@ -63,7 +63,7 @@
     </form>
 </div>
 <div *ngIf="todosFetched">
-    <div class="clr-row" *ngFor="let todo of todos" [ngClass]="{'status-done': todo.getIsDone()}">
+    <div class="clr-row" *ngFor="let todo of todos" [ngClass]="{'status-done': todo.getIsDone()}"> 
         <div class="clr-col">
             <div class="card">
                 <div class="card-info">

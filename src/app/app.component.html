@@ -10,9 +10,11 @@
       <div class="version-in-header">
         
         <clr-tooltip>
-          <span class="tooltip tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
+          <!--span class="tooltip tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
             appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
-          </span>
+          </span-->
+          <span class="label label-info tooltip tooltip-bottom-left" clrTooltipTrigger> Version <span class="badge badge-info">v{{ appVersion.version }} - {{
+                appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
           <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'md'">
             {{ appVersion.message }}
           </clr-tooltip-content>
@@ -35,10 +37,7 @@
           <a routerLink="/example" clrDropdownItem>Lägg till exempel</a>
           <a routerLink="/todo" clrDropdownItem>Att göra</a>
           <a (click)="clearCache()" clrDropdownItem>Rensa Local Storage</a>
-          <a routerLink="/gitlog" clrDropdownItem>
-            <span class="label label-info"> Version <span class="badge badge-info">v{{ appVersion.version }} - {{
-                appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
-          </a>
+          <a routerLink="/gitlog" clrDropdownItem>Git log historia</a>
 
         </clr-dropdown-menu>
       </clr-dropdown>
