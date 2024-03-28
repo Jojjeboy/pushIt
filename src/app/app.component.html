@@ -10,16 +10,12 @@
       <div class="version-in-header">
         
         <clr-tooltip>
-          <!--span class="tooltip tooltip-bottom-left" clrTooltipTrigger >v{{ appVersion.version }} - {{
-            appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span>
-          </span-->
-          <span class="label label-info tooltip tooltip-bottom-left" clrTooltipTrigger> Version <span class="badge badge-info">v{{ appVersion.version }} - {{
+          <span class="label label-success tooltip tooltip-bottom-left" clrTooltipTrigger> Version <span class="badge badge-success">v{{ appVersion.version }} - {{
                 appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
           <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'md'">
             {{ appVersion.message }}
           </clr-tooltip-content>
         </clr-tooltip>
-
       </div>
     </div>
 

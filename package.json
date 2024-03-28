@@ -1,14 +1,14 @@
 {
   "name": "push-it",
-  "version": "6.0.0",
+  "version": "6.7.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=8888",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "prebuild:patch": "npm version --commit-hooks false patch",
-    "prebuild:minor": "npm version --commit-hooks false minor",
-    "prebuild:major": "npm version --commit-hooks false major",
+    "prebuild:patch": "npm version patch --git-tag-version false",
+    "prebuild:minor": "npm version minor --git-tag-version false",
+    "prebuild:major": "npm version major --git-tag-version false",
     "postinstall": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" git.version.ts",
     "test": "ng test"
   },
