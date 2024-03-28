@@ -7,8 +7,6 @@ import { LocalStorageService } from 'src/app/shared/service/local-storage/local-
 import { Todo } from '../../types/Todo';
 import { FormControl, FormGroup, Validators } from '@angular/forms'; 
 import { UUIDService } from 'src/app/shared/service/uuid/uuid.service';
-import { BaseTallyComponent } from 'src/app/shared/components/base-tally/base-tally.component';
-import { TallyService } from 'src/app/tally/service/tally.service';
 
 @Component({
   selector: 'app-todo',

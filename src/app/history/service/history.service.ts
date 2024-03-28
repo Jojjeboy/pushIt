@@ -10,7 +10,9 @@ import { LocalStorageService } from '../../shared/service/local-storage/local-st
 })
 export class HistoryService extends BaseTallyService {
 
-  constructor(localStorageService: LocalStorageService, dateHelperService: DateHelperService) {
+  constructor(
+    localStorageService: LocalStorageService,
+    dateHelperService: DateHelperService) {
     super(localStorageService, dateHelperService);
   }
 
@@ -19,7 +21,7 @@ export class HistoryService extends BaseTallyService {
     const dateTimestampLastTouched = lastTouched.setHours(0, 0, 0, 0);
 
     histories.forEach((history) => {
-      if(dateTimestampLastTouched === history.getDate().setHours(0, 0, 0, 0)){
+      if (dateTimestampLastTouched === history.getDate().setHours(0, 0, 0, 0)) {
         dateExist = true;
       }
     });

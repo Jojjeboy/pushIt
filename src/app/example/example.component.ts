@@ -4,7 +4,6 @@ import { Tally } from '../tally/types/Tally';
 import { History } from '../history/types/History';
 import { Subscription } from 'rxjs';
 import { HttpService } from '../shared/service/http/http.service';
-import { LocalStorageService } from '../shared/service/local-storage/local-storage.service';
 
 @Component({
   selector: 'example',
@@ -14,8 +13,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
 
   constructor(
     private tallyService: TallyService,
-    private httpService: HttpService,
-    private localStorageService: LocalStorageService
+    private httpService: HttpService
   ) {
   }
 
@@ -39,20 +37,19 @@ export class ExampleComponent implements OnInit, OnDestroy {
   }
 
   rewriteHistory(tally: Tally): void {
-    
 
-      const historyArr = [];
-      let c = 4;
-      let date = new Date();
-      for (const hist of tally.getHistory()) {
-        let history = new History(hist);
-        history.setDate(new Date(date.setDate(date.getDate() - c)));
-        historyArr.push(history);
-        tally.setHistory(historyArr);
-        //this.localStorageService.update(tally);
-        c--;
-      }
-    
+
+    const historyArr = [];
+    let c = 4;
+    let date = new Date();
+    for (const hist of tally.getHistory()) {
+      let history = new History(hist);
+      history.setDate(new Date(date.setDate(date.getDate() - c)));
+      historyArr.push(history);
+      tally.setHistory(historyArr);
+      c--;
+    }
+
   }
 
   addExampleTally(uuid: string): void {

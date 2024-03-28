@@ -130,7 +130,7 @@ export class EditTallyHistoryComponent implements OnInit, OnDestroy {
     this.historyService.sortHistoryByDate(this.tally);
   }
 
-  
+
 
   removeHistory(i: number) {
     this.histories().removeAt(i);

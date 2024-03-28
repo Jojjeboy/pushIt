@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   promptUserToUpdateApp() {
     this.showAlert = true;
     this.alertText = `Ny version av applikationen finns`;
-    this.alertType = 'danger'; 
+    this.alertType = 'danger';
   }
 
   ngOnInit() {

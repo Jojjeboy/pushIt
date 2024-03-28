@@ -24,7 +24,7 @@ export class TallyService extends BaseTallyService {
     localStorageService: LocalStorageService,
     dateHelperService: DateHelperService) {
     super(localStorageService, dateHelperService);
-    
+
     this.updateAppVersion();
   }
 
@@ -101,7 +101,7 @@ export class TallyService extends BaseTallyService {
   restoreTalliesFromServer(restoreTalliesFromServer: Array<Tally>): void {
     this.clearAllTallies();
     this.tallies = <Array<Tally>>this.convertLSToTallies(restoreTalliesFromServer);
-    
+
     restoreTalliesFromServer.forEach(tally => {
       this.save(tally, 'data');
     });
@@ -160,7 +160,7 @@ export class TallyService extends BaseTallyService {
   }
 
 
-  clearAllTallies(): void{
+  clearAllTallies(): void {
     this.tallies.forEach(tally => {
       this.delete(tally);
     });
@@ -190,7 +190,7 @@ export class TallyService extends BaseTallyService {
     if (index > -1) {
       this.tallies.splice(index, 1);
     }
-    this.localStorageService.removeItem(deleteTally.getUuid(), 'data'); 
+    this.localStorageService.removeItem(deleteTally.getUuid(), 'data');
   }
 
   archive(tally: Tally): void {

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { History } from 'src/app/history/types/History';
 import { TallyService } from 'src/app/tally/service/tally.service';
 import { Tally } from 'src/app/tally/types/Tally';
-import { LocalStorageService } from '../../service/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-base-tally',
@@ -10,7 +9,10 @@ import { LocalStorageService } from '../../service/local-storage/local-storage.s
 })
 export class BaseTallyComponent {
 
-  constructor(protected tallyService: TallyService){}
+  constructor(
+    protected tallyService: TallyService
+  ) { }
+
   percentage = 0.00;
   archiveTallyModalData: Object = {};
 
@@ -20,11 +22,11 @@ export class BaseTallyComponent {
     "monthly": "månads"
   }
 
-  getGoalReached(histories: History[]): number {    
+  getGoalReached(histories: History[]): number {
     let streakLength = 0;
 
     histories.forEach((history: History) => {
-      if(history.getValue() >= history.getGoal()){
+      if (history.getValue() >= history.getGoal()) {
         streakLength++;
       }
     });
@@ -32,37 +34,37 @@ export class BaseTallyComponent {
     return streakLength;
   }
 
-  getBestStreak(histories: History[]): number {    
+  getBestStreak(histories: History[]): number {
     let highestStreak = 0;
     let loopStreak = 0;
 
 
     histories.forEach((history: History) => {
-      if(history.getValue() >= history.getGoal()){
+      if (history.getValue() >= history.getGoal()) {
         loopStreak++;
       }
       else {
-        if(loopStreak > highestStreak){
+        if (loopStreak > highestStreak) {
           highestStreak = JSON.parse(JSON.stringify(loopStreak));
         }
         loopStreak = 0;
       }
     });
 
-    if(loopStreak > highestStreak){
+    if (loopStreak > highestStreak) {
       highestStreak = JSON.parse(JSON.stringify(loopStreak));
     }
 
     return highestStreak;
   }
 
-  getCurrentStreak(histories: History[]): number {    
+  getCurrentStreak(histories: History[]): number {
     let streakLength = 0;
     let highestStreak = 0;
     let breakLoop = false;
 
     histories.forEach((history: History) => {
-      if(history.getValue() >= history.getGoal() && !breakLoop){
+      if (history.getValue() >= history.getGoal() && !breakLoop) {
         highestStreak++;
         streakLength = JSON.parse(JSON.stringify(highestStreak));
       }
@@ -83,7 +85,7 @@ export class BaseTallyComponent {
     this.tallyService.increase(tally);
 
     // Ask if it should be deactivated if its not a auto reset when the goal is hit.
-    if(tally.getValue() >= tally.getGoal() && !tally.getCanReset()){
+    if (tally.getValue() >= tally.getGoal() && !tally.getCanReset()) {
       console.log('Deactivate this tally?');
       this.archiveTallyModalData = {
         open: true,
@@ -101,7 +103,7 @@ export class BaseTallyComponent {
     this.archiveTallyModalData = { open: false };
     console.log('Tally archived');
   }
-  
+
   decrease(tally: Tally) {
     this.tallyService.decrease(tally);
     this.recalculatePercentage(tally);

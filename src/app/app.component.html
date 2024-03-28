@@ -8,10 +8,11 @@
         <span class="title">PushIt</span>
       </a>
       <div class="version-in-header">
-        
+
         <clr-tooltip>
-          <span class="label label-success tooltip tooltip-bottom-left" clrTooltipTrigger> Version <span class="badge badge-success">v{{ appVersion.version }} - {{
-                appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
+          <span class="label label tooltip tooltip-bottom-left" clrTooltipTrigger> Version <span class="badge badge">v{{
+              appVersion.version }} - {{
+              appVersion.date | date: 'dMMM HH:mm' }}<span class="clr-sr-only">items</span></span></span>
           <clr-tooltip-content [clrPosition]="'bottom-left'" [clrSize]="'md'">
             {{ appVersion.message }}
           </clr-tooltip-content>
@@ -39,7 +40,6 @@
       </clr-dropdown>
     </div>
   </header>
-
 
   <!-- Main content -->
   <div class="content-container">

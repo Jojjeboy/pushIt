@@ -11,18 +11,20 @@ export class HistoryGuardService implements CanActivate {
 
   tallyObservable!: Subscription;
 
-  constructor(private tallyService: TallyService, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private tallyService: TallyService,
+    private router: Router) {
 
   }
 
   canActivate(activatedRouteSnapshot: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     let reset: boolean = false;
-    this.tallyObservable = this.tallyService.getTallyById(activatedRouteSnapshot.params['id']).subscribe((tally:Tally) => {
+    this.tallyObservable = this.tallyService.getTallyById(activatedRouteSnapshot.params['id']).subscribe((tally: Tally) => {
       reset = tally.getCanReset();
     });
 
-    if(!reset){
+    if (!reset) {
       this.router.navigate(['/tally/' + activatedRouteSnapshot.params['id']], { queryParams: { type: 'danger', message: 'Du har inte tillåtelse att redigera historiken!' } });
     }
 

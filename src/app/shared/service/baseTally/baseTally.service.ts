@@ -8,7 +8,10 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 })
 export class BaseTallyService {
 
-  constructor(protected localStorageService: LocalStorageService, protected dateHelperService: DateHelperService) {}
+  constructor(
+    protected localStorageService: LocalStorageService,
+    protected dateHelperService: DateHelperService
+  ) { }
 
   touch(tally: Tally): void {
     tally.setLastTouched(new Date());

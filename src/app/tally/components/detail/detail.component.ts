@@ -18,7 +18,7 @@ export class DetailComponent extends BaseTallyComponent implements OnInit, OnDes
   cleanHistoryModalData: Object = {};
   deleteModalData: Object = {};
   tally!: Tally;
-  
+
   editMode = false;
   tallyObservable!: Subscription;
 

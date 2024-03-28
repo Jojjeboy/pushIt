@@ -54,11 +54,11 @@ export class LocalStorageService {
     if (!this.config) {
       this.init(this.key);
     }
-    if(key === 'data'){
+    if (key === 'data') {
       localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: array, todos: this.getAll('todos') }));
 
     }
-    else if(key === 'todos'){
+    else if (key === 'todos') {
       localStorage.setItem(this.key, JSON.stringify({ config: this.config, data: this.getAll('data'), todos: array }));
     }
   }
@@ -127,6 +127,7 @@ export class LocalStorageService {
     return this.getAll('data').length;
   }
 
+  // Move from this file
   public emptyItemsInKey(): void {
     localStorage.setItem(this.key, JSON.stringify(
       {
@@ -171,8 +172,8 @@ export class LocalStorageService {
     if (!lsData['todos']) {
       localStorage.setItem(this.key, JSON.stringify(
         {
-          config: this.getConfig(), 
-          data: this.getAll('data'), 
+          config: this.getConfig(),
+          data: this.getAll('data'),
           todos: []
         }));
     }

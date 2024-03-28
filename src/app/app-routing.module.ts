@@ -13,7 +13,7 @@ import { ListComponent } from './tally/components/list/list.component';
 import { ExampleComponent } from './example/example.component';
 import { EditTallyHistoryComponent } from './history/components/edit-tally-history/edit-tally-history.component';
 import { HistorySummaryComponent } from './shared/components/history-summary/history-summary.component';
-import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.component';import { HistoryService } from './history/service/history.service';
+import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.component'; import { HistoryService } from './history/service/history.service';
 import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
 import { TodoComponent } from './todo/component/todo/todo.component';
@@ -66,7 +66,7 @@ const routes: Routes = [
     component: GitlogComponent,
     data: { title: 'Git log' }
   },
-  
+
   { path: '**', component: ListComponent }
 ];
 
@@ -90,7 +90,7 @@ const routes: Routes = [
     TodoComponent,
     GitlogComponent
   ],
-    
+
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

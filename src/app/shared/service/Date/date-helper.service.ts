@@ -1,4 +1,3 @@
-import { DecimalPipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -47,14 +46,14 @@ export class DateHelperService {
       }
       return false;
     }
-    else if(resetInterval === 'weekly'){
-      if(this.getWeekNumber(lastTouched) !== this.getWeekNumber(new Date())){
+    else if (resetInterval === 'weekly') {
+      if (this.getWeekNumber(lastTouched) !== this.getWeekNumber(new Date())) {
         return true;
       }
       return false;
     }
-    else if(resetInterval === 'monthly'){
-      if(this.getMonthNumber(lastTouched) !== this.getMonthNumber(new Date())){
+    else if (resetInterval === 'monthly') {
+      if (this.getMonthNumber(lastTouched) !== this.getMonthNumber(new Date())) {
         return true;
       }
       return false;
@@ -85,7 +84,7 @@ export class DateHelperService {
     return weekNo;
   }
 
-  getMonthNumber(date: Date): number{
+  getMonthNumber(date: Date): number {
     return date.getMonth();
   }
 

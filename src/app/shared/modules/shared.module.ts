@@ -18,7 +18,7 @@ import { DatePipe } from '@angular/common';
     ClarityModule,
     CommonModule
   ],
-  exports:[
+  exports: [
     CommonModule,
     TimeagoModule,
     ClarityModule,

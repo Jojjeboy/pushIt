@@ -6,15 +6,14 @@ import { Todo } from '../types/Todo';
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService  {
+export class TodoService {
 
   lsTodos = Array<Object>();
   todos: Array<Todo> = []
-  
+
 
   constructor(
-    private localStorageService: LocalStorageService,
-
+    private localStorageService: LocalStorageService
   ) { }
 
   getTodos(): Observable<Todo[]> {
