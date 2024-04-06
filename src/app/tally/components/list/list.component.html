@@ -52,12 +52,20 @@
                                 <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
                             </span>
                         </div>
-                            <div class="clr-col">Streak: {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}</div>
-                            <div class="clr-col">Bästa streak: {{ getBestStreak(tally.getHistory()) }}</div>
+                            <div class="clr-col">
+                                <span *ngIf="tally.getCanReset()">
+                                    Streak: {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}
+                                </span>
+                            </div>
+                            <div class="clr-col">
+                                <span *ngIf="tally.getCanReset()">
+                                    Bästa streak: {{ getBestStreak(tally.getHistory()) }}
+                                </span>
+                            </div>
                            
                         </div>
                         <div aria-hidden="true" class="clr-row progress-status-text">
-                            <div class="clr-col-6">Avklarat: {{ calculatePercentage(tally) }}% </div>
+                            <div class="clr-col-6">Avklarat<span *ngIf="tally.getCanReset()"> idag</span>: {{ calculatePercentage(tally) }}% </div>
                             <div class="clr-col-6">
                                 <span class="pull-right">
                                     {{ tally.getValue() }} av {{ tally.getGoal() }}
@@ -114,7 +122,7 @@
 <div class="clr-row" *ngIf="tallies.length === 0 && tallyFetched">
     <div class="clr-col-12">
         <h1>PushIt</h1>
-        <small>Det verkar inte som du har några räknare</small>
+        <small>Det verkar inte som du har några räknare</small><br /><br />
         <hr />
         <a routerLink="/example" class="btn btn-success-outline block">Lägg till exempel</a>
     </div>

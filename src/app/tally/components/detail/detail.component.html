@@ -45,7 +45,7 @@
 
     <div class="clr-row tally-meta tally-progress">
         <div class="clr-col-12">
-            <h5>Avklarat: {{ percentage }}% </h5>
+            <h5>Avklarat<span *ngIf="tally.getCanReset()"> idag</span>: {{ percentage }}% </h5>
             <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                 <div class="progress-meter" [attr.data-value]="percentage < 100 ? percentage : 100"></div>
             </div>
