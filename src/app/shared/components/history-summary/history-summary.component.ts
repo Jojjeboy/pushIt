@@ -10,17 +10,17 @@ export class HistorySummaryComponent implements OnInit {
 
   @Input() tally!: Tally;
   resetIntervalText!: string;
- 
+
   ngOnInit() {
-    if(this.tally.resetInterval === 'daily'){
+    if (this.tally.resetInterval === 'daily') {
       this.resetIntervalText = 'dagligen';
     }
-    else if(this.tally.resetInterval === 'weekly'){
+    else if (this.tally.resetInterval === 'weekly') {
       this.resetIntervalText = 'veckovis';
     }
-    else if(this.tally.resetInterval === 'monthly'){
+    else if (this.tally.resetInterval === 'monthly') {
       this.resetIntervalText = 'månadsvis';
     }
   }
-  
+
 }

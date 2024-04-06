@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="clr-row tally-meta">
+    <div class="clr-row tally-meta" *ngIf="tally.getCanReset()">
         <div class="clr-col-6">
             <h5>Nuvarande streak: {{ getCurrentStreak(tally.getHistory()) }}</h5>
         </div>
@@ -49,6 +49,24 @@
             <div class="progress-static" [class.success]="tally.getValue() >= tally.getGoal()">
                 <div class="progress-meter" [attr.data-value]="percentage < 100 ? percentage : 100"></div>
             </div>
+        </div>
+    </div>
+
+    <div class="clr-row tally-meta tally-progress" *ngIf="tally.getCanReset()">
+        <div class="clr-col-12">
+            <h5>Totalt avklarat: {{ totalPercentage }}% </h5>
+            <div class="progress-static" [class.success]="getTotalNumberOfDoneReps(tally) >= getTotalHistoryGoal(tally)">
+                <div class="progress-meter" [attr.data-value]="totalPercentage < 100 ? totalPercentage : 100"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr-row tally-meta"  *ngIf="tally.getCanReset()">
+        <div class="clr-col-6">
+            <h5>Totalt gjorda: {{ getTotalNumberOfDoneReps(tally) }}</h5>
+        </div>
+        <div class="clr-col-6">
+            <h5>Av: {{ getTotalHistoryGoal(tally) }}</h5>
         </div>
     </div>
 
@@ -76,7 +94,7 @@
 </div>
 
 
-<app-history-summary [tally]="tally"></app-history-summary>
+<app-history-summary  *ngIf="tally.getCanReset()" [tally]="tally"></app-history-summary>
 
 
 

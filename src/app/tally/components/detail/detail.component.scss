@@ -11,12 +11,11 @@
         >div {
             background: #273841;
             padding: 15px;
-            border: 1px solid $darkBorderColor;
             border-right: none;
 
             &:last-child {
                 border-radius: 3px;
-                border: 1px solid $darkBorderColor;
+                border: 1px solid $borderColor;
             }
         }
 

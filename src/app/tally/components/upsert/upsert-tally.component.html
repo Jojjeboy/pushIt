@@ -126,7 +126,7 @@
                 </div>
 
 
-                <div class="clr-row">
+                <div class="clr-row"  *ngIf="tally.getCanReset()">
                     <div class="clr-col-12">
                         <app-history-summary [tally]="tally"></app-history-summary>
                     </div>

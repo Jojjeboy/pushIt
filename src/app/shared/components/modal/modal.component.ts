@@ -17,7 +17,7 @@ export class ModalComponent {
     this.modalData.open = true;
   }
 
-  closeModal(): void{
+  closeModal(): void {
     this.modalData.open = false;
   }
 

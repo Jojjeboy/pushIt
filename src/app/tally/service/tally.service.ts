@@ -17,6 +17,7 @@ export class TallyService extends BaseTallyService {
   tallies: Array<Tally> = [];
 
   percentage = 0.00;
+  totalPercentage = 0.00;
   private showAll = false;
 
   constructor(
@@ -49,6 +50,29 @@ export class TallyService extends BaseTallyService {
       }
     }
     return percentage;
+  }
+
+  recalculateTotalPercentage(tally: Tally) :number{
+    let totalPercentage = 0.00;
+    let value = 0;
+    let goal = 0;
+
+    tally.getHistory().forEach((history: History) => {
+      value += history.getValue();
+      goal += history.getGoal();
+    });
+
+    value += tally.getValue();
+    goal += tally.getGoal();
+
+    if (goal !== null && value !== null) {
+      totalPercentage = (value / goal * 100);
+      totalPercentage = parseInt(totalPercentage.toString(), 10);
+        if (isNaN(this.totalPercentage)) {
+          totalPercentage = 0;
+        }
+    }
+    return totalPercentage;
   }
 
   getTallyById(id: String): Observable<Tally> {

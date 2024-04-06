@@ -14,10 +14,11 @@ export class BaseTallyComponent {
   ) { }
 
   percentage = 0.00;
+  totalPercentage = 0.00;
   archiveTallyModalData: Object = {};
 
   public translation: any = {
-    "daily": "dagars",
+    "daily": "dagar",
     "weekly": "veckas",
     "monthly": "månads"
   }
@@ -76,9 +77,70 @@ export class BaseTallyComponent {
     return streakLength;
   }
 
+  getTotalHistoryGoal(tally: Tally): number{
+    let c = 0;
+    tally.getHistory().forEach((hist: History) => {
+      c += hist.getGoal();
+    });
+
+    c += tally.getGoal();
+
+    return c;
+  }
+
+  calculatePercentage(tally: Tally): number {
+    return this.tallyService.recalculatePercentage(tally.getGoal(), tally.getValue());
+  }
+
+  calculateTotalPercentage(tally: Tally): number {
+    return this.tallyService.recalculateTotalPercentage(tally);
+  }
+
+
+  getTotalNumberOfDoneReps(tally: Tally): number{
+    let c = 0;
+    tally.getHistory().forEach((hist: History) => {
+      c += hist.getValue();
+    });
+
+    c += tally.getValue();
+
+    return c;
+  }
+
+  getUnitText(tally: Tally): string {
+    let resetIntervalText: string = '';
+    if(tally.resetInterval === 'daily'){
+      if(tally.getHistory().length === 1){
+        resetIntervalText = 'dags';
+      }
+      else {
+        resetIntervalText = 'dagars';
+      }
+    }
+    else if(tally.resetInterval === 'weekly'){
+      if(tally.getHistory().length === 1){
+        resetIntervalText = 'veckas';
+      }
+      else {
+        resetIntervalText = 'veckors';
+      }
+    }
+    else if(tally.resetInterval === 'monthly'){
+      if(tally.getHistory().length === 1){
+        resetIntervalText = 'månads';
+      }
+      else {
+        resetIntervalText = 'månaders';
+      }
+    }
+    return resetIntervalText;
+  }
+
 
   recalculatePercentage(tally: Tally) {
     this.percentage = this.tallyService.recalculatePercentage(tally.getGoal(), tally.getValue());
+    this.totalPercentage = this.tallyService.recalculateTotalPercentage(tally);
   }
 
   increase(tally: Tally) {

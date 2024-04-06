@@ -46,17 +46,15 @@
                     </div>
                     <div class="card-text">
                         <div class="clr-row stats">
-                            <div class="clr-col-12">
-                                <span *ngIf="tally.getCanReset()">
-                                    <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }}<span
-                                            i18n>{{ this.translation[tally.getResetInterval()] }}</span>
-                                        historik</span>
-                                    <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
-                                </span> /
-                                {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}
-                                streak / {{ getTotalNumberOfDoneReps(tally) +' reps av '+ getTotalHistoryGoal(tally) }}
-                                totalt mål
-                            </div>
+                            <div class="clr-col"><span *ngIf="tally.getCanReset()">
+                                <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span
+                                        i18n>{{ this.translation[tally.getResetInterval()] }} </span> historik</span>
+                                <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
+                            </span>
+                        </div>
+                            <div class="clr-col">Streak: {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}</div>
+                            <div class="clr-col">Bästa streak: {{ getBestStreak(tally.getHistory()) }}</div>
+                           
                         </div>
                         <div aria-hidden="true" class="clr-row progress-status-text">
                             <div class="clr-col-6">Avklarat: {{ calculatePercentage(tally) }}% </div>
@@ -72,6 +70,26 @@
                                 [attr.data-value]="calculatePercentage(tally) < 100 ? calculatePercentage(tally) : 100">
                             </div>
                         </div>
+
+                        <!-- Totalt -->
+                        <div class="totalPercentage"  *ngIf="tally.getCanReset()">
+                            <div aria-hidden="true" class="clr-row progress-status-text">
+                                <div class="clr-col-6">Totalt avklarat: {{ calculateTotalPercentage(tally) }}% </div>
+                                <div class="clr-col-6">
+                                    <span class="pull-right">
+                                        {{ getTotalNumberOfDoneReps(tally) }} av {{ getTotalHistoryGoal(tally) }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="progress-static" [class.success]="getTotalNumberOfDoneReps(tally) >= getTotalHistoryGoal(tally)">
+                                <div class="progress-meter"
+                                    [attr.data-value]="calculateTotalPercentage(tally) < 100 ? calculateTotalPercentage(tally) : 100">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //Totalt -->
+
                     </div>
                 </div>
                 <div class="card-footer">

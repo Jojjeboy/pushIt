@@ -66,6 +66,13 @@
 }
 
 .card-block {
+    .totalPercentage{
+        margin-top: 40px;
+
+        .progress-static>.progress-meter {
+            height: 1px;
+        }
+    }
     .progress-status-text {
         margin-bottom: 20px;
     }

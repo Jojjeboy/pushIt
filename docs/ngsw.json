@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1711659048202,
+  "timestamp": 1712431716177,
   "index": "https://jojjeboy.github.io/pushIt/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://jojjeboy.github.io/pushIt/favicon.ico",
         "https://jojjeboy.github.io/pushIt/index.html",
-        "https://jojjeboy.github.io/pushIt/main.a7999bcf2b69d817.js",
+        "https://jojjeboy.github.io/pushIt/main.f70f6f7e9c90a6d4.js",
         "https://jojjeboy.github.io/pushIt/manifest.webmanifest",
         "https://jojjeboy.github.io/pushIt/polyfills.885a8549e1700be6.js",
         "https://jojjeboy.github.io/pushIt/runtime.c086b47654942746.js",
@@ -40,7 +40,6 @@
         "https://jojjeboy.github.io/pushIt/assets/icons/icon-512x512.png",
         "https://jojjeboy.github.io/pushIt/assets/icons/icon-72x72.png",
         "https://jojjeboy.github.io/pushIt/assets/icons/icon-96x96.png",
-        "https://jojjeboy.github.io/pushIt/assets/images/cr.jpg",
         "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-192x192.png",
         "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-512x512.png",
         "https://jojjeboy.github.io/pushIt/assets/images/favicon/apple-touch-icon.png",
@@ -69,7 +68,6 @@
     "https://jojjeboy.github.io/pushIt/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "https://jojjeboy.github.io/pushIt/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
     "https://jojjeboy.github.io/pushIt/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
-    "https://jojjeboy.github.io/pushIt/assets/images/cr.jpg": "5c041325b40e8c396a650c3a9e6abd175d950458",
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-192x192.png": "e99966cf5b44f42577594ea9171eee9561313f80",
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/android-chrome-512x512.png": "d322fd16106d8e04dc406f3d943c16615979f817",
     "https://jojjeboy.github.io/pushIt/assets/images/favicon/apple-touch-icon.png": "a0bd08665d8ab3ff0b203cbb40ff83a54a6c16bf",
@@ -82,8 +80,8 @@
     "https://jojjeboy.github.io/pushIt/assets/images/original_icon.png": "2430badf2be25b9589428ace9f9d55ebfd296486",
     "https://jojjeboy.github.io/pushIt/assets/styles/_variables.scss": "b6bb1fa1eb095c443988cfc8afe7bd77e674d0ff",
     "https://jojjeboy.github.io/pushIt/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://jojjeboy.github.io/pushIt/index.html": "e133e2e497fbff274ce57bc0eec0cc3b1b887e59",
-    "https://jojjeboy.github.io/pushIt/main.a7999bcf2b69d817.js": "0763a6344a7450f177b8d4ff9f863d2b97130109",
+    "https://jojjeboy.github.io/pushIt/index.html": "383e3e69664cfdb7a4d634d931cd584c3f8ce238",
+    "https://jojjeboy.github.io/pushIt/main.f70f6f7e9c90a6d4.js": "2a42bb6cc1193247b7458495ee82b12f765295d6",
     "https://jojjeboy.github.io/pushIt/manifest.webmanifest": "27c99db044fd06a4b9f860426876a419177c9b82",
     "https://jojjeboy.github.io/pushIt/polyfills.885a8549e1700be6.js": "bd6fc6805a17c4e77ffb8687d35d02747a63b7fc",
     "https://jojjeboy.github.io/pushIt/runtime.c086b47654942746.js": "9c5ee5fc22ca7aa204cb31c34ee2917d5c9f4f69",

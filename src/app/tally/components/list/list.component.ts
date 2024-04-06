@@ -41,9 +41,6 @@ export class ListComponent extends BaseTallyComponent implements OnInit, OnDestr
     return this.showAll;
   }
 
-  calculatePercentage(tally: Tally): number {
-    return this.tallyService.recalculatePercentage(tally.getGoal(), tally.getValue());
-  }
 
   inactiveTallysExist(): boolean {
     let exist = false;;
@@ -60,59 +57,6 @@ export class ListComponent extends BaseTallyComponent implements OnInit, OnDestr
     this.showAll = event.target.checked;
     config.showAll = this.showAll;
     this.localStorageService.saveConfig(config);
-  }
-
-  getUnitText(tally: Tally): string {
-    let resetIntervalText: string = '';
-    if(tally.resetInterval === 'daily'){
-      if(tally.getHistory().length === 1){
-        resetIntervalText = 'dags';
-      }
-      else {
-        resetIntervalText = 'dagars';
-      }
-    }
-    else if(tally.resetInterval === 'weekly'){
-      if(tally.getHistory().length === 1){
-        resetIntervalText = 'veckas';
-      }
-      else {
-        resetIntervalText = 'veckors';
-      }
-    }
-    else if(tally.resetInterval === 'monthly'){
-      if(tally.getHistory().length === 1){
-        resetIntervalText = 'månads';
-      }
-      else {
-        resetIntervalText = 'månaders';
-      }
-    }
-    return resetIntervalText;
-  }
-
-
-  getTotalHistoryGoal(tally: Tally): number{
-    let c = 0;
-    tally.getHistory().forEach((hist: History) => {
-      c += hist.getGoal();
-    });
-
-    c += tally.getGoal();
-
-    return c;
-  }
-
-
-  getTotalNumberOfDoneReps(tally: Tally): number{
-    let c = 0;
-    tally.getHistory().forEach((hist: History) => {
-      c += hist.getValue();
-    });
-
-    c += tally.getValue();
-
-    return c;
   }
 
 

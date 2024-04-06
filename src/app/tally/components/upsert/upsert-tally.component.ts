@@ -81,7 +81,7 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
 
     this.selectedColor = tally.getColor();
 
-    if(!tally.getResetInterval()){
+    if (!tally.getResetInterval()) {
       this.tallyForm.controls['resetInterval'].disable();
     }
 
@@ -106,7 +106,7 @@ export class UpsertTallyComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectColor(value: string): void{
+  selectColor(value: string): void {
     this.selectedColor = value;
     this.tally.setColor(value);
   }
