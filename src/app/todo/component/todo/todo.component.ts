@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/service/local-storage/local-storage.service';
 import { Todo } from '../../types/Todo';
-import { FormControl, FormGroup, Validators } from '@angular/forms'; 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UUIDService } from 'src/app/shared/service/uuid/uuid.service';
 
 @Component({
@@ -16,7 +16,8 @@ import { UUIDService } from 'src/app/shared/service/uuid/uuid.service';
 export class TodoComponent implements OnInit {
 
   protected todos = Array<Todo>();
-  private todoListObservable!: Subscription;
+  protected todosInactive = Array<Todo>();
+  private todoListObservable: Subscription = new Subscription();
   protected todosFetched: boolean = false;
   protected todoFetched: boolean = false;
   protected todoForm!: FormGroup;
@@ -26,6 +27,7 @@ export class TodoComponent implements OnInit {
   protected editMode: boolean = false;
   protected editId!: string;
   protected showTodoForm: boolean = false;
+  protected showAll: boolean = true;
 
   constructor(
     protected localStorageService: LocalStorageService,
@@ -34,17 +36,24 @@ export class TodoComponent implements OnInit {
     private router: Router,
     private uUIDService: UUIDService) {
 
-      this.todoForm = new FormGroup({
-        title: new FormControl('', Validators.required),
-        description: new FormControl('', [Validators.required])
-      });
+    this.todoForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required])
+    });
 
   }
 
   ngOnInit(): void {
     this.todoListObservable = this.todoService.getTodos().subscribe(todos => {
       this.todosFetched = true;
-      this.todos = todos;
+      todos.forEach(todo => {
+        if (todo.getIsDone() === false) {
+          this.todos.push(todo);
+        }
+        else {
+          this.todosInactive.push(todo);
+        }
+      });
     });
     this.setupMode();
   }
@@ -90,12 +99,12 @@ export class TodoComponent implements OnInit {
 
     let action: string = 'skapad';
     if (this.editMode) {
-      this.todo.setCreated(this.todo.getCreated());
+      this.todo.setLastTouched(this.todo.getLastTouched());
       this.todoService.update(this.todo);
       action = 'uppdaterad';
     }
     else {
-      this.todo.setCreated(new Date());
+      this.todo.setLastTouched(new Date());
       this.todoService.save(this.todo, 'todos');
     }
     this.ngOnInit();
@@ -105,8 +114,8 @@ export class TodoComponent implements OnInit {
     this.router.navigate(['/todo'], { queryParams: { type: 'success', message: 'Att göra post ' + action } });
   }
 
-  deleteTodoConfirmed(){
-    if(this.location.path().split('/')[2]){
+  deleteTodoConfirmed() {
+    if (this.location.path().split('/')[2]) {
       this.todoService.delete(this.location.path().split('/')[2]);
       this.router.navigate(['/todo']);
     }
@@ -122,10 +131,10 @@ export class TodoComponent implements OnInit {
   }
 
 
-  handleForm(): void{
+  handleForm(): void {
     // Ångra, stäg förmuläret
-    if(this.editMode || (this.editMode === false && this.showTodoForm === true)){
-      
+    if (this.editMode || (this.editMode === false && this.showTodoForm === true)) {
+
       this.router.navigate(['/todo/']);
       this.showTodoForm = false;
     }
@@ -134,6 +143,10 @@ export class TodoComponent implements OnInit {
       this.showTodoForm = true;
     }
   }
-  
+
+  toggleShowInactive(event: any): void {
+    this.showAll = event.target.checked;
+  }
+
 
 } 

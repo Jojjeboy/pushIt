@@ -62,7 +62,7 @@
     </form>
 </div>
 <div *ngIf="todosFetched">
-    <div class="clr-row" *ngFor="let todo of todos" [ngClass]="{'status-done': todo.getIsDone()}">
+    <div class="clr-row" *ngFor="let todo of todos">
         <div class="clr-col">
             <div class="card">
                 <div class="card-info">
@@ -71,28 +71,15 @@
                             <a [routerLink]="['/todo/', todo.getUuid()]"
                                 [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a>
                             <div class="card-title pull-right">
-                                Skapades: {{ todo.getCreated() | date: 'HH:mm ddMMM' }}
+                                Senast förändrad: {{ todo.getLastTouched() | date: 'd MMMM HH:mm' }}
                             </div>
                         </div>
                         <div class="pull-right header-meta-text"></div>
                     </div>
                     <div class="card-block">
-                        <div class="clr-row">
-                            <div class="clr-col-6">
-
-                            </div>
-                        </div>
                         <div class="card-text">
                             <div class="card-text">
                                 <p>{{ todo.getDescription() }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="clr-row">
-                            <div class="clr-col">
-                                <span class="done pull-right" *ngIf="todo.getIsDone()"> Klart</span>
-                                <span class="done pull-right" *ngIf="!todo.getIsDone()"> Ej Klart</span>
                             </div>
                         </div>
                     </div>
@@ -100,7 +87,51 @@
             </div>
         </div>
     </div>
-    <div class="clr-row" *ngIf="todos.length === 0">
+
+    <div class="clr-row" *ngIf="todosInactive.length > 0">
+        <div class="clr-col">
+            <h4>Avklarade</h4>
+        </div>
+        <div class="clr-col">
+            <div class="toggle-inactive">
+                <div class="clr-form-control">
+                    <div class="clr-control-container">
+                        <div class="clr-toggle-wrapper">
+                            <div class="pull-right"><input type="checkbox" id="toggle1" name="toggle-basic" [(ngModel)]="showAll"
+                                (change)="toggleShowInactive($event)" class="clr-toggle" />
+                            <label for="toggle1">Visa inaktiva</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showAll">
+        <div class="clr-row status-done" *ngFor="let todo of todosInactive">
+            <div class="clr-col">
+                <div class="card">
+                    <div class="card-info">
+                        <div class="card-header">
+                            <div class="header-main-text">
+                                <a [routerLink]="['/todo/', todo.getUuid()]"
+                                    [ngClass]="{'strikethrough': todo.getIsDone()}">{{ todo.getTitle() }} </a>
+                                <div class="card-title pull-right">
+                                    Senast förändrad: {{ todo.getLastTouched() | date: 'd MMMM HH:mm' }}
+                                </div>
+                            </div>
+                            <div class="pull-right header-meta-text"></div>
+                        </div>
+                        <div class="card-block">
+                            <div class="card-text">
+                                <p>{{ todo.getDescription() }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clr-row" *ngIf="todos.length === 0 && todosInactive.length === 0">
         <p>Inga att göra poster finns för närvarande</p>
     </div>
 </div>

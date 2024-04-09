@@ -3,7 +3,6 @@ export class Todo {
     description: string;
     done: boolean;
     uuid: string;
-    created: Date;
     lastTouched: Date;
 
     constructor(obj: any) {
@@ -12,7 +11,6 @@ export class Todo {
         this.title = obj.title;
         this.description = obj.description;
         this.done = obj.done;
-        this.created = obj.created;
         this.lastTouched = obj.lastTouched;
     }
 
@@ -46,14 +44,6 @@ export class Todo {
 
     public setIsDone(done: boolean): void {
         this.done = done;
-    }
-
-    public getCreated(): Date {
-        return this.created;
-    }
-
-    public setCreated(created: Date): void {
-        this.created = new Date(created);
     }
 
     public getLastTouched(): Date {

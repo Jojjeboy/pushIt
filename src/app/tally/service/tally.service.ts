@@ -149,7 +149,12 @@ export class TallyService extends BaseTallyService {
     let tallyValue = tally.getValue();
     const tallyIncreseBy = tally.getDecreseBy();
     if (tallyValue > 0) {
-      tallyValue -= tallyIncreseBy;
+      if(tally.getDecreseBy() > tallyValue){
+        tallyValue = 0;
+      }
+      else {
+        tallyValue -= tallyIncreseBy;
+      }
       tally.setValue(tallyValue);
       this.touch(tally);
       this.update(tally, 'data');

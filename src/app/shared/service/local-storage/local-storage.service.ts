@@ -94,7 +94,7 @@ export class LocalStorageService {
       }
       iter++;
     }
-    this.writeLS(newData, 'data');
+    this.writeLS(newData, key);
     return foundItem;
   }
 

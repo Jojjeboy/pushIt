@@ -62,7 +62,7 @@ export class TodoService {
     const returnArr = new Array<Todo>();
     for (const obj of lsTodos) {
       let todo = new Todo(obj);
-      todo.setCreated(new Date(todo.getCreated()));
+      todo.setLastTouched(new Date(todo.getLastTouched()));
       returnArr.push(todo);
     }
     return returnArr;

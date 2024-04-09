@@ -47,19 +47,25 @@
                     <div class="card-text">
                         <div class="clr-row stats">
                             <div class="clr-col"><span *ngIf="tally.getCanReset()">
-                                <span *ngIf="tally.getHistory().length > 0">{{ tally.getHistory().length }} <span
-                                        i18n>{{ this.translation[tally.getResetInterval()] }} </span> historik</span>
+                                <span *ngIf="tally.getHistory().length > 0">Historik: {{ tally.getHistory().length }}<span
+                                        i18n>{{ this.translation[tally.getResetInterval()] }}</span></span>
                                 <span *ngIf="tally.getHistory().length === 0">Historik saknas</span>
                             </span>
                         </div>
                             <div class="clr-col">
                                 <span *ngIf="tally.getCanReset()">
-                                    Streak: {{ getBestStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}
+                                    Streak: {{ getCurrentStreak(tally.getHistory()) }}{{ this.translation[tally.getResetInterval()] }}
                                 </span>
                             </div>
                             <div class="clr-col">
                                 <span *ngIf="tally.getCanReset()">
-                                    Bästa streak: {{ getBestStreak(tally.getHistory()) }}
+                                    B streak: {{ getBestStreak(tally.getHistory()) }}<span
+                                    i18n>{{ this.translation[tally.getResetInterval()] }}</span>
+                                </span>
+                            </div>
+                            <div class="clr-col">
+                                <span *ngIf="tally.getCanReset()">
+                                    Högsta : {{ tally.getTopScore() }}
                                 </span>
                             </div>
                            
@@ -103,7 +109,7 @@
                 <div class="card-footer">
                     <div class="clr-row">
                         <div class="clr-col">
-                            <button class="btn btn-danger-outline block decrese" [disabled]="!tally.getActive()"
+                            <button class="btn btn-danger-outline block decrese" [disabled]="!tally.getActive() || tally.getValue() < 1"
                                 (click)="decrease(tally)">Minska</button>
                         </div>
                         <div class="clr-col">
