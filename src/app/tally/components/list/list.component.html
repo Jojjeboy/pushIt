@@ -110,11 +110,11 @@
                     <div class="clr-row">
                         <div class="clr-col">
                             <button class="btn btn-danger-outline block decrese" [disabled]="!tally.getActive() || tally.getValue() < 1"
-                                (click)="decrease(tally)">Minska</button>
+                                (click)="decrease(tally)">Minska  {{ tally.getDecreseBy() }}</button>
                         </div>
                         <div class="clr-col">
                             <button class="btn btn-success-outline block  increase" [disabled]="!tally.getActive()"
-                                (click)="increase(tally)">Öka</button>
+                                (click)="increase(tally)">Öka {{ tally.getIncreseBy() }}</button>
                         </div>
                     </div>
                 </div>
