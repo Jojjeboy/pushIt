@@ -18,6 +18,7 @@ import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
 import { TodoComponent } from './todo/component/todo/todo.component';
 import { GitlogComponent } from './gitlog/components/gitlog.component';
+import { ListIssuesComponent } from './issues/components/list/list-issue.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
     component: EditTallyHistoryComponent,
     canActivate: [HistoryGuardService],
     data: { title: 'Edit tally history' }
+  },
+  {
+    path: 'issues',
+    component: ListIssuesComponent,
+    data: { title: 'List Github Issues' }
   },
   {
     path: 'todo',
@@ -88,7 +94,8 @@ const routes: Routes = [
     UpsertTallyComponent,
     BaseTallyComponent,
     TodoComponent,
-    GitlogComponent
+    GitlogComponent,
+    ListIssuesComponent
   ],
 
   exports: [RouterModule]

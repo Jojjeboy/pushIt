@@ -1,0 +1,70 @@
+<div class="clr-row clear-spinner" *ngIf="!issueFetched">
+    <div class="clr-col-12">
+        <span class="spinner">
+            Loading...
+        </span>
+    </div>
+</div>
+<div class="clr-row" *ngFor="let issue of issues" >
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="clr-row header-main-text">
+                        <div class="clr-row ">
+                            <div class="clr-col-8">
+                                <h4>{{ issue.title }}</h4>
+                                <small class="stats">{{ issue.updated_at | timeago }}</small>
+                            </div>
+                            <div class="clr-col-4">
+                                <span class="pull-right tally-icons">
+                                    <span class="material-symbols-outlined" *ngIf="issue.state !== 'open'">timeline</span> &nbsp;
+                                    <span class="material-symbols-outlined" *ngIf="issue.state !== 'open'">device_reset</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        
+
+                        <!-- Totalt -->
+                        <p>{{ issue.body }}</p>
+                        <!-- //Totalt -->
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="clr-row">
+                        <div class="clr-col">
+                            <button class="btn btn-danger-outline block decrese">en knapp</button>
+                        </div>
+                        <div class="clr-col">
+                            <button class="btn btn-danger-outline block decrese">en annan knapp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clr-row" *ngIf="issues.length === 0 && issueFetched">
+    <div class="clr-col-12">
+        <h1>PushIt</h1>
+        <small>Det verkar inte som du har några issues ;)</small><br /><br />
+        <hr />
+        <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-success-outline block">Lägg till ärende</a>
+    </div>
+</div>
+
+
+<div class="clr-row add-row">
+    <div class="clr-col-12">
+        <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-small btn-block btn-success ">Skapa nytt ärende</a>
+    </div>
+</div>
