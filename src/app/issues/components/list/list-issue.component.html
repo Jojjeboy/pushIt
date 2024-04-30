@@ -12,11 +12,14 @@
                 <div class="card-header">
                     <div class="header-main-text">
                         <div class="clr-row ">
-                            <div class="clr-col-8">
-                                <h6>{{ issue.title }}</h6>
-                            </div>
-                            <div class="clr-col-4">
-                                <p class="stats">{{ issue.updated_at | timeago }}</p>
+                            <div class="clr-col-12">
+                                <h3>
+                                    <span class="avatar"><img src="{{issue.assignee.avatar_url}}" /></span> 
+                                    <span class="title">{{ issue.title }}</span> 
+                                </h3>
+                                
+                                <small class="stats">{{ issue.updated_at | timeago }}</small>
+
                             </div>
                         </div>
                     </div>
@@ -27,20 +30,19 @@
                     <div class="card-text">
                         
 
-                        <!-- Totalt -->
-                        <p>{{ issue.body }}</p>
-                        <!-- //Totalt -->
+                        <!-- Beskrivning -->
+                        <p><span class="header-meta-text">Beskrivning:</span><br />
+                        {{ issue.body }}</p>
+                        <!-- //Beskrivning -->
 
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="clr-row">
                         <div class="clr-col">
-                            <button class="btn btn-danger-outline block decrese">en knapp</button>
+                            <a [href]="issue.html_url" target="_blank" class="btn btn-primary-outline btn-block">Besök issue</a>
                         </div>
-                        <div class="clr-col">
-                            <button class="btn btn-danger-outline block decrese">en annan knapp</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -58,8 +60,8 @@
     </div>
 </div>
 
-
-<div class="clr-row add-row">
+<br /><br />
+<div class="clr-row">
     <div class="clr-col-12">
         <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-small btn-block btn-success ">Skapa nytt ärende</a>
     </div>

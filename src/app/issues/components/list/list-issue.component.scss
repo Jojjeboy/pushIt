@@ -1,4 +1,40 @@
-.stats{
+h3 {
+    margin-top: 15px;
+}
+
+.stats {
     font-size: 0.45em;
     text-align: right;
+}
+
+.header-meta-text {
+    color: gray;
+    text-transform: uppercase;
+    font-size: x-small;
+}
+
+.card-header {
+    span.avatar img{
+        width: 25px;
+        border-radius: 50%;
+        margin-right: 10px;
+        position: relative;
+        bottom: 2px;
+        border: 1px thin #ccc;
+    }
+}
+.card-block {
+    .card-text {
+        p {
+            margin-top: 0;
+        }
+    }
+}
+
+.card-footer {
+        a.btn,
+        button.btn{
+            font-weight: 100;
+        }
+    
 }
