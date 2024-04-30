@@ -1,0 +1,68 @@
+<div class="clr-row clear-spinner" *ngIf="!issueFetched">
+    <div class="clr-col-12">
+        <span class="spinner">
+            Loading...
+        </span>
+    </div>
+</div>
+<div class="clr-row" *ngFor="let issue of issues" >
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="header-main-text">
+                        <div class="clr-row ">
+                            <div class="clr-col-12">
+                                <h3>
+                                    <span class="avatar"><img src="{{issue.assignee.avatar_url}}" /></span> 
+                                    <span class="title">{{ issue.title }}</span> 
+                                </h3>
+                                
+                                <small class="stats">{{ issue.updated_at | timeago }}</small>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        
+
+                        <!-- Beskrivning -->
+                        <p><span class="header-meta-text">Beskrivning:</span><br />
+                        {{ issue.body }}</p>
+                        <!-- //Beskrivning -->
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="clr-row">
+                        <div class="clr-col">
+                            <a [href]="issue.html_url" target="_blank" class="btn btn-sm btn-primary-outline btn-block">Besök issue</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clr-row" *ngIf="issues.length === 0 && issueFetched">
+    <div class="clr-col-12">
+        <h1>PushIt</h1>
+        <small>Det verkar inte som du har några issues ;)</small><br /><br />
+        <hr />
+        <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-success-outline block">Lägg till ärende</a>
+    </div>
+</div>
+
+<br /><br />
+<div class="clr-row">
+    <div class="clr-col-12">
+        <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-small btn-block btn-success ">Skapa nytt ärende</a>
+    </div>
+</div>

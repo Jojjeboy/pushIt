@@ -1,39 +1,30 @@
-import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-export interface Gitlog {
-  commithash: string;
-  date: string;
-  message: string;
-}
+import { Injectable } from '@angular/core';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
-
-  configAndExampleData = 'assets/example.config-data.json';
-  exampleData = 'assets/example.data.json';
+export class GithubIssueService {
 
   constructor(private http: HttpClient) { }
 
-  getExamplesWithConfig(){
-    return this.http.get<Object[]>(this.configAndExampleData)
-    .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
+  getIssues(url: string): Observable<any> {
+    if (url) {
+      return this.http.get(url, { observe: 'response' })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+    } else {
+      return this.http.get('https://api.github.com/repos/github/docs/issues?per_page=10', { observe: 'response' })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+    }
   }
 
-  getExamplesOnly(){
-    return this.http.get<Object[]>(this.exampleData)
-    .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -53,3 +44,5 @@ export class HttpService {
 
 
 }
+
+
