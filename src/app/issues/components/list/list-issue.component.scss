@@ -33,8 +33,11 @@ h3 {
 
 .card-footer {
         a.btn,
-        button.btn{
+        button.btn.btn-primary-outline{
             font-weight: 100;
+            color: #ccc;
+            outline: #ccc;
+            border: 1px solid #ccc;
         }
     
 }
