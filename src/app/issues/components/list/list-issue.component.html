@@ -20,7 +20,12 @@
                         <div class="clr-row ">
                             <div class="clr-col-12">
                                 <h3>
-                                    <span class="avatar"><img src="{{issue.assignee.avatar_url}}" /></span>
+                                    <span class="avatar" *ngIf="issue.assignee">
+                                        <img src="{{issue.assignee.avatar_url}}" />
+                                    </span>
+                                    <span class="avatar" *ngIf="!issue.assignee">
+                                        <img src="assets/images/anonymous-icon.png" />
+                                    </span>
                                     <span class="title">{{ issue.title }}</span>
                                 </h3>
 
@@ -40,6 +45,12 @@
                         <p><span class="header-meta-text">Beskrivning:</span><br />
                             {{ issue.body }}</p>
                         <!-- //Beskrivning -->
+                        <p>&nbsp;</p>
+                        <p *ngIf="issue.labels.length > 0" class="labels">
+                            <span class="label" [ngStyle]="{'border-color': '#'+label.color, 'color': '#'+label.color}" *ngFor="let label of issue.labels">
+                                <a [href]="'https://github.com/Jojjeboy/pushIt/labels/' + label.name" target="_blank">{{label.name}}</a> 
+                            </span>
+                        </p>
 
                     </div>
                 </div>
@@ -47,7 +58,7 @@
                     <div class="clr-row">
                         <div class="clr-col">
                             <a [href]="issue.html_url" target="_blank"
-                                class="btn btn-sm btn-primary-outline btn-block">Besök issue</a>
+                                class="btn btn-sm btn-primary-outline btn-block">Besök issue på github</a>
                         </div>
 
                     </div>

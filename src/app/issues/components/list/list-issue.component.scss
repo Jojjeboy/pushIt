@@ -27,17 +27,17 @@ h3 {
     .card-text {
         p {
             margin-top: 0;
+
+            &.labels{
+                a{
+                    color: inherit;
+                }
+            }
         }
     }
 }
 
 .card-footer {
-        a.btn,
-        button.btn.btn-primary-outline{
-            font-weight: 100;
-            color: #ccc;
-            outline: #ccc;
-            border: 1px solid #ccc;
-        }
+      
     
 }
