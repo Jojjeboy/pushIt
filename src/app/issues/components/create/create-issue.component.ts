@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GithubIssueService } from '../../service/github-issue.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class CreateIssueComponent implements OnInit{
   constructor(protected githubService: GithubIssueService){
     this.githubIssueForm = new FormGroup({
       title: new FormControl('', Validators.required),
-      body: new FormControl('', [Validators.required])
+      body: new FormControl('', [Validators.required]),
+      labels: new FormArray([])
     });
   }
 
@@ -36,14 +37,36 @@ export class CreateIssueComponent implements OnInit{
   getLabels(url: string): void {
     this.githubService.getLabels(url).subscribe((data) => {
       this.labelsFetched = true;
-      console.log(data.body)
+      //console.log(data.body)
       this.labels = data.body;
     });
   }
 
 
-  addLabel(label: any){
-    console.log(label);
+  addLabel(label: Object): void{
+    // Check if it's already added
+    let alreadyExist:boolean = false;
+    for (let i = 0; i < this.githubIssueForm.value.labels.length; i++) {
+      if (this.githubIssueForm.value.labels[i] === label) {
+        alreadyExist = true;
+      }
+    }
+
+    if(!alreadyExist){
+      this.githubIssueForm.value.labels.push(label);
+    }    
+    
+  }
+
+  removeLabel(label: any){
+    let index;
+    for (let i = 0; i < this.githubIssueForm.value.labels.length; i++) {
+      if (this.githubIssueForm.value.labels[i] === label) {
+        index = i;
+        
+      }
+    }
+    this.githubIssueForm.value.labels.splice(index,1);
   }
 
 

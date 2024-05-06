@@ -44,8 +44,20 @@
                                     <div class="clr-row">
                                         <div class="clr-col">
                                             <p>
+                                                Valda etiketter:<br />
+                                                <span class="label" (click)="removeLabel(label.name)"
+                                                    [ngStyle]="{'border-color': '#'+label.color, 'color': '#'+label.color}"
+                                                    *ngFor="let label of githubIssueForm.value.labels">
+                                                    {{label.name}}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clr-row">
+                                        <div class="clr-col">
+                                            <p>
                                                 Tillgängliga etiketter:<br />
-                                                <span class="label" (click)="addLabel(label.name)"
+                                                <span class="label" (click)="addLabel(label)"
                                                     [ngStyle]="{'border-color': '#'+label.color, 'color': '#'+label.color}"
                                                     *ngFor="let label of labels">
                                                     {{label.name}}
