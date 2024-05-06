@@ -11,6 +11,7 @@ export class CreateIssueComponent implements OnInit{
   
   protected githubIssueForm!: FormGroup;
   protected labels: any = [];
+  postUrl: string = 'https://api.github.com/repos/Jojjeboy/pushIt/issues/new?assignees=Jojjeboy&';
   labelsUrl: string = 'https://api.github.com/repos/Jojjeboy/pushIt/labels';
   issueFetched: boolean = false;
   labelsFetched: boolean = false;
@@ -74,8 +75,16 @@ export class CreateIssueComponent implements OnInit{
     // make sure all is set
     console.log(this.githubIssueForm.value);
 
-    // create http request
 
+    this.postUrl += 'title=' +this.githubIssueForm.value.title.replace(/ /g, '+');
+    this.postUrl += '&body='+this.githubIssueForm.value.body.replace(/ /g, '+');
+    console.log(this.postUrl);
+
+
+    let someVal = this.githubService.postNewIssue(this.postUrl).subscribe((data) => {
+      console.log(data);
+    });
+    
     // clear form and redirect to list page
 
   }

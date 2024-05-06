@@ -26,6 +26,17 @@ export class GithubIssueService {
   }
 
 
+  postNewIssue(url: string) {
+    
+    return this.http.post(url, { observe: 'response' })
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+    
+  }
+
+
 
   getLabels(url: string): Observable<any> {
     if (url) {
@@ -42,6 +53,9 @@ export class GithubIssueService {
       );
     }
   }
+
+
+  
 
 
   private handleError(error: HttpErrorResponse) {
