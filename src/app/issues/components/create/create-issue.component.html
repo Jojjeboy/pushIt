@@ -1,0 +1,64 @@
+<div class="clr-row">
+    <div class="clr-col-12">
+        <h1>Github ärenden</h1>
+    </div>
+</div>
+<div class="clr-row">
+    <div class="clr-col-12">
+        <div class="card">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="header-main-text">
+                        <div class="clr-row ">
+                            <div class="clr-col">
+                                <h3>
+                                    header
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right header-meta-text">
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        <form [formGroup]="githubIssueForm" clrForm (ngSubmit)="onSubmit()">
+                            <div class="card-block">
+                                <div class="card-text">
+                                    <div class="clr-row">
+                                        <div class="clr-col">
+                                            <clr-input-container>
+                                                <label for="title">Titel:</label>
+                                                <input clrInput maxlength="24" type="text" id="title"
+                                                    formControlName="title">
+                                            </clr-input-container>
+                                        </div>
+                                    </div>
+                                    <div class="clr-row">
+                                        <div class="clr-col">
+                                            <clr-textarea-container>
+                                                <label for="body">Beskrivning:</label>
+                                                <textarea clrTextarea [rows]="10" [cols]="45" id="body" required
+                                                    name="body" formControlName="body"></textarea>
+                                            </clr-textarea-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr-row">
+                                    <div class="clr-col">
+                                        <button class="btn-success btn btn-block"
+                                            type="submit" [disabled]="githubIssueForm.invalid">Skapa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
