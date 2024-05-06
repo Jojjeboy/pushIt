@@ -10,8 +10,11 @@ import { strings as englishStrings } from "ngx-timeago/language-strings/en";
 })
 export class ListIssuesComponent implements OnInit{
   protected issues: any = [];
+  protected labels: any = [];
   repositoryUrl: string = 'https://api.github.com/repos/Jojjeboy/pushIt/issues?per_page=10000';
+  labelsUrl: string = 'https://api.github.com/repos/Jojjeboy/pushIt/labels';
   issueFetched: boolean = false;
+  labelsFetched: boolean = false;
 
 
   constructor(private githubService: GithubIssueService) {}

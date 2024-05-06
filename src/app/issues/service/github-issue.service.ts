@@ -26,6 +26,24 @@ export class GithubIssueService {
   }
 
 
+
+  getLabels(url: string): Observable<any> {
+    if (url) {
+      return this.http.get(url, { observe: 'response' })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+    } else {
+      return this.http.get('https://api.github.com/repos/Jojjeboy/pushIt/labels', { observe: 'response' })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+    }
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

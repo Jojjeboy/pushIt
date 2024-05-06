@@ -41,11 +41,23 @@
                                             </clr-textarea-container>
                                         </div>
                                     </div>
+                                    <div class="clr-row">
+                                        <div class="clr-col">
+                                            <p>
+                                                Tillgängliga etiketter:<br />
+                                                <span class="label" (click)="addLabel(label.name)"
+                                                    [ngStyle]="{'border-color': '#'+label.color, 'color': '#'+label.color}"
+                                                    *ngFor="let label of labels">
+                                                    {{label.name}}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="clr-row">
                                     <div class="clr-col">
-                                        <button class="btn-success btn btn-block"
-                                            type="submit" [disabled]="githubIssueForm.invalid">Skapa</button>
+                                        <button class="btn-success btn btn-block" type="submit"
+                                            [disabled]="githubIssueForm.invalid">Skapa</button>
                                     </div>
 
                                 </div>
