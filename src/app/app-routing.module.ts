@@ -19,6 +19,7 @@ import { BaseTallyComponent } from './shared/components/base-tally/base-tally.co
 import { TodoComponent } from './todo/component/todo/todo.component';
 import { GitlogComponent } from './gitlog/components/gitlog.component';
 import { ListIssuesComponent } from './issues/components/list/list-issue.component';
+import { CreateIssueComponent } from './issues/components/create/create-issue.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,11 @@ const routes: Routes = [
     data: { title: 'List Github Issues' }
   },
   {
+    path: 'issues/create',
+    component: CreateIssueComponent,
+    data: { title: 'Create Github Issues' }
+  },
+  {
     path: 'todo',
     component: TodoComponent,
     data: { title: 'Todo' }
@@ -95,7 +101,8 @@ const routes: Routes = [
     BaseTallyComponent,
     TodoComponent,
     GitlogComponent,
-    ListIssuesComponent
+    ListIssuesComponent,
+    CreateIssueComponent
   ],
 
   exports: [RouterModule]
