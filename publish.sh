@@ -8,7 +8,17 @@ POSTINSTALL_AUTO_COMMIT_MESSAGE="Postinstall autocommit message"
 
 echo "Dynamic reponame: "$DYNAMICREPONAME
 echo "Publish url: "$PUBLISH_URL
-echo "Uplevel: "$#
+
+upLevel="minor"
+  if [ $# -eq 2 ]; then
+    if [ "$2" = "patch" ]; then
+      upLevel="patch"
+    elif [ "$2" = "major" ]; then
+      upLevel="major"
+    fi
+  fi
+
+echo "Uplevel: "$upLevel
 
 echo "********** Running script **************"
 
