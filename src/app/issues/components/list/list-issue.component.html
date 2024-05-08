@@ -5,7 +5,13 @@
         </span>
     </div>
 </div>
-<div class="clr-row" *ngFor="let issue of issues" >
+
+<div class="clr-row">
+    <div class="clr-col-12">
+        <h1>Github ärenden</h1>
+    </div>
+</div>
+<div class="clr-row" *ngFor="let issue of issues">
     <div class="clr-col-12">
         <div class="card">
             <div class="card-info">
@@ -14,10 +20,15 @@
                         <div class="clr-row ">
                             <div class="clr-col-12">
                                 <h3>
-                                    <span class="avatar"><img src="{{issue.assignee.avatar_url}}" /></span> 
-                                    <span class="title">{{ issue.title }}</span> 
+                                    <span class="avatar" *ngIf="issue.assignee">
+                                        <img src="{{issue.assignee.avatar_url}}" />
+                                    </span>
+                                    <span class="avatar" *ngIf="!issue.assignee">
+                                        <img src="assets/images/anonymous-icon.png" />
+                                    </span>
+                                    <span class="title">{{ issue.title }}</span>
                                 </h3>
-                                
+
                                 <small class="stats">{{ issue.updated_at | timeago }}</small>
 
                             </div>
@@ -28,21 +39,28 @@
                 </div>
                 <div class="card-block">
                     <div class="card-text">
-                        
+
 
                         <!-- Beskrivning -->
                         <p><span class="header-meta-text">Beskrivning:</span><br />
-                        {{ issue.body }}</p>
+                            {{ issue.body }}</p>
                         <!-- //Beskrivning -->
+                        <p>&nbsp;</p>
+                        <p *ngIf="issue.labels.length > 0" class="labels">
+                            <span class="label" [ngStyle]="{'border-color': '#'+label.color, 'color': '#'+label.color}" *ngFor="let label of issue.labels">
+                                <a [href]="'https://github.com/Jojjeboy/pushIt/labels/' + label.name" target="_blank">{{label.name}}</a> 
+                            </span>
+                        </p>
 
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="clr-row">
                         <div class="clr-col">
-                            <a [href]="issue.html_url" target="_blank" class="btn btn-sm btn-primary-outline btn-block">Besök issue</a>
+                            <a [href]="issue.html_url" target="_blank"
+                                class="btn btn-sm btn-primary-outline btn-block">Besök issue på github</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -63,6 +81,6 @@
 <br /><br />
 <div class="clr-row">
     <div class="clr-col-12">
-        <a href="https://github.com/Jojjeboy/pushIt/issues" class="btn btn-small btn-block btn-success ">Skapa nytt ärende</a>
+        <a routerLink="/issues/create" class="btn btn-small btn-block btn-success ">Skapa nytt ärende</a>
     </div>
 </div>
