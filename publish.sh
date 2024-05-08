@@ -50,7 +50,7 @@ if [[ $(git diff --stat) != '' ]]; then
     npm run prebuild:$upLevel;
     npm run postinstall &&
     ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
-    git tag -a $npmversion "$npmversion"   
+    git tag -a v$npmversion "v$npmversion"   
     git add . &&
     git commit --amend --no-edit && git pull && 
     git push
