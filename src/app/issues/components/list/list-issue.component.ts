@@ -31,7 +31,6 @@ export class ListIssuesComponent implements OnInit{
   getIssues(url: string): void {
     this.githubService.getIssues(url).subscribe((data) => {
       this.issueFetched = true;
-      console.log(data.body)
       this.issues = data.body;
     });
   }

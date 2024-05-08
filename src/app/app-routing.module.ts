@@ -16,10 +16,8 @@ import { HistorySummaryComponent } from './shared/components/history-summary/his
 import { UpsertTallyComponent } from './tally/components/upsert/upsert-tally.component'; import { HistoryService } from './history/service/history.service';
 import { HistoryGuardService } from './history/service/history-guard.service';
 import { BaseTallyComponent } from './shared/components/base-tally/base-tally.component';
-import { TodoComponent } from './todo/component/todo/todo.component';
 import { GitlogComponent } from './gitlog/components/gitlog.component';
 import { ListIssuesComponent } from './issues/components/list/list-issue.component';
-import { CreateIssueComponent } from './issues/components/create/create-issue.component';
 
 const routes: Routes = [
   {
@@ -59,21 +57,6 @@ const routes: Routes = [
     data: { title: 'List Github Issues' }
   },
   {
-    path: 'issues/create',
-    component: CreateIssueComponent,
-    data: { title: 'Create Github Issues' }
-  },
-  {
-    path: 'todo',
-    component: TodoComponent,
-    data: { title: 'Todo' }
-  },
-  {
-    path: 'todo/:id',
-    component: TodoComponent,
-    data: { title: 'Edit Todo' }
-  },
-  {
     path: 'gitlog',
     component: GitlogComponent,
     data: { title: 'Git log' }
@@ -99,10 +82,8 @@ const routes: Routes = [
     HistorySummaryComponent,
     UpsertTallyComponent,
     BaseTallyComponent,
-    TodoComponent,
     GitlogComponent,
-    ListIssuesComponent,
-    CreateIssueComponent
+    ListIssuesComponent
   ],
 
   exports: [RouterModule]
