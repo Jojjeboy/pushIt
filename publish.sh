@@ -40,20 +40,17 @@ fi
 
 if [[ $(git diff --stat) != '' ]]; then
 
-  upLevel="minor"
-  if [ $# -eq 2 ]; then
-    if [ "$2" = "patch" ]; then
-      upLevel="patch"
-    elif [ "$2" = "major" ]; then
-      upLevel="major"
-    fi
-  fi
+    npmversion="";
+    npmversion= npm pkg get version
+
+
 
     git add .;
     git commit -m"$1";
     npm run prebuild:$upLevel;
     npm run postinstall &&
     ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
+    git tag $npmversion
     git add . &&
     git commit --amend --no-edit && git pull && 
     git push
