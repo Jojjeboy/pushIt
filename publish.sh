@@ -53,7 +53,7 @@ if [[ $(git diff --stat) != '' ]]; then
     git tag -a v$npmversion "v$npmversion"   
     git add . &&
     git commit --amend --no-edit && git pull && 
-    git push
+    git push && git push origin --tags
 else
   ng build --configuration=production --output-path docs --base-href "$PUBLISH_URL"
   git add . &&
